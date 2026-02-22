@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class trainHealth : MonoBehaviour
 {
@@ -23,7 +24,11 @@ public class trainHealth : MonoBehaviour
         UpdateHealthUI();
 
         if (currentHealth <= 0)
+        {
             Die();
+            SceneManager.LoadScene("programmingtest");
+        }
+            
     }
 
     void UpdateHealthUI()
