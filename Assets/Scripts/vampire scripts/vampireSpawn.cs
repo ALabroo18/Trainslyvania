@@ -12,8 +12,10 @@ public class vampireSpawn : MonoBehaviour
     public Collider trainCollider;
 
     [Header("Spawn Settings")]
-    public float spawnInterval = 2f;
+    public float spawnInterval = 1f;
     public int enemiesPerSpawn = 2;
+
+    
 
     [Header("Spawn Area")]
     public Transform spawnCenter;
@@ -32,9 +34,12 @@ public class vampireSpawn : MonoBehaviour
             for (int i = 0; i < enemiesPerSpawn; i++)
             {
                 SpawnVampire();
+                yield return new WaitForSeconds(spawnInterval);
+                
             }
-
-            yield return new WaitForSeconds(spawnInterval);
+            
+            
+            
         }
     }
 
