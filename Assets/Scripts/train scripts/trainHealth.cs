@@ -10,6 +10,8 @@ public class trainHealth : MonoBehaviour
     public int currentHealth;
 
     public TMP_Text healthText;
+    public GameObject lossText;
+    public GameObject pauseButton;
 
     void Start()
     {
@@ -26,7 +28,8 @@ public class trainHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
-            SceneManager.LoadScene("programmingtest");
+            lossText.SetActive(true);
+            pauseButton.SetActive(false);
         }
             
     }
@@ -41,5 +44,6 @@ public class trainHealth : MonoBehaviour
     {
         Collider col = GetComponent<Collider>();
         if (col != null) col.enabled = false;
+        Time.timeScale = 0f;
     }
 }

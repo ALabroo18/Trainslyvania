@@ -6,6 +6,6 @@ public class SceneLoader : MonoBehaviour
 {
     public void LoadScene()
     {
-        SceneManager.LoadScene("ArtPrototype");
+        SceneManager.LoadScene("programmingTest");
     }
 }
