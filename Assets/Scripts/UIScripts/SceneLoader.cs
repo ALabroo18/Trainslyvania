@@ -8,4 +8,8 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("programmingTest");
     }
+
+    public void LoadRoute() {
+        SceneManager.LoadScene("RouteSelect");
+    }
 }
