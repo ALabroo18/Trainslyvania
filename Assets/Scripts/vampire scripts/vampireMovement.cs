@@ -4,13 +4,52 @@ public class vampireMovement : MonoBehaviour
 {
     //Mason Kuhn
 
-    public Transform target;//transform of train
-    public Collider targetCollider;    //train collider
+    private trainHealth targetCart;
+    private Collider targetCollider;
     public float moveSpeed = 3f;
 
     void Update()
     {
-        if (target == null || targetCollider == null) return;
+        //find or refresh target
+        if (targetCart == null || targetCart.isBreached)
+        {
+            AcquireTarget();
+            if (targetCart == null) return;
+        }
+
+        MoveTowardTarget();
+    }
+
+    void AcquireTarget()
+    {
+        trainHealth[] carts = FindObjectsOfType<trainHealth>();
+
+        float closestDist = Mathf.Infinity;
+        trainHealth closest = null;
+
+        foreach (trainHealth cart in carts)
+        {
+            if (cart.isBreached)
+                continue;
+
+            float dist = Vector3.Distance(transform.position, cart.transform.position);
+            if (dist < closestDist)
+            {
+                closestDist = dist;
+                closest = cart;
+            }
+        }
+
+        if (closest != null)
+        {
+            targetCart = closest;
+            targetCollider = closest.GetComponent<Collider>();
+        }
+    }
+
+    void MoveTowardTarget()
+    {
+        if (targetCollider == null) return;
 
         Vector3 closestPoint = targetCollider.ClosestPoint(transform.position);
 
@@ -18,7 +57,6 @@ public class vampireMovement : MonoBehaviour
         direction.y = 0f;
 
         float distance = direction.magnitude;
-
         if (distance <= 0.05f)
             return;
 
