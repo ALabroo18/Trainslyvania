@@ -13,7 +13,10 @@ public class InputManager : MonoBehaviour
     public GameObject playerCharacter;
     public GameObject PressedImage;
 
+
+    // For camera panning
     public Camera camera;
+    public float panSpeed = 0;
     // Before starting, new Touch control map is created
     private void Awake()
     {
@@ -26,6 +29,7 @@ public class InputManager : MonoBehaviour
     // Enables touch controls
     private void OnEnable()
     {
+        camera = Camera.main;
        touchPressAction.performed += TouchPressed;
        Debug.Log("Hi");
     }
@@ -40,16 +44,26 @@ public class InputManager : MonoBehaviour
 
     private void TouchPressed(InputAction.CallbackContext context)
     {
+        Vector3 point = new Vector3();
+        Vector2 touchPos = new Vector2();
         Debug.Log(touchPositionAction.ReadValue<Vector2>());
-        Ray ray = camera.ScreenPointToRay(touchPositionAction.ReadValue<Vector2>());
-        Debug.Log("Went through");
-        RaycastHit hit;
+        camera.WorldToScreenPoint(touchPositionAction.ReadValue<Vector2>());
 
-        if(Physics.Raycast(ray, out hit) && isIn == false)
-        {
-            Instantiate(playerCharacter, hit.point, Quaternion.identity);
-            isIn = true;
-        }
+
+        // For placing turrets
+        // Ray ray = camera.ScreenPointToRay(touchPositionAction.ReadValue<Vector2>());
+        // Debug.Log("Went through");
+        // RaycastHit hit;
+
+
+        
+        // if(Physics.Raycast(ray, out hit) && isIn == false)
+        // {
+        //     Instantiate(playerCharacter, hit.point, Quaternion.identity);
+        //     isIn = true;
+        // }
+
+        // Dont use the commented code below
         // Vector3 position = Camera.main.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());
         // position.z = playerCharacter.transform.position.z;
         // playerCharacter.transform.position = position;        
