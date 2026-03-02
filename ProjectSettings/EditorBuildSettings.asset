@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RouteSelect.unity
     guid: 62cca30cfda80c54983db970b3180ab4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/programmingtest.unity
     guid: 0c526da9e1122a948b134c0be25f6089
   m_configObjects:

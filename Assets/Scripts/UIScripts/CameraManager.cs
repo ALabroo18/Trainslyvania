@@ -3,13 +3,16 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     public Camera currentCam;
+
+    public Camera mainCamera;
     public Camera cam1;
     public Camera cam2;
     public Camera cam3;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentCam.enabled = true;
+        mainCamera = Camera.main;
+        // currentCam.enabled = true;
         cam1.enabled = false;
         cam2.enabled = false;
         cam3.enabled = false;
@@ -27,6 +30,10 @@ public class CameraManager : MonoBehaviour
         {
             cam3.enabled = false;
         }
+        else if(mainCamera.enabled)
+        {
+            mainCamera.enabled = false;
+        }
     }
 
     public void SetCam2()
@@ -41,6 +48,10 @@ public class CameraManager : MonoBehaviour
         {
             cam3.enabled = false;
         }
+        else if(mainCamera.enabled)
+        {
+            mainCamera.enabled = false;
+        }
     }
     public void SetCam3()
     {
@@ -53,6 +64,30 @@ public class CameraManager : MonoBehaviour
         else if (cam2.enabled)
         {
             cam2.enabled = false;
+        }
+        else if(mainCamera.enabled)
+        {
+            mainCamera.enabled = false;
+        }
+    }
+
+    public void SetMainCam()
+    {
+        currentCam = mainCamera;
+
+        mainCamera.enabled = true;
+
+        if(cam1.enabled)
+        {
+            cam1.enabled = false;
+        }
+        else if (cam2.enabled)
+        {
+            cam2.enabled = false;
+        }
+        else if (cam3.enabled)
+        {
+            cam3.enabled = false;
         }
     }
 }
