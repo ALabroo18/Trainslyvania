@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class mediumTurret : MonoBehaviour
 {
@@ -15,11 +16,45 @@ public class mediumTurret : MonoBehaviour
     [Header("Aiming")]
     public float turnSpeed = 10f;
 
+    [Header("Break Behavior")]
+    public Transform turretHead;
+    public float brokenAngle = 45f;
+    public float breakRotateTime = 0.4f;
+
     private Transform currentTarget;
     private float fireCooldown;
 
+    public trainHealth owningCar;
+    private bool isBroken;
+
+    void Start()
+    {
+        if (owningCar != null)
+            owningCar.OnBreached += BreakTurret;
+    }
+
+    void OnDestroy()
+    {
+        if (owningCar != null)
+            owningCar.OnBreached -= BreakTurret;
+    }
+
+    void BreakTurret()
+    {
+        if (isBroken) return;
+
+        isBroken = true;
+        currentTarget = null;
+
+        StopAllCoroutines();
+        StartCoroutine(DropTurret());
+    }
+
     void Update()
     {
+        if (isBroken)
+            return;
+
         if (currentTarget == null)
         {
             FindClosestEnemy();
@@ -101,5 +136,25 @@ public class mediumTurret : MonoBehaviour
             targetRotation,
             Time.deltaTime * turnSpeed
         );
+    }
+
+    IEnumerator DropTurret()
+    {
+        if (turretHead == null)
+            yield break;
+
+        Quaternion startRot = turretHead.localRotation;
+        Quaternion targetRot = Quaternion.Euler(brokenAngle, 0f, 0f);
+
+        float t = 0f;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / breakRotateTime;
+            turretHead.localRotation = Quaternion.Slerp(startRot, targetRot, t);
+            yield return null;
+        }
+
+        turretHead.localRotation = targetRot;
     }
 }
