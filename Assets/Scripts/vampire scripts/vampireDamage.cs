@@ -5,7 +5,7 @@ public class vampireDamage : MonoBehaviour
     //Mason Kuhn
 
     public int damage = 10;
-    public float attackCooldown = 10f;
+    public float attackCooldown = 2f;
 
     private float lastAttackTime;
     private trainHealth trainHealth;

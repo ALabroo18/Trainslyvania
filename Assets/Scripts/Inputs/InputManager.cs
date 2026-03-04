@@ -1,12 +1,20 @@
-
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+
 public class InputManager : MonoBehaviour
 {
-    private bool isIn = false;
+    public int maxTurrets = 6;
+    public int maxTurretsPerCar = 2;
+
+    private int turretsPlaced = 0;
+    private Dictionary<Collider, int> turretsOnCar = new Dictionary<Collider, int>();
+
+    public LayerMask trainCarLayer;
+
     private PlayerInput playerInput;
     private InputAction touchPositionAction;
     private InputAction touchPressAction;
@@ -17,7 +25,6 @@ public class InputManager : MonoBehaviour
     // Before starting, new Touch control map is created
     private void Awake()
     {
-        isIn = false;
         playerInput = GetComponent<PlayerInput>();
         touchPressAction = playerInput.actions["TouchPress"];
         touchPositionAction = playerInput.actions["TouchPosition"];
@@ -43,12 +50,31 @@ public class InputManager : MonoBehaviour
         Debug.Log(touchPositionAction.ReadValue<Vector2>());
         Ray ray = camera.ScreenPointToRay(touchPositionAction.ReadValue<Vector2>());
         Debug.Log("Went through");
-        RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit) && isIn == false)
+        if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, trainCarLayer))
         {
-            Instantiate(playerCharacter, hit.point, Quaternion.identity);
-            isIn = true;
+            Collider carCollider = hit.collider;
+
+            if (turretsPlaced >= maxTurrets)
+                return;
+
+            if (!turretsOnCar.ContainsKey(carCollider))
+                turretsOnCar[carCollider] = 0;
+
+            if (turretsOnCar[carCollider] >= maxTurretsPerCar)
+                return;
+
+            GameObject turret = Instantiate(playerCharacter, hit.point, Quaternion.identity);
+
+            mediumTurret turretScript = turret.GetComponent<mediumTurret>();
+            trainHealth carHealth = hit.collider.GetComponent<trainHealth>();
+
+            if (turretScript != null && carHealth != null)
+            {
+                turretScript.owningCar = carHealth;
+                turretsPlaced++;
+                turretsOnCar[carCollider]++;
+            }
         }
         // Vector3 position = Camera.main.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());
         // position.z = playerCharacter.transform.position.z;

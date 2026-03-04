@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro;
+using System;
 using UnityEngine.SceneManagement;
 
 public class trainHealth : MonoBehaviour
@@ -9,41 +9,42 @@ public class trainHealth : MonoBehaviour
     public int maxHealth = 500;
     public int currentHealth;
 
-    public TMP_Text healthText;
-    public GameObject lossText;
-    public GameObject pauseButton;
+    public bool isBreached { get; private set; }
 
-    void Start()
+    public event Action<int, int> OnHealthChanged;
+    public event Action OnBreached;
+
+    void Awake()
     {
         currentHealth = maxHealth;
-        UpdateHealthUI();
+        isBreached = false;
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
     public void TakeDamage(int amount)
     {
+        if (isBreached)
+            return;
+
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        UpdateHealthUI();
+
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
         if (currentHealth <= 0)
         {
-            Die();
-            lossText.SetActive(true);
-            pauseButton.SetActive(false);
+            Breach();
         }
-            
     }
 
-    void UpdateHealthUI()
+    void Breach()
     {
-        if (healthText != null)
-            healthText.text = $"Health: {currentHealth}";
-    }
+        isBreached = true;
 
-    void Die()
-    {
         Collider col = GetComponent<Collider>();
-        if (col != null) col.enabled = false;
-        Time.timeScale = 0f;
+        if (col != null)
+            col.enabled = false;
+
+        OnBreached?.Invoke();
     }
 }

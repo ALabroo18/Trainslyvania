@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.48489, y: 1.12, z: 0.07447}
-  m_LocalScale: {x: 1.304181, y: 1.6685691, z: 1.304181}
+  m_LocalScale: {x: 0.9187702, y: 1.1754745, z: 0.9187702}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -142,8 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a33b68397584a4a98f39416127d9be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::enemyMovement
-  target: {fileID: 8743934765546927234, guid: aac03ab8b5ed96740b6a198401e7f614, type: 3}
-  targetCollider: {fileID: 593757941808109490, guid: aac03ab8b5ed96740b6a198401e7f614, type: 3}
   moveSpeed: 3
 --- !u!114 &3028244490416107428
 MonoBehaviour:

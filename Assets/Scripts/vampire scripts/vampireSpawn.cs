@@ -6,16 +6,10 @@ public class vampireSpawn : MonoBehaviour
     //Mason Kuhn
 
     public GameObject vampirePrefab;
-    
-    [Header("Train Settings")]
-    public Transform trainCenter;
-    public Collider trainCollider;
 
     [Header("Spawn Settings")]
     public float spawnInterval = 1f;
     public int enemiesPerSpawn = 2;
-
-    
 
     [Header("Spawn Area")]
     public Transform spawnCenter;
@@ -36,10 +30,7 @@ public class vampireSpawn : MonoBehaviour
                 SpawnVampire();
                 yield return new WaitForSeconds(spawnInterval);
                 
-            }
-            
-            
-            
+            } 
         }
     }
 
@@ -52,24 +43,17 @@ public class vampireSpawn : MonoBehaviour
         if (vampireCol != null)
         {
             float bottom = vampireCol.bounds.min.y;
-            float offset = 0f - bottom;
+            float offset = - bottom;
             vampire.transform.position += Vector3.up * offset;
-        }
-
-        vampireMovement move = vampire.GetComponent<vampireMovement>();
-        if (move != null)
-        {
-            move.target = trainCenter;
-            move.targetCollider = trainCollider;
         }
     }
 
     Vector3 GetRandomPointOnBoxEdge()
     {
-        float halfX = boxSize.x / 2f;
-        float halfZ = boxSize.y / 2f;
+        float halfX = boxSize.x / 4f;
+        float halfZ = boxSize.y / 4f;
 
-        int side = Random.Range(0, 4);
+        int side = 2;
         float x = 0f;
         float z = 0f;
 
