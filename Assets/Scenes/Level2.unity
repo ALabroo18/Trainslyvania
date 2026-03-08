@@ -10339,6 +10339,22 @@ PrefabInstance:
       propertyPath: buttonImage
       value: 
       objectReference: {fileID: 2128201805}
+    - target: {fileID: 2419961725676086189, guid: 68b444b355f98714ba186c623b3120a1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10.130628
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419961725676086189, guid: 68b444b355f98714ba186c623b3120a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.8957121
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419961725676086189, guid: 68b444b355f98714ba186c623b3120a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419961725676086189, guid: 68b444b355f98714ba186c623b3120a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.24
+      objectReference: {fileID: 0}
     - target: {fileID: 2616295704905675757, guid: 68b444b355f98714ba186c623b3120a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.97865
@@ -10407,6 +10423,22 @@ PrefabInstance:
       propertyPath: buttonImage
       value: 
       objectReference: {fileID: 998932979}
+    - target: {fileID: 8389581093842745814, guid: 68b444b355f98714ba186c623b3120a1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5.9150634
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389581093842745814, guid: 68b444b355f98714ba186c623b3120a1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 9.290745
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389581093842745814, guid: 68b444b355f98714ba186c623b3120a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389581093842745814, guid: 68b444b355f98714ba186c623b3120a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.39
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
