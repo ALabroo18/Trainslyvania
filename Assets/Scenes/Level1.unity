@@ -3317,7 +3317,6 @@ MonoBehaviour:
   cartButton: {fileID: 1671941453}
   buttonImage: {fileID: 1671941454}
   alertText: {fileID: 1393345786}
-  healthText: {fileID: 0}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   breachedColor: {r: 0.27450982, g: 0.003921569, b: 0.003921569, a: 1}
@@ -7836,9 +7835,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 51132200}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadRoute
+      - m_Target: {fileID: 494251313}
+        m_TargetAssemblyTypeName: pause, Assembly-CSharp
+        m_MethodName: routeSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8432,7 +8431,6 @@ MonoBehaviour:
   cartButton: {fileID: 998932978}
   buttonImage: {fileID: 998932979}
   alertText: {fileID: 605762596}
-  healthText: {fileID: 0}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   breachedColor: {r: 0.2735849, g: 0.0038714774, b: 0.0038714774, a: 1}
@@ -8981,7 +8979,6 @@ MonoBehaviour:
   cartButton: {fileID: 2128201804}
   buttonImage: {fileID: 2128201805}
   alertText: {fileID: 688097391}
-  healthText: {fileID: 0}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   breachedColor: {r: 0.27450982, g: 0.003921569, b: 0.003921569, a: 1}

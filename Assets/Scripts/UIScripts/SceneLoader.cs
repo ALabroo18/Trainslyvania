@@ -16,6 +16,7 @@ public class SceneLoader : MonoBehaviour
     }
 
     public void LoadRoute() {
+        Time.timeScale = 1;
         SceneManager.LoadScene("RouteSelect");
     }
 }
