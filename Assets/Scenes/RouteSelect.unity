@@ -780,7 +780,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -122.541504}
+  m_AnchoredPosition: {x: -10.5, y: -452}
   m_SizeDelta: {x: 534.16, y: 100.807}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &468633890
@@ -803,9 +803,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Difficulty: ?/?
+  m_text: 'Difficulty: 1/7
 
-    Reward: ?/?
+    Reward: 100G
 
 '
   m_isRightToLeft: 0
@@ -816,8 +816,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4280032284
+  m_fontColor: {r: 0.10980393, g: 0.10980393, b: 0.10980393, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -834,13 +834,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 35.37
+  m_fontSizeBase: 35.37
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1019,7 +1019,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9, y: 133.45947}
+  m_AnchoredPosition: {x: -9, y: 150}
   m_SizeDelta: {x: 499.81, y: 78.971}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &512465642
@@ -1042,9 +1042,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Sample Town
-
-'
+  m_text: The First Steppe
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ddb1b4516b5b80b42b04b20170bd7fb6, type: 2}
   m_sharedMaterial: {fileID: 1119806785008235125, guid: ddb1b4516b5b80b42b04b20170bd7fb6, type: 2}
@@ -2043,8 +2041,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -54.541504}
-  m_SizeDelta: {x: 534.16, y: 122}
+  m_AnchoredPosition: {x: -14.3, y: -85}
+  m_SizeDelta: {x: 444.5, y: 122}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1114967513
 MonoBehaviour:
@@ -2066,7 +2064,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Flavor text
+  m_text: 'Our Heavenly father above hallowed be thy name. To you we commit our spirits
+    as we depart upon this pilgrimage you have set upon us. With your sword of righteousness,
+    and shield of faith we shall cleanse the chaff that clings to the world of the
+    living, so that your kingdom may come on earth.
 
 '
   m_isRightToLeft: 0
@@ -2077,8 +2078,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4280229663
+  m_fontColor: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2095,14 +2096,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 26.5
+  m_fontSizeBase: 26.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_fontStyle: 1
+  m_HorizontalAlignment: 32
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2877,7 +2878,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 332.95898}
+  m_AnchoredPosition: {x: 60.1, y: 350.9}
   m_SizeDelta: {x: 499.81, y: 78.971}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1364986788
@@ -2900,7 +2901,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Sample Town
+  m_text: 'Second Coming
 
 '
   m_isRightToLeft: 0
@@ -2971,7 +2972,7 @@ MonoBehaviour:
   m_margin: {x: 1.4974672, y: 0, z: -2.183487, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1364986789
@@ -3617,7 +3618,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -80.48602}
+  m_AnchoredPosition: {x: 64.4, y: -256.4}
   m_SizeDelta: {x: 534.16, y: 100.807}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1736951459
@@ -3640,9 +3641,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Difficulty: ?/?
+  m_text: 'Difficulty: 1/7
 
-    Reward: ?/?
+    Reward: 200G
 
 '
   m_isRightToLeft: 0
@@ -3653,8 +3654,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4280229663
+  m_fontColor: {r: 0.12156863, g: 0.12156863, b: 0.12156863, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3671,13 +3672,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 35.37
+  m_fontSizeBase: 35.37
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -3713,7 +3714,7 @@ MonoBehaviour:
   m_margin: {x: 1.4974672, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1736951460
@@ -3795,8 +3796,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 76}
-  m_SizeDelta: {x: 534.16, y: 122}
+  m_AnchoredPosition: {x: 60.8, y: 103.01}
+  m_SizeDelta: {x: 440, y: 122}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1791329147
 MonoBehaviour:
@@ -3818,9 +3819,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Flavor text
-
-'
+  m_text: To our heavenly father above hallowed be thy name. As we embark again on
+    the prilgrimage set out for us I beseech you father redouble our arms, renew
+    our strength, and reveal the path forward to your promised destination.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ddb1b4516b5b80b42b04b20170bd7fb6, type: 2}
   m_sharedMaterial: {fileID: 1119806785008235125, guid: ddb1b4516b5b80b42b04b20170bd7fb6, type: 2}
@@ -3829,8 +3830,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4280229663
+  m_fontColor: {r: 0.12156863, g: 0.12156863, b: 0.12156863, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3847,13 +3848,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 26.5
+  m_fontSizeBase: 26.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -3889,7 +3890,7 @@ MonoBehaviour:
   m_margin: {x: -0.6861573, y: 0, z: 0, w: -2.1836128}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1791329148
@@ -4465,7 +4466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2089166853
 RectTransform:
   m_ObjectHideFlags: 0
