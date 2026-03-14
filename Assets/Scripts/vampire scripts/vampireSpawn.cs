@@ -10,11 +10,15 @@ public class vampireSpawn : MonoBehaviour
     [Header("Spawn Settings")]
     public float spawnInterval = 1f;
     public int enemiesPerSpawn = 2;
+    public int maxVampires = 30;
 
     [Header("Spawn Area")]
     public Transform spawnCenter;
     public Vector2 boxSize = new Vector2(30f, 30f); //x (width), z (depth)
     public float spawnHeight = 0f;
+
+    private int totalSpawned = 0;
+    private bool spawningDone = false;
 
     void Start()
     {
@@ -23,21 +27,28 @@ public class vampireSpawn : MonoBehaviour
 
     IEnumerator SpawnLoop()
     {
-        while (true)
+        while (totalSpawned < maxVampires)
         {
             for (int i = 0; i < enemiesPerSpawn; i++)
             {
+                if (totalSpawned >= maxVampires) break;
                 SpawnVampire();
                 yield return new WaitForSeconds(spawnInterval);
-                
             } 
         }
+        spawningDone = true;
+    }
+
+    public bool HasReachedMaxSpawns()
+    {
+        return spawningDone;
     }
 
     public void SpawnVampire()
     {
         Vector3 spawnPos = GetRandomPointOnBoxEdge();
         GameObject vampire = Instantiate(vampirePrefab, spawnPos, Quaternion.identity);
+        totalSpawned++;
 
         Collider vampireCol = vampire.GetComponent<Collider>();
         if (vampireCol != null)
