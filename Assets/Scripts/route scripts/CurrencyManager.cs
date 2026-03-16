@@ -6,7 +6,6 @@ public class CurrencyManager : MonoBehaviour
     public static CurrencyManager Instance;
 
     public int currency;
-    public int price;
 
     public event Action<int> OnCurrencyChanged;
 
@@ -31,28 +30,22 @@ public class CurrencyManager : MonoBehaviour
         OnCurrencyChanged?.Invoke(currency);
     }
 
-    public bool canAfford()
+    public bool canAfford(int price)
     {
-        if (currency >= 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return currency >= price;
     }
 
 
-    public void SubCurrency(int price)
+    public bool SubCurrency(int price)
     {
-        if (!canAfford())
+        if (!canAfford(price))
         {
-            return;
+            return false;
         }
         currency -= price;
         SaveCurrency();
         OnCurrencyChanged?.Invoke(currency);
+        return true;
     }
 
    
