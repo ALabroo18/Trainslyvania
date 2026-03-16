@@ -34,8 +34,8 @@ public class vampireSpawn : MonoBehaviour
                 if (totalSpawned >= maxVampires) break;
                 SpawnVampire();
                 Debug.Log(totalSpawned);
-                yield return new WaitForSeconds(spawnInterval);
-            } 
+            }
+            yield return new WaitForSeconds(spawnInterval);
         }
         spawningDone = true;
     }
