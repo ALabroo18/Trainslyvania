@@ -6,6 +6,7 @@ public class pause : MonoBehaviour
     public GameObject pauseClick;
     public GameObject resumeClick;
     public GameObject homeClick;
+    public GameObject restartClick;
 
     public void pauseGame()
     {
@@ -32,4 +33,10 @@ public class pause : MonoBehaviour
         SceneManager.LoadScene("RouteSelect");
     }
 
+
+    public void restartGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
