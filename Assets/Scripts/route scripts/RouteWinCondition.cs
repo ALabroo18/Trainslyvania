@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class RouteWinCondition : MonoBehaviour
@@ -6,6 +7,7 @@ public class RouteWinCondition : MonoBehaviour
     public int reward = 100;
     public GameObject winScreenUI;
     public GameObject loseScreenUI;
+    public TextMeshProUGUI goldText;
 
     public vampireSpawn spawner;
     public trainHealth[] trains;
@@ -16,6 +18,8 @@ public class RouteWinCondition : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+
         timer = routeTime;
         if (winScreenUI != null)
             winScreenUI.SetActive(false);
@@ -62,6 +66,8 @@ public class RouteWinCondition : MonoBehaviour
         CurrencyManager.Instance.AddCurrency(reward);
 
         Debug.Log("Route completed! Earned" + reward);
+
+        goldText.text = reward.ToString() + "G";
 
         if (winScreenUI != null)
             winScreenUI.SetActive(true);

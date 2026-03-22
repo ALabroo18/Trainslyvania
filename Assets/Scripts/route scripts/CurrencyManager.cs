@@ -30,6 +30,26 @@ public class CurrencyManager : MonoBehaviour
         OnCurrencyChanged?.Invoke(currency);
     }
 
+    public bool canAfford(int price)
+    {
+        return currency >= price;
+    }
+
+
+    public bool SubCurrency(int price)
+    {
+        if (!canAfford(price))
+        {
+            return false;
+        }
+        currency -= price;
+        SaveCurrency();
+        OnCurrencyChanged?.Invoke(currency);
+        return true;
+    }
+
+   
+
     public void SaveCurrency()
     {
         PlayerPrefs.SetInt("Currency", currency);
