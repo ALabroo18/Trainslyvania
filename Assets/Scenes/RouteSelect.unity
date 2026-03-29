@@ -4725,7 +4725,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1011649182}
-        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: HolyWaterShopItem, Assembly-CSharp
         m_MethodName: OnBuyButtonPressed
         m_Mode: 1
         m_Arguments:
@@ -4783,11 +4783,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1011649177}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cfe744e40fc4674eb3e11a8c0a5c2d3, type: 3}
+  m_Script: {fileID: 11500000, guid: cadab37bbc06e414190a265604c31bcb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopManager
-  itemName: {fileID: 744401646}
+  m_EditorClassIdentifier: Assembly-CSharp::HolyWaterShopItem
   price: 300
+  usesPerPurchase: 1
+  priceText: {fileID: 768575321}
 --- !u!1 &1100448143
 GameObject:
   m_ObjectHideFlags: 0

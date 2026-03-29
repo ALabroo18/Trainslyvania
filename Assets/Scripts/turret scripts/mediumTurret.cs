@@ -21,11 +21,20 @@ public class mediumTurret : MonoBehaviour
     public float brokenAngle = 45f;
     public float breakRotateTime = 0.4f;
 
+    [Header("Bless Visual")]
+    public Color normalShotColor = Color.red;
+    public Color blessedShotColor = Color.cyan;
+    public float blessedShotWidth = 0.05f;
+    public float normalShotWidth = 0.01f;
+
+    private Coroutine blessCoroutine;
+
     private Transform currentTarget;
     private float fireCooldown;
 
     public trainHealth owningCar;
     private bool isBroken;
+    private bool isBlessed = false;
 
     void Start()
     {
@@ -84,21 +93,16 @@ public class mediumTurret : MonoBehaviour
 
     void FireShot()
     {
-        Vector3 origin = transform.position + Vector3.up * 1f;
+        Vector3 origin = transform.position;
         Vector3 direction = (currentTarget.position - origin).normalized;
-
         RaycastHit hit;
-
         if (Physics.Raycast(origin, direction, out hit, Mathf.Infinity, enemyLayer))
         {
             vampireHealth health = hit.collider.GetComponent<vampireHealth>();
             if (health != null)
-            {
                 health.TakeDamage(damagePerShot);
-            }
         }
-
-        Debug.DrawRay(origin, direction * 20f, Color.red, 0.15f);
+        DrawShotVisual(origin, direction);
     }
 
     void FindClosestEnemy()
@@ -138,6 +142,30 @@ public class mediumTurret : MonoBehaviour
         );
     }
 
+    void DrawShotVisual(Vector3 origin, Vector3 direction)
+    {
+        Color color = isBlessed ? blessedShotColor : normalShotColor;
+        float width = isBlessed ? blessedShotWidth : normalShotWidth;
+        Debug.DrawRay(origin, direction * searchRadius, color, 1f / shotsPerSecond);
+
+        StartCoroutine(ShowShotLine(origin, origin + direction * searchRadius, color));
+    }
+
+    IEnumerator ShowShotLine(Vector3 from, Vector3 to, Color color)
+    {
+        LineRenderer lr = gameObject.AddComponent<LineRenderer>();
+        lr.startWidth = isBlessed ? blessedShotWidth : normalShotWidth;
+        lr.endWidth = lr.startWidth;
+        lr.material = new Material(Shader.Find("Sprites/Default"));
+        lr.startColor = color;
+        lr.endColor = color;
+        lr.SetPosition(0, from);
+        lr.SetPosition(1, to);
+
+        yield return new WaitForSeconds(0.1f);
+        Destroy(lr);
+    }
+
     IEnumerator DropTurret()
     {
         if (turretHead == null)
@@ -156,5 +184,28 @@ public class mediumTurret : MonoBehaviour
         }
 
         turretHead.localRotation = targetRot;
+    }
+
+    public void ApplyBless(float duration, float multiplier)
+    {
+        if (isBroken) return;
+        if (blessCoroutine != null)
+            StopCoroutine(blessCoroutine);
+        blessCoroutine = StartCoroutine(BlessRoutine(duration, multiplier));
+    }
+
+    IEnumerator BlessRoutine(float duration, float multiplier)
+    {
+        isBlessed = true;
+        float originalFireRate = shotsPerSecond;
+        shotsPerSecond *= multiplier;
+        Debug.Log(gameObject.name + " blessed! Fire rate: " + shotsPerSecond);
+
+        yield return new WaitForSeconds(duration);
+
+        shotsPerSecond = originalFireRate;
+        isBlessed = false;
+        blessCoroutine = null;
+        Debug.Log(gameObject.name + " blessing wore off");
     }
 }
