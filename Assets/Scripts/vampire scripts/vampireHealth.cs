@@ -26,4 +26,9 @@ public class vampireHealth : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public int GetHealth()
+    {
+        return currentHealth;
+    }
 }
