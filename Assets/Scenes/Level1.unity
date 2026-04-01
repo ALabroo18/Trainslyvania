@@ -9249,7 +9249,7 @@ MonoBehaviour:
   trainCarLayer:
     serializedVersion: 2
     m_Bits: 128
-  playerCharacter: {fileID: 5071450710859688256, guid: c9a2224faa2cbbb4e8065c2dc5a6b028, type: 3}
+  playerCharacter: {fileID: 7032533916340315850, guid: 585a36e8c4c897441845d32b7708455e, type: 3}
   PressedImage: {fileID: 8765626488536303788, guid: d1dc83c19999d5d4b9a54efba64323f6, type: 3}
   camera: {fileID: 51132198}
 --- !u!4 &2062824796
