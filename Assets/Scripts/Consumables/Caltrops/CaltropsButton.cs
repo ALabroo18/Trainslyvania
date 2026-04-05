@@ -1,15 +1,22 @@
+using System.Collections;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class CaltropsButton : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private InputAction touchPosition;
+    [SerializeField] private PlayerInput playerInput;    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public InputManager InputManager;
+
+    InputManager inputManager;
+
+    public void SetConsumable()
     {
+       InputManager.isConsumable = true;
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetGUI(Vector3 position)
     {
         
     }

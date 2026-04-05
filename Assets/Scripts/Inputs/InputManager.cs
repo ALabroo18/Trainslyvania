@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -14,12 +15,17 @@ public class InputManager : MonoBehaviour
     private Dictionary<Collider, int> turretsOnCar = new Dictionary<Collider, int>();
 
     public LayerMask trainCarLayer;
-
+    public LayerMask groundMask;
     private PlayerInput playerInput;
     private InputAction touchPositionAction;
     private InputAction touchPressAction;
     public GameObject playerCharacter;
     public GameObject PressedImage;
+
+    [SerializeField] private Caltrops caltrops;
+
+    // Boolean to check if consumables are being used
+    public Boolean isConsumable;
 
     public Camera camera;
     // Before starting, new Touch control map is created
@@ -47,35 +53,59 @@ public class InputManager : MonoBehaviour
 
     private void TouchPressed(InputAction.CallbackContext context)
     {
-        Debug.Log(touchPositionAction.ReadValue<Vector2>());
+        // Debug.Log(touchPositionAction.ReadValue<Vector2>());
         Ray ray = camera.ScreenPointToRay(touchPositionAction.ReadValue<Vector2>());
         Debug.Log("Went through");
 
-        if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, trainCarLayer))
+        // Normal Turret Dropping
+        if(isConsumable == false)
         {
-            Collider carCollider = hit.collider;
-
-            if (turretsPlaced >= maxTurrets)
-                return;
-
-            if (!turretsOnCar.ContainsKey(carCollider))
-                turretsOnCar[carCollider] = 0;
-
-            if (turretsOnCar[carCollider] >= maxTurretsPerCar)
-                return;
-
-            GameObject turret = Instantiate(playerCharacter, hit.point, Quaternion.identity);
-
-            mediumTurret turretScript = turret.GetComponent<mediumTurret>();
-            trainHealth carHealth = hit.collider.GetComponent<trainHealth>();
-
-            if (turretScript != null && carHealth != null)
+            if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, trainCarLayer))
             {
-                turretScript.owningCar = carHealth;
-                turretsPlaced++;
-                turretsOnCar[carCollider]++;
+                Collider carCollider = hit.collider;
+
+                if (turretsPlaced >= maxTurrets)
+                    return;
+
+                if (!turretsOnCar.ContainsKey(carCollider))
+                    turretsOnCar[carCollider] = 0;
+
+                if (turretsOnCar[carCollider] >= maxTurretsPerCar)
+                    return;
+
+                GameObject turret = Instantiate(playerCharacter, hit.point, Quaternion.identity);
+
+                mediumTurret turretScript = turret.GetComponent<mediumTurret>();
+                trainHealth carHealth = hit.collider.GetComponent<trainHealth>();
+
+                if (turretScript != null && carHealth != null)
+                {
+                    turretScript.owningCar = carHealth;
+                    turretsPlaced++;
+                    turretsOnCar[carCollider]++;
+                }
             }
         }
+
+        // Consumables
+        else
+        {
+            if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundMask))
+            {
+                Debug.Log("In raycast");
+                Vector3 position = Camera.main.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());
+                caltrops.FireRadius(position);
+
+            }
+        }
+
+        
+
+
+
+
+
+        
         // Vector3 position = Camera.main.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());
         // position.z = playerCharacter.transform.position.z;
         // playerCharacter.transform.position = position;        
