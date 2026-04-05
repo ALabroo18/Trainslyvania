@@ -5358,7 +5358,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfb69da40f06024e897834350953181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::vampireSpawn
-  vampirePrefab: {fileID: 708838261707664363, guid: d49cbd2037e99d24f811ebf50cfcb094, type: 3}
+  vampireTypes:
+  - prefab: {fileID: 708838261707664363, guid: d49cbd2037e99d24f811ebf50cfcb094, type: 3}
+    weight: 70
+  - prefab: {fileID: 708838261707664363, guid: 3f8d95e0b0259e54cb3186554712de43, type: 3}
+    weight: 30
   spawnInterval: 1
   enemiesPerSpawn: 2
   maxVampires: 200

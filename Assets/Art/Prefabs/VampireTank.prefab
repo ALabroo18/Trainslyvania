@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2124790964509281005}
   - component: {fileID: 3028244490416107428}
   m_Layer: 6
-  m_Name: Vampire
+  m_Name: VampireTank 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 708838261707664363}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.48489, y: 1.12, z: 0.07447}
-  m_LocalScale: {x: 1, y: 1.2389, z: 1}
+  m_LocalPosition: {x: 0.48489, y: 1.36, z: 0.07447}
+  m_LocalScale: {x: 1.394441, y: 1.5113025, z: 1.394441}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0522f132bbd309d44897e45cae1a63b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::enemyhealth
-  maxHealth: 150
+  maxHealth: 350
 --- !u!114 &2124790964509281005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a33b68397584a4a98f39416127d9be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::enemyMovement
-  moveSpeed: 2
+  moveSpeed: 3
 --- !u!114 &3028244490416107428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,4 +156,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::enemyDamage
   damage: 10
-  attackCooldown: 0.75
+  attackCooldown: 1

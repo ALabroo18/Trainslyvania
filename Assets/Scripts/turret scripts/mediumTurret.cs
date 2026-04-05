@@ -8,6 +8,7 @@ public class mediumTurret : MonoBehaviour
     [Header("Firing")]
     public int damagePerShot = 50;
     public float shotsPerSecond = 3.5f;
+    public Transform firePoint;
 
     [Header("Targeting")]
     public LayerMask enemyLayer;
@@ -93,7 +94,7 @@ public class mediumTurret : MonoBehaviour
 
     void FireShot()
     {
-        Vector3 origin = transform.position;
+        Vector3 origin = firePoint.position;
         Vector3 direction = (currentTarget.position - origin).normalized;
         RaycastHit hit;
         if (Physics.Raycast(origin, direction, out hit, Mathf.Infinity, enemyLayer))
