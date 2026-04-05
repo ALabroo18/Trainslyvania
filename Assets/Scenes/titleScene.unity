@@ -2371,11 +2371,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 450687164}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94e26d7d00c937d4f9e0f374ab493956, type: 3}
+  m_Script: {fileID: 11500000, guid: f541d67328ad94348a271ce90fac8684, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HolyWaterManager
-  maxUses: 5
-  debugUses: 2
+  m_EditorClassIdentifier: Assembly-CSharp::ItemManager
+  maxHolyWater: 5
+  holyWaterCharges: 0
+  maxFireball: 5
+  fireballCharges: 0
 --- !u!1 &500459399
 GameObject:
   m_ObjectHideFlags: 0

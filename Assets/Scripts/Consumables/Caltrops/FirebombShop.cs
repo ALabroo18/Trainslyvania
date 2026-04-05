@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class HolyWaterShopItem : MonoBehaviour
+public class FirebombShop : MonoBehaviour
 {
     public int price = 75;
     public int usesPerPurchase = 1;
@@ -15,20 +15,19 @@ public class HolyWaterShopItem : MonoBehaviour
 
     public void OnBuyButtonPressed()
     {
-        if (!ItemManager.Instance.CanBuyHolyWater)
+        if (!ItemManager.Instance.CanBuyFireball)
         {
-            Debug.Log("Holy Water is full!");
+            Debug.Log("Fireball is full!");
             return;
         }
 
-
         if (CurrencyManager.Instance.SubCurrency(price))
         {
-            ItemManager.Instance.AddHolyWater(usesPerPurchase);
+            ItemManager.Instance.AddFireball(usesPerPurchase);
         }
         else
         {
-            Debug.Log("Cannot afford Holy Water");
+            Debug.Log("Cannot afford Fireball");
         }
     }
 }

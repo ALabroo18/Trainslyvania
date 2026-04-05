@@ -6,6 +6,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
+//declare consumable type
+public enum ConsumableType
+{
+    None,
+    Fireball,
+    HolyWater
+}
+
 public class InputManager : MonoBehaviour
 {
     public int maxTurrets = 6;
@@ -22,10 +30,14 @@ public class InputManager : MonoBehaviour
     public GameObject playerCharacter;
     public GameObject PressedImage;
 
+    //added the holywater consumable
+    [SerializeField] private HolyWater holyWater;
+    public LayerMask turretLayer;
+
     [SerializeField] private FireBomb FireBomb;
 
-    // Boolean to check if consumables are being used
-    public Boolean isConsumable;
+    //consumabletype.none default, sets a type from the enum by a button press, which then lets you use it
+    public ConsumableType activeConsumable = ConsumableType.None;
 
     public Camera camera;
     // Before starting, new Touch control map is created
@@ -51,59 +63,106 @@ public class InputManager : MonoBehaviour
         
     }
 
+    public void SelectFireball()
+    {
+        if (ItemManager.Instance.FireballUses <= 0)
+        {
+            Debug.Log("No Fireballs left!");
+            return;
+        }
+        activeConsumable = activeConsumable == ConsumableType.Fireball
+            ? ConsumableType.None  // pressing again deselects
+            : ConsumableType.Fireball;
+        Debug.Log("Active consumable: " + activeConsumable);
+    }
+
+    public void SelectHolyWater()
+    {
+        if (ItemManager.Instance.HolyWaterUses <= 0)
+        {
+            Debug.Log("No Holy Water left!");
+            return;
+        }
+        activeConsumable = activeConsumable == ConsumableType.HolyWater
+            ? ConsumableType.None  // pressing again deselects
+            : ConsumableType.HolyWater;
+        Debug.Log("Active consumable: " + activeConsumable);
+    }
+
+    public void Deselect()
+    {
+        activeConsumable = ConsumableType.None;
+    }
+
     private void TouchPressed(InputAction.CallbackContext context)
     {
         // Debug.Log(touchPositionAction.ReadValue<Vector2>());
         Ray ray = camera.ScreenPointToRay(touchPositionAction.ReadValue<Vector2>());
         Debug.Log("Went through");
 
+        //changed to a switch case
         // Normal Turret Dropping
-        if(isConsumable == false)
+        switch (activeConsumable)
         {
-            if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, trainCarLayer))
-            {
-                Collider carCollider = hit.collider;
-
-                if (turretsPlaced >= maxTurrets)
-                    return;
-
-                if (!turretsOnCar.ContainsKey(carCollider))
-                    turretsOnCar[carCollider] = 0;
-
-                if (turretsOnCar[carCollider] >= maxTurretsPerCar)
-                    return;
-
-                GameObject turret = Instantiate(playerCharacter, hit.point, Quaternion.identity);
-
-                mediumTurret turretScript = turret.GetComponent<mediumTurret>();
-                trainHealth carHealth = hit.collider.GetComponent<trainHealth>();
-
-                if (turretScript != null && carHealth != null)
+            case ConsumableType.None:
+                if (Physics.Raycast(ray, out RaycastHit turretHit, Mathf.Infinity, trainCarLayer))
                 {
-                    turretScript.owningCar = carHealth;
-                    turretsPlaced++;
-                    turretsOnCar[carCollider]++;
+                    Collider carCollider = turretHit.collider;
+                    if (turretsPlaced >= maxTurrets) return;
+                    if (!turretsOnCar.ContainsKey(carCollider))
+                        turretsOnCar[carCollider] = 0;
+                    if (turretsOnCar[carCollider] >= maxTurretsPerCar) return;
+
+                    GameObject turret = Instantiate(playerCharacter, turretHit.point, Quaternion.identity);
+                    mediumTurret turretScript = turret.GetComponent<mediumTurret>();
+                    trainHealth carHealth = turretHit.collider.GetComponent<trainHealth>();
+                    if (turretScript != null && carHealth != null)
+                    {
+                        turretScript.owningCar = carHealth;
+                        turretsPlaced++;
+                        turretsOnCar[carCollider]++;
+                    }
                 }
-            }
+                break;
+
+            case ConsumableType.Fireball:
+                if (Physics.Raycast(ray, out RaycastHit fireballHit, Mathf.Infinity, groundMask))
+                {
+                    Debug.Log("Fireball placed at: " + fireballHit.point);
+                    FireBomb.FireRadius(fireballHit.point);
+                    ItemManager.Instance.ConsumeFireball();
+                    activeConsumable = ConsumableType.None;
+                }
+                break;
+
+            case ConsumableType.HolyWater:
+                RaycastHit holyWaterHit;
+                if (Physics.Raycast(ray, out holyWaterHit, Mathf.Infinity))
+                {
+                    Debug.Log("Hit: " + holyWaterHit.collider.gameObject.name + " on layer: " + LayerMask.LayerToName(holyWaterHit.collider.gameObject.layer));
+
+                    // check if what we hit has a turret script on it or its parent
+                    mediumTurret turret = holyWaterHit.collider.GetComponentInParent<mediumTurret>();
+                    if (turret == null)
+                        turret = holyWaterHit.collider.GetComponentInChildren<mediumTurret>();
+
+                    if (turret != null)
+                    {
+                        Debug.Log("Blessing turret: " + turret.gameObject.name);
+                        holyWater.BlessTurret(turret, holyWaterHit.point);
+                        ItemManager.Instance.ConsumeHolyWater();
+                        activeConsumable = ConsumableType.None;
+                    }
+                    else
+                    {
+                        Debug.Log("No turret found, splashing at: " + holyWaterHit.point);
+                        holyWater.SplashArea(holyWaterHit.point);
+                        ItemManager.Instance.ConsumeHolyWater();
+                        activeConsumable = ConsumableType.None;
+                    }
+                }
+                break;
         }
-
-        // Consumables
-        else
-        {
-            Debug.Log("Sup");
-            if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundMask))
-            {
-                Debug.Log("In raycast");
-                Vector2 position = Camera.main.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());
-                FireBomb.FireRadius(position);
-
-            }
-        }
-
-        
-
-
-
 
 
         

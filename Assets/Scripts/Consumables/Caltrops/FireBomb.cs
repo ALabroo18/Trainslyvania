@@ -8,14 +8,17 @@ public class FireBomb : MonoBehaviour
 {
 
     public LayerMask enemyMask;
+    public int immediateDamage = 50;
     public int damageOverTime = 50;
+    public float dotDuration = 3f;
+    public float dotTickRate = 1f;
     [SerializeField] public float radiusNum;
     public GameObject FireBombZonePrefab;
 
-    public void FireRadius(Vector2 position)
+    public void FireRadius(Vector3 worldPosition)
     {
 
-        Collider[] enemies = Physics.OverlapSphere(position, radiusNum, enemyMask);
+        Collider[] enemies = Physics.OverlapSphere(worldPosition, radiusNum, enemyMask);
 
         Debug.Log("Enemies: " + enemies.Length);
         Debug.Log("In fireradius");
@@ -35,7 +38,7 @@ public class FireBomb : MonoBehaviour
                 }
             }
         }
-        FireZone(position);
+        FireZone(worldPosition);
     }
 
 
@@ -54,7 +57,7 @@ public class FireBomb : MonoBehaviour
             FireBombZone zoneScript = zone.GetComponent<FireBombZone>();
             if (zoneScript != null)
             {
-                zoneScript.Initialize(radiusNum, enemyMask);
+                zoneScript.Initialize(radiusNum, enemyMask, damageOverTime, dotTickRate, dotDuration);
             }
         }
         else
@@ -62,7 +65,7 @@ public class FireBomb : MonoBehaviour
             GameObject zone = new GameObject("FireBombZone");
             zone.transform.position = position;
             FireBombZone zoneScript = zone.AddComponent<FireBombZone>();
-            zoneScript.Initialize(radiusNum, enemyMask);
+            zoneScript.Initialize(radiusNum, enemyMask, damageOverTime, dotTickRate, dotDuration);
         }
     }
 }

@@ -15984,7 +15984,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1934461432}
-        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: FirebombShop, Assembly-CSharp
         m_MethodName: OnBuyButtonPressed
         m_Mode: 1
         m_Arguments:
@@ -16042,11 +16042,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1934461427}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cfe744e40fc4674eb3e11a8c0a5c2d3, type: 3}
+  m_Script: {fileID: 11500000, guid: d5bb2f3b03d1d9049a954ca0f78f0a03, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopManager
-  itemName: {fileID: 739422416}
+  m_EditorClassIdentifier: Assembly-CSharp::FirebombShop
   price: 100
+  usesPerPurchase: 1
+  priceText: {fileID: 1342574381}
 --- !u!1 &1956596450
 GameObject:
   m_ObjectHideFlags: 0
