@@ -1,26 +1,20 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CaltropZone : MonoBehaviour
+public class FireBombZone : MonoBehaviour
 {
 
     private LineRenderer circleRenderer;
     public LayerMask enemyMask;
     [SerializeField] public float radiusNum;
-    public Ray ray;
 
-    void Update()
+    public void MakeCircle(Ray ray, Vector2 position)
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            Vector2 mousePos = Mouse.current.position.ReadValue();
-            Ray ray = Camera.main.ScreenPointToRay(mousePos);
-
+            Debug.Log("Mouse input detected");
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
             {
                 DrawCircle(hit.point);
             }
-        }
     }
 
     public void Initialize(float radiusNum, LayerMask enemyMask)

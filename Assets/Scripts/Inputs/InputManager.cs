@@ -22,7 +22,7 @@ public class InputManager : MonoBehaviour
     public GameObject playerCharacter;
     public GameObject PressedImage;
 
-    [SerializeField] private Caltrops caltrops;
+    [SerializeField] private FireBomb FireBomb;
 
     // Boolean to check if consumables are being used
     public Boolean isConsumable;
@@ -90,11 +90,12 @@ public class InputManager : MonoBehaviour
         // Consumables
         else
         {
+            Debug.Log("Sup");
             if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundMask))
             {
                 Debug.Log("In raycast");
                 Vector2 position = Camera.main.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());
-                caltrops.FireRadius(position);
+                FireBomb.FireRadius(position);
 
             }
         }
