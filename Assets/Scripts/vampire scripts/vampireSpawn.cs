@@ -5,7 +5,14 @@ public class vampireSpawn : MonoBehaviour
 {
     //Mason Kuhn
 
-    public GameObject vampirePrefab;
+    [System.Serializable]
+    public class VampireType
+    {
+        public GameObject prefab;
+        public float weight = 1f; // chance to spawn
+    }
+
+    public VampireType[] vampireTypes;
 
     [Header("Spawn Settings")]
     public float spawnInterval = 1f;
@@ -40,6 +47,26 @@ public class vampireSpawn : MonoBehaviour
         spawningDone = true;
     }
 
+    GameObject GetRandomVampirePrefab()
+    {
+        float totalWeight = 0f;
+
+        foreach (var type in vampireTypes)
+            totalWeight += type.weight;
+
+        float random = Random.Range(0, totalWeight);
+
+        foreach (var type in vampireTypes)
+        {
+            if (random < type.weight)
+                return type.prefab;
+
+            random -= type.weight;
+        }
+
+        return vampireTypes[0].prefab;
+    }
+
     public bool HasReachedMaxSpawns()
     {
         return spawningDone;
@@ -48,7 +75,8 @@ public class vampireSpawn : MonoBehaviour
     public void SpawnVampire()
     {
         Vector3 spawnPos = GetRandomPointOnBoxEdge();
-        GameObject vampire = Instantiate(vampirePrefab, spawnPos, Quaternion.identity);
+        GameObject prefab = GetRandomVampirePrefab();
+        GameObject vampire = Instantiate(prefab, spawnPos, Quaternion.identity);
         totalSpawned++;
 
         Collider vampireCol = vampire.GetComponent<Collider>();
