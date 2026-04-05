@@ -93,7 +93,7 @@ public class InputManager : MonoBehaviour
             if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundMask))
             {
                 Debug.Log("In raycast");
-                Vector3 position = Camera.main.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());
+                Vector2 position = Camera.main.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());
                 caltrops.FireRadius(position);
 
             }

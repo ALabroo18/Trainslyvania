@@ -5546,7 +5546,7 @@ Transform:
   m_GameObject: {fileID: 1095459882}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.33318, y: 0, z: 2.13058}
+  m_LocalPosition: {x: 530.1453, y: 0, z: 980.6848}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5567,8 +5567,9 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  damageOverTime: 15
+  damageOverTime: 100
   radiusNum: 10
+  CaltropZonePrefab: {fileID: 0}
 --- !u!1001 &1133363341
 PrefabInstance:
   m_ObjectHideFlags: 0
