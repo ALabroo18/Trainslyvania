@@ -3349,9 +3349,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5629084884208175553, guid: 426a2785f8a940049aac2c246661cf09, type: 3}
         m_TargetAssemblyTypeName: pause, Assembly-CSharp
-        m_MethodName: restartGame
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
