@@ -37,9 +37,9 @@ public class mediumTurret : MonoBehaviour
     public trainHealth owningCar;
     private bool isBroken;
     private bool isBlessed = false;
-    // [Header("Audio")]
-    // public AudioClip shootAudio;
-    // public AudioSource audioSource;
+    [Header("Audio")]
+    public AudioClip shootAudio;
+    public AudioSource audioSource;
 
 
     void Start()
@@ -111,6 +111,7 @@ public class mediumTurret : MonoBehaviour
                 health.TakeDamage(damagePerShot);
         }
         DrawShotVisual(origin, direction);
+        audioSource.PlayOneShot(shootAudio);
     }
 
     void FindClosestEnemy()
