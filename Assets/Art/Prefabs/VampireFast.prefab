@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8905112330308023846}
   - component: {fileID: 5828706167748481675}
-  - component: {fileID: -1148909671495417479}
-  - component: {fileID: 2124790964509281005}
-  - component: {fileID: 3028244490416107428}
+  - component: {fileID: 4142294496965952722}
+  - component: {fileID: 3990880672347576229}
+  - component: {fileID: 8668719085900056510}
   m_Layer: 6
   m_Name: VampireFast
   m_TagString: Untagged
@@ -59,7 +59,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-1148909671495417479
+--- !u!114 &4142294496965952722
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::enemyhealth
   maxHealth: 50
---- !u!114 &2124790964509281005
+--- !u!114 &3990880672347576229
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::enemyMovement
   moveSpeed: 3.5
---- !u!114 &3028244490416107428
+--- !u!114 &8668719085900056510
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
