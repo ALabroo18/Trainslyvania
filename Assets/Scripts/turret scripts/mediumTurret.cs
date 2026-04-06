@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class mediumTurret : MonoBehaviour
 {
@@ -36,9 +37,15 @@ public class mediumTurret : MonoBehaviour
     public trainHealth owningCar;
     private bool isBroken;
     private bool isBlessed = false;
+    [Header("Audio")]
+    public AudioClip shootAudio;
+    public AudioSource audioSource;
+
 
     void Start()
     {
+        // if (audioSource == null)
+        //     audioSource = Object.FindAnyObjectByType<AudioSource>();
         if (owningCar != null)
             owningCar.OnBreached += BreakTurret;
     }
@@ -104,6 +111,7 @@ public class mediumTurret : MonoBehaviour
                 health.TakeDamage(damagePerShot);
         }
         DrawShotVisual(origin, direction);
+        audioSource.PlayOneShot(shootAudio);
     }
 
     void FindClosestEnemy()
