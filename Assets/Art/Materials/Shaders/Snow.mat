@@ -45,7 +45,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Snow_Scale: 50
-    - _Vertex_Offset: 0.4
+    - _Vertex_Offset: 0.16
     - _XRMotionVectorsPass: 1
     m_Colors: []
   m_BuildTextureStacks: []
