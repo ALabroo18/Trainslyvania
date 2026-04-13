@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8905112330308023846}
   - component: {fileID: 5828706167748481675}
+  - component: {fileID: 1789087496013838569}
+  - component: {fileID: 1215697742895264730}
+  - component: {fileID: 2550639439871753950}
   m_Layer: 6
   m_Name: Vampire
   m_TagString: Untagged
@@ -56,6 +59,46 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1789087496013838569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708838261707664363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0522f132bbd309d44897e45cae1a63b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::enemyhealth
+  maxHealth: 150
+--- !u!114 &1215697742895264730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708838261707664363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a33b68397584a4a98f39416127d9be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::enemyMovement
+  moveSpeed: 2
+--- !u!114 &2550639439871753950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708838261707664363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1089752b120a600449d71d75d13f3223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::enemyDamage
+  damage: 10
+  attackCooldown: 0.75
 --- !u!1001 &891235957734773999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,15 +173,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dbf34707f11ed6c4e91f87eaeefba290, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2423111891395233388}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dbf34707f11ed6c4e91f87eaeefba290, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8088142469319653153}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dbf34707f11ed6c4e91f87eaeefba290, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7806566816488312118}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dbf34707f11ed6c4e91f87eaeefba290, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2006213888782619127}
   m_SourcePrefab: {fileID: 100100000, guid: dbf34707f11ed6c4e91f87eaeefba290, type: 3}
 --- !u!1 &44798159437375934 stripped
@@ -146,46 +180,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dbf34707f11ed6c4e91f87eaeefba290, type: 3}
   m_PrefabInstance: {fileID: 891235957734773999}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2423111891395233388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 44798159437375934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0522f132bbd309d44897e45cae1a63b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::enemyhealth
-  maxHealth: 150
---- !u!114 &8088142469319653153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 44798159437375934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33a33b68397584a4a98f39416127d9be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::enemyMovement
-  moveSpeed: 2
---- !u!114 &7806566816488312118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 44798159437375934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1089752b120a600449d71d75d13f3223, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::enemyDamage
-  damage: 10
-  attackCooldown: 0.75
 --- !u!95 &2006213888782619127
 Animator:
   serializedVersion: 7
