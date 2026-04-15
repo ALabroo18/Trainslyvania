@@ -33,7 +33,7 @@ public class SceneLoader : MonoBehaviour
 
     public void SetNextScene1()
     {
-        sceneName = "Level1";
+        sceneName = "Level 1";
     }
 
     public void SetNextScene2()

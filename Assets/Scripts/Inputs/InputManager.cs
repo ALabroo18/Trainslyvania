@@ -104,26 +104,6 @@ public class InputManager : MonoBehaviour
         // Normal Turret Dropping
         switch (activeConsumable)
         {
-            case ConsumableType.None:
-                if (Physics.Raycast(ray, out RaycastHit turretHit, Mathf.Infinity, trainCarLayer))
-                {
-                    Collider carCollider = turretHit.collider;
-                    if (turretsPlaced >= maxTurrets) return;
-                    if (!turretsOnCar.ContainsKey(carCollider))
-                        turretsOnCar[carCollider] = 0;
-                    if (turretsOnCar[carCollider] >= maxTurretsPerCar) return;
-
-                    GameObject turret = Instantiate(playerCharacter, turretHit.point, Quaternion.identity);
-                    mediumTurret turretScript = turret.GetComponent<mediumTurret>();
-                    trainHealth carHealth = turretHit.collider.GetComponent<trainHealth>();
-                    if (turretScript != null && carHealth != null)
-                    {
-                        turretScript.owningCar = carHealth;
-                        turretsPlaced++;
-                        turretsOnCar[carCollider]++;
-                    }
-                }
-                break;
 
             case ConsumableType.Fireball:
                 if (Physics.Raycast(ray, out RaycastHit fireballHit, Mathf.Infinity, groundMask))
