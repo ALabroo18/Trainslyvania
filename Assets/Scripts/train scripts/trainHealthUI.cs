@@ -23,11 +23,27 @@ public class trainHealthUI : MonoBehaviour
 
     Coroutine flashRoutine;
 
+    void Awake()
+    {
+        if (trainHealth == null)
+            trainHealth = GetComponentInChildren<trainHealth>();
+        if (trainHealth == null)
+            trainHealth = GetComponentInParent<trainHealth>();
+
+        if (cartButton == null)
+            cartButton = GetComponentInChildren<Button>();
+        if (buttonImage == null && cartButton != null)
+            buttonImage = cartButton.GetComponent<Image>();
+        if (alertText == null)
+            alertText = GetComponentInChildren<TMP_Text>();
+    }
+
+
     void OnEnable()
     {
+        if (trainHealth == null) return;
         trainHealth.OnHealthChanged += OnHealthChanged;
         trainHealth.OnBreached += OnCartBreached;
-
         SetNormalState();
     }
 
@@ -42,7 +58,6 @@ public class trainHealthUI : MonoBehaviour
         if (trainHealth.isBreached)
             return;
 
-        //flash red on damage
         if (flashRoutine != null)
             StopCoroutine(flashRoutine);
 
@@ -72,8 +87,8 @@ public class trainHealthUI : MonoBehaviour
 
     void SetNormalState()
     {
-        buttonImage.color = normalColor;
-        alertText.gameObject.SetActive(false);
-        cartButton.interactable = true;
+        if (buttonImage != null) buttonImage.color = normalColor;
+        if (alertText != null) alertText.gameObject.SetActive(false);
+        if (cartButton != null) cartButton.interactable = true;
     }
 }

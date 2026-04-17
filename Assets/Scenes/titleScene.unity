@@ -2327,6 +2327,7 @@ GameObject:
   - component: {fileID: 450687166}
   - component: {fileID: 450687165}
   - component: {fileID: 450687167}
+  - component: {fileID: 450687168}
   m_Layer: 0
   m_Name: Currency Manager
   m_TagString: Untagged
@@ -2378,6 +2379,18 @@ MonoBehaviour:
   holyWaterCharges: 0
   maxFireball: 5
   fireballCharges: 0
+--- !u!114 &450687168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450687164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2f9830349562b409bd55ddec90b4fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrainManager
 --- !u!1 &500459399
 GameObject:
   m_ObjectHideFlags: 0
