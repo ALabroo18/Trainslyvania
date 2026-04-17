@@ -2391,6 +2391,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2f9830349562b409bd55ddec90b4fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrainManager
+  freeTurretCharges: 2
+  passengerCarInventory: 0
+  defensiveCarInventory: 0
+  cars:
+  - carType: 0
+    leftTurret: 0
+    rightTurret: 0
+  - carType: 0
+    leftTurret: 0
+    rightTurret: 0
+  - carType: 0
+    leftTurret: 0
+    rightTurret: 0
+  - carType: 0
+    leftTurret: 0
+    rightTurret: 0
+  - carType: 0
+    leftTurret: 0
+    rightTurret: 0
+  - carType: 0
+    leftTurret: 0
+    rightTurret: 0
+  - carType: 0
+    leftTurret: 0
+    rightTurret: 0
 --- !u!1 &500459399
 GameObject:
   m_ObjectHideFlags: 0

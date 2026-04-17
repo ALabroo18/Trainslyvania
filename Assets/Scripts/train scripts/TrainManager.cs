@@ -23,7 +23,7 @@ public class TrainManager : MonoBehaviour
     public const int MAX_CARS = 7;
 
 
-    [SerializeField] private int freeTurretCharges = 0;
+    [SerializeField] private int freeTurretCharges = 2;
     public int FreeTurretCharges => freeTurretCharges;
     [SerializeField] private int passengerCarInventory = 0;
     [SerializeField] private int defensiveCarInventory = 0;
@@ -180,22 +180,22 @@ public class TrainManager : MonoBehaviour
 
     public bool PlaceTurret(int carIndex)
     {
-        if (cars[carIndex] == null || cars[carIndex].carType != CarType.Defensive)
+        if (cars[carIndex] == null || cars[carIndex].carType != CarType.Defensive) // doesnt place turrets on non defensive cars
         {
             return false;
         }
-        if (freeTurretCharges <= 0)
+        if (freeTurretCharges <= 0) // if no turrets in inventory doesn't place a turret
         {
             return false;
         }
 
-        if (!cars[carIndex].leftTurret)
+        if (!cars[carIndex].leftTurret) // place turret from left to right first
             cars[carIndex].leftTurret = true;
         else if (!cars[carIndex].rightTurret)
             cars[carIndex].rightTurret = true;
         else
         {
-            return false;
+            return false; //car is already filled with turrets
         }
 
         freeTurretCharges--;

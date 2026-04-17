@@ -176,11 +176,13 @@ public class TrainShopUI : MonoBehaviour
     {
         if (selectedCarIndex < 0)
         {
-            return;
+            return; // if car doesnt exist leave this function
         }
         if (!CurrencyManager.Instance.SubCurrency(turretPrice))
         {
-            return;
+            Debug.Log("You're broke.");
+            return; // if broke leave this function
+            
         }
 
         TrainManager.Instance.AddTurretCharge(1);
