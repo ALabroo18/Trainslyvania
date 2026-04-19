@@ -64,7 +64,7 @@ public class CarSlotUI : MonoBehaviour
     public void OnSlotClicked()
     {
         if (shopUI == null)
-            shopUI = FindObjectOfType<TrainShopUI>();
+            shopUI = FindFirstObjectByType<TrainShopUI>();
 
         CarData car = TrainManager.Instance.GetCar(slotIndex);
 

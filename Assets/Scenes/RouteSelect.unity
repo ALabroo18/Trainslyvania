@@ -5320,6 +5320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
   sceneName: 
   nextScene: 
+  infiniteSceneName: InfiniteLevel1
   ShopUI: {fileID: 1597508997}
 --- !u!1 &264009318
 GameObject:
@@ -6913,6 +6914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   sceneName: Level2
   nextScene: Level2
+  infiniteSceneName: InfiniteLevel1
   ShopUI: {fileID: 0}
 --- !u!114 &336662644
 MonoBehaviour:
@@ -11000,6 +11002,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1825392489}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: SetNextScene1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &507774463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12588,6 +12602,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   sceneName: Level1
   nextScene: 
+  infiniteSceneName: InfiniteLevel1
   ShopUI: {fileID: 0}
 --- !u!114 &591803842
 MonoBehaviour:
@@ -13268,6 +13283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   sceneName: Level1
   nextScene: Level1
+  infiniteSceneName: InfiniteLevel1
   ShopUI: {fileID: 0}
 --- !u!114 &629439183
 MonoBehaviour:
@@ -13932,6 +13948,7 @@ GameObject:
   - component: {fileID: 649613097}
   - component: {fileID: 649613096}
   - component: {fileID: 649613095}
+  - component: {fileID: 649613099}
   m_Layer: 5
   m_Name: endlessButton
   m_TagString: Untagged
@@ -14054,6 +14071,18 @@ MonoBehaviour:
           m_StringArgument: Fade
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 649613099}
+        m_TargetAssemblyTypeName: ModeSelector, Assembly-CSharp
+        m_MethodName: SelectInfiniteMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &649613097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14092,6 +14121,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649613093}
   m_CullTransparentMesh: 1
+--- !u!114 &649613099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649613093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b47cec13b6a45046a6e21401823664d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ModeSelector
 --- !u!1 &650150288
 GameObject:
   m_ObjectHideFlags: 0
@@ -14654,6 +14695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   sceneName: Level2
   nextScene: 
+  infiniteSceneName: InfiniteLevel1
   ShopUI: {fileID: 0}
 --- !u!114 &666982086
 MonoBehaviour:
@@ -17506,6 +17548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   sceneName: Level1
   nextScene: Level1
+  infiniteSceneName: InfiniteLevel1
   ShopUI: {fileID: 0}
 --- !u!114 &797791136
 MonoBehaviour:
@@ -17565,19 +17608,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1825392489}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: SetNextScene1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1825392489}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadShop
+        m_MethodName: LoadLevel1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -32419,6 +32450,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 649613099}
+        m_TargetAssemblyTypeName: ModeSelector, Assembly-CSharp
+        m_MethodName: SelectNormalMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1489395182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36701,6 +36744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   sceneName: Level2
   nextScene: Level2
+  infiniteSceneName: InfiniteLevel1
   ShopUI: {fileID: 0}
 --- !u!114 &1660917591
 MonoBehaviour:
@@ -38062,6 +38106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   sceneName: Level1
   nextScene: Level1
+  infiniteSceneName: InfiniteLevel1
   ShopUI: {fileID: 0}
 --- !u!114 &1674904509
 MonoBehaviour:
@@ -40190,6 +40235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   sceneName: Level1
   nextScene: Level1
+  infiniteSceneName: InfiniteLevel1
   ShopUI: {fileID: 0}
 --- !u!114 &1791209260
 MonoBehaviour:
@@ -41086,6 +41132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
   sceneName: 
   nextScene: 
+  infiniteSceneName: InfiniteLevel1
   ShopUI: {fileID: 1597508997}
 --- !u!4 &1825392490
 Transform:
@@ -46710,6 +46757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   sceneName: Level1
   nextScene: Level1
+  infiniteSceneName: InfiniteLevel1
   ShopUI: {fileID: 0}
 --- !u!114 &2076701190
 MonoBehaviour:

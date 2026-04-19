@@ -100,11 +100,11 @@ public class TrainLevelSpawner : MonoBehaviour
             spawnedCount++;
         }
 
-        RouteWinCondition winCondition = FindObjectOfType<RouteWinCondition>();
+        RouteWinCondition winCondition = FindFirstObjectByType<RouteWinCondition>();
         if (winCondition != null)
             winCondition.SetTrains(spawnedTrainHealths);
 
-        TrainUIManager uiManager = FindObjectOfType<TrainUIManager>();
+        TrainUIManager uiManager = FindFirstObjectByType<TrainUIManager>();
         if (uiManager != null)
             uiManager.SetTrains(spawnedTrainHealths);
     }

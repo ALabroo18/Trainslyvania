@@ -22,7 +22,7 @@ public class vampireMovement : MonoBehaviour
 
     void AcquireTarget()
     {
-        trainHealth[] carts = FindObjectsOfType<trainHealth>();
+        trainHealth[] carts = FindObjectsByType<trainHealth>(FindObjectsSortMode.None);
 
         float closestDist = Mathf.Infinity;
         trainHealth closest = null;

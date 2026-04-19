@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,39 +15,42 @@ public class FireBomb : MonoBehaviour
 
     public void FireRadius(Vector3 worldPosition)
     {
+        float radius = radiusNum;
+        int dot = damageOverTime;
+        float duration = dotDuration;
+
+        if (ModeSelector.SelectedMode == GameMode.Infinite && InfiniteUpgradeManager.Instance != null)
+        {
+            radius += InfiniteUpgradeManager.Instance.firebombRadiusBonus;
+            dot += Mathf.RoundToInt(InfiniteUpgradeManager.Instance.firebombDOTBonus);
+            duration += InfiniteUpgradeManager.Instance.firebombDurationBonus;
+        }
 
         Collider[] enemies = Physics.OverlapSphere(worldPosition, radiusNum, enemyMask);
+        Debug.Log("Firebomb hit " + enemies.Length + " enemies at radius: " + radius);
 
         Debug.Log("Enemies: " + enemies.Length);
         Debug.Log("In fireradius");
-        for (int i = 0; i < enemies.Length; i++)
+
+        foreach (Collider enemy in enemies)
         {
-            if (enemies[i] != null)
+            if (enemy == null) continue;
+
+            vampireHealth health = enemy.GetComponent<vampireHealth>();
+            if (health != null)
             {
-
-                foreach (Collider enemy in enemies)
-                {
-                    vampireHealth health = enemy.GetComponent<vampireHealth>();
-                    health.TakeDamage(100);
-                    while (health.GetHealth() > 0)
-                    {
-                        StartCoroutine(TimeDelay(1, health));
-                    }
-                }
+                health.TakeDamage(immediateDamage);
+                continue;
             }
+
+            InfiniteVampireHealth infiniteHealth = enemy.GetComponent<InfiniteVampireHealth>();
+            if (infiniteHealth != null)
+                infiniteHealth.TakeDamage(immediateDamage);
         }
-        FireZone(worldPosition);
+        FireZone(worldPosition, radius, dot, duration);
     }
 
-
-    private IEnumerator TimeDelay(int delay, vampireHealth health)
-    {
-        health.TakeDamage(damageOverTime);
-        yield return new WaitForSeconds(delay);
-    }
-
-
-    public void FireZone(Vector3 position)
+    public void FireZone(Vector3 position, float radius, int dot, float duration)
     {
         if (FireBombZonePrefab != null)
         {
@@ -56,7 +58,7 @@ public class FireBomb : MonoBehaviour
             FireBombZone zoneScript = zone.GetComponent<FireBombZone>();
             if (zoneScript != null)
             {
-                zoneScript.Initialize(radiusNum, enemyMask, damageOverTime, dotTickRate, dotDuration);
+                zoneScript.Initialize(radius, enemyMask, dot, dotTickRate, duration);
             }
         }
         else
@@ -64,7 +66,7 @@ public class FireBomb : MonoBehaviour
             GameObject zone = new GameObject("FireBombZone");
             zone.transform.position = position;
             FireBombZone zoneScript = zone.AddComponent<FireBombZone>();
-            zoneScript.Initialize(radiusNum, enemyMask, damageOverTime, dotTickRate, dotDuration);
+            zoneScript.Initialize(radius, enemyMask, dot, dotTickRate, duration);
         }
     }
 }

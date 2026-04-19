@@ -37,6 +37,13 @@ public class trainHealth : MonoBehaviour
         }
     }
 
+    public void AddMaxHealth(int amount)
+    {
+        maxHealth += amount;
+        currentHealth += amount;
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+
     void Breach()
     {
         isBreached = true;

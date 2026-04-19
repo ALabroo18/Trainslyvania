@@ -42,4 +42,11 @@ public class TrainCarController : MonoBehaviour
             rightTurret.SetActive(hasRight);
         }
     }
+
+    public void RefreshTurrets()
+    {
+        CarData car = TrainManager.Instance.GetCar(trainIndex);
+        if (car == null) return;
+        SetTurrets(car.leftTurret, car.rightTurret);
+    }
 }

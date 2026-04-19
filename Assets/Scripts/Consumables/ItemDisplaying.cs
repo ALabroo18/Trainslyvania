@@ -6,27 +6,54 @@ public class ItemDisplaying : MonoBehaviour
     [Header("Holy Water")]
     public TextMeshProUGUI holyWaterText;
 
-    [Header("Fireball")]
-    public TextMeshProUGUI fireballText;
+    [Header("Firebomb")]
+    public TextMeshProUGUI firebombText;
 
-    void OnEnable()
+    void Start()
     {
-        if (ItemManager.Instance != null)
+        if (ModeSelector.SelectedMode == GameMode.Infinite)
         {
-            ItemManager.Instance.OnHolyWaterChanged += UpdateHolyWater;
-            ItemManager.Instance.OnFireballChanged += UpdateFireball;
+            if (InfiniteConsumableManager.Instance != null)
+            {
+                InfiniteConsumableManager.Instance.OnChargesChanged += UpdateInfiniteDisplay;
+                UpdateInfiniteDisplay(InfiniteConsumableManager.Instance != null ? InfiniteConsumableManager.Instance.HolyWaterCharges : 0, InfiniteConsumableManager.Instance != null ? InfiniteConsumableManager.Instance.FirebombCharges : 0);
+            }
         }
-        UpdateHolyWater(ItemManager.Instance.HolyWaterUses);
-        UpdateFireball(ItemManager.Instance.FireballUses);
+        else
+        {
+            if (ItemManager.Instance != null)
+            {
+                ItemManager.Instance.OnHolyWaterChanged += UpdateHolyWater;
+                ItemManager.Instance.OnFirebombChanged += UpdateFirebomb;
+            }
+            UpdateHolyWater(ItemManager.Instance != null ? ItemManager.Instance.HolyWaterUses : 0);
+            UpdateFirebomb(ItemManager.Instance != null ? ItemManager.Instance.FirebombUses : 0);
+        }
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
-        if (ItemManager.Instance != null)
+        if (ModeSelector.SelectedMode == GameMode.Infinite)
         {
-            ItemManager.Instance.OnHolyWaterChanged -= UpdateHolyWater;
-            ItemManager.Instance.OnFireballChanged -= UpdateFireball;
+            if (InfiniteConsumableManager.Instance != null)
+                InfiniteConsumableManager.Instance.OnChargesChanged -= UpdateInfiniteDisplay;
         }
+        else
+        {
+            if (ItemManager.Instance != null)
+            {
+                ItemManager.Instance.OnHolyWaterChanged -= UpdateHolyWater;
+                ItemManager.Instance.OnFirebombChanged -= UpdateFirebomb;
+            }
+        }
+    }
+
+    void UpdateInfiniteDisplay(int holyWater, int firebomb)
+    {
+        if (holyWaterText != null)
+            holyWaterText.text = holyWater.ToString();
+        if (firebombText != null)
+            firebombText.text = firebomb.ToString();
     }
 
     void UpdateHolyWater(int amount)
@@ -35,9 +62,9 @@ public class ItemDisplaying : MonoBehaviour
             holyWaterText.text = amount.ToString();
     }
 
-    void UpdateFireball(int amount)
+    void UpdateFirebomb(int amount)
     {
-        if (fireballText != null)
-            fireballText.text = amount.ToString();
+        if (firebombText != null)
+            firebombText.text = amount.ToString();
     }
 }
