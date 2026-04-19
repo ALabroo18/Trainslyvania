@@ -15,19 +15,19 @@ public class FirebombShop : MonoBehaviour
 
     public void OnBuyButtonPressed()
     {
-        if (!ItemManager.Instance.CanBuyFireball)
+        if (!ItemManager.Instance.CanBuyFirebomb)
         {
-            Debug.Log("Fireball is full!");
+            Debug.Log("Firebomb is full!");
             return;
         }
 
         if (CurrencyManager.Instance.SubCurrency(price))
         {
-            ItemManager.Instance.AddFireball(usesPerPurchase);
+            ItemManager.Instance.AddFirebomb(usesPerPurchase);
         }
         else
         {
-            Debug.Log("Cannot afford Fireball");
+            Debug.Log("Cannot afford Firebomb");
         }
     }
 }

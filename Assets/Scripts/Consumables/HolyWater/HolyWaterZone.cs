@@ -34,7 +34,7 @@ public class HolyWaterZone : MonoBehaviour
         circleRenderer.startWidth = 0.15f;
         circleRenderer.endWidth = 0.15f;
         circleRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        circleRenderer.startColor = new Color(0.4f, 0.8f, 1f, 0.9f); // light blue
+        circleRenderer.startColor = new Color(0.4f, 0.8f, 1f, 0.9f);
         circleRenderer.endColor = new Color(0.4f, 0.8f, 1f, 0.9f);
         circleRenderer.positionCount = 64;
         circleRenderer.useWorldSpace = true;
@@ -58,12 +58,25 @@ public class HolyWaterZone : MonoBehaviour
             {
                 vampireHealth health = col.GetComponent<vampireHealth>();
                 if (health != null)
-                    health.TakeDamage(damagePerTick);
-
-                if (!tintedVampires.ContainsKey(col.gameObject))
                 {
-                    Coroutine tintRoutine = StartCoroutine(TintVampire(col.gameObject));
-                    tintedVampires[col.gameObject] = tintRoutine;
+                    health.TakeDamage(damagePerTick);
+                    if (!tintedVampires.ContainsKey(col.gameObject))
+                    {
+                        Coroutine tintRoutine = StartCoroutine(TintVampire(col.gameObject));
+                        tintedVampires[col.gameObject] = tintRoutine;
+                    }
+                    continue;
+                }
+
+                InfiniteVampireHealth infiniteHealth = col.GetComponent<InfiniteVampireHealth>();
+                if (infiniteHealth != null)
+                {
+                    infiniteHealth.TakeDamage(damagePerTick);
+                    if (!tintedVampires.ContainsKey(col.gameObject))
+                    {
+                        Coroutine tintRoutine = StartCoroutine(TintVampire(col.gameObject));
+                        tintedVampires[col.gameObject] = tintRoutine;
+                    }
                 }
             }
 

@@ -5,7 +5,7 @@ public class vampireHealth : MonoBehaviour
     //Mason Kuhn
 
     public int maxHealth = 200;
-    private int currentHealth;
+    public int currentHealth;
 
     void Start()
     {

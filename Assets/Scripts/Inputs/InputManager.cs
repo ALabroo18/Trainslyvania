@@ -10,7 +10,7 @@ using UnityEngine.InputSystem;
 public enum ConsumableType
 {
     None,
-    Fireball,
+    Firebomb,
     HolyWater,
     Caltrops
 }
@@ -64,30 +64,36 @@ public class InputManager : MonoBehaviour
         
     }
 
-    public void SelectFireball()
+    public void SelectFirebomb()
     {
-        if (ItemManager.Instance.FireballUses <= 0)
+        bool hasCharges = ModeSelector.SelectedMode == GameMode.Infinite
+               ? InfiniteConsumableManager.Instance != null && InfiniteConsumableManager.Instance.FirebombCharges > 0
+               : ItemManager.Instance.FirebombUses > 0;
+
+        if (!hasCharges)
         {
-            Debug.Log("No Fireballs left!");
+            Debug.Log("No Firebombs!");
             return;
         }
-        activeConsumable = activeConsumable == ConsumableType.Fireball
-            ? ConsumableType.None  // pressing again deselects
-            : ConsumableType.Fireball;
-        Debug.Log("Active consumable: " + activeConsumable);
+        activeConsumable = activeConsumable == ConsumableType.Firebomb
+            ? ConsumableType.None
+            : ConsumableType.Firebomb;
     }
 
     public void SelectHolyWater()
     {
-        if (ItemManager.Instance.HolyWaterUses <= 0)
+        bool hasCharges = ModeSelector.SelectedMode == GameMode.Infinite
+        ? InfiniteConsumableManager.Instance != null && InfiniteConsumableManager.Instance.HolyWaterCharges > 0
+        : ItemManager.Instance.HolyWaterUses > 0;
+
+        if (!hasCharges)
         {
-            Debug.Log("No Holy Water left!");
+            Debug.Log("No Holy Water!");
             return;
         }
         activeConsumable = activeConsumable == ConsumableType.HolyWater
-            ? ConsumableType.None  // pressing again deselects
+            ? ConsumableType.None
             : ConsumableType.HolyWater;
-        Debug.Log("Active consumable: " + activeConsumable);
     }
 
     public void Deselect()
@@ -105,60 +111,58 @@ public class InputManager : MonoBehaviour
         // Normal Turret Dropping
         switch (activeConsumable)
         {
-            case ConsumableType.None:
-                if (Physics.Raycast(ray, out RaycastHit turretHit, Mathf.Infinity, trainCarLayer))
-                {
-                    Collider carCollider = turretHit.collider;
-                    if (turretsPlaced >= maxTurrets) return;
-                    if (!turretsOnCar.ContainsKey(carCollider))
-                        turretsOnCar[carCollider] = 0;
-                    if (turretsOnCar[carCollider] >= maxTurretsPerCar) return;
 
-                    GameObject turret = Instantiate(playerCharacter, turretHit.point, Quaternion.identity);
-                    mediumTurret turretScript = turret.GetComponent<mediumTurret>();
-                    trainHealth carHealth = turretHit.collider.GetComponent<trainHealth>();
-                    if (turretScript != null && carHealth != null)
+            case ConsumableType.Firebomb:
+                if (Physics.Raycast(ray, out RaycastHit firebombHit, Mathf.Infinity, groundMask))
+                {
+                    bool hasCharge = ModeSelector.SelectedMode == GameMode.Infinite
+                                ? InfiniteConsumableManager.Instance.UseFirebomb()
+                                : ItemManager.Instance.FirebombUses > 0;
+
+                    if (hasCharge)
                     {
-                        turretScript.owningCar = carHealth;
-                        turretsPlaced++;
-                        turretsOnCar[carCollider]++;
+                        if (ModeSelector.SelectedMode == GameMode.Normal)
+                            ItemManager.Instance.ConsumeFirebomb();
+                        FireBomb.FireRadius(firebombHit.point);
+                        activeConsumable = ConsumableType.None;
                     }
-                }
-                break;
-
-            case ConsumableType.Fireball:
-                if (Physics.Raycast(ray, out RaycastHit fireballHit, Mathf.Infinity, groundMask))
-                {
-                    Debug.Log("Fireball placed at: " + fireballHit.point);
-                    FireBomb.FireRadius(fireballHit.point);
-                    ItemManager.Instance.ConsumeFireball();
-                    activeConsumable = ConsumableType.None;
                 }
                 break;
 
             case ConsumableType.HolyWater:
-                RaycastHit holyWaterHit;
-                if (Physics.Raycast(ray, out holyWaterHit, Mathf.Infinity))
+                if (Physics.Raycast(ray, out RaycastHit turretBlessHit, Mathf.Infinity, turretLayer))
                 {
-                    Debug.Log("Hit: " + holyWaterHit.collider.gameObject.name + " on layer: " + LayerMask.LayerToName(holyWaterHit.collider.gameObject.layer));
-
                     // check if what we hit has a turret script on it or its parent
-                    mediumTurret turret = holyWaterHit.collider.GetComponentInParent<mediumTurret>();
+                    mediumTurret turret = turretBlessHit.collider.GetComponentInParent<mediumTurret>();
                     if (turret == null)
-                        turret = holyWaterHit.collider.GetComponentInChildren<mediumTurret>();
+                        turret = turretBlessHit.collider.GetComponentInChildren<mediumTurret>();
 
                     if (turret != null)
                     {
-                        Debug.Log("Blessing turret: " + turret.gameObject.name);
-                        holyWater.BlessTurret(turret, holyWaterHit.point);
-                        ItemManager.Instance.ConsumeHolyWater();
-                        activeConsumable = ConsumableType.None;
+                        bool hasCharge = ModeSelector.SelectedMode == GameMode.Infinite
+                    ? InfiniteConsumableManager.Instance.UseHolyWater()
+                    : ItemManager.Instance.HolyWaterUses > 0;
+                        if (hasCharge)
+                        {
+                            if (ModeSelector.SelectedMode == GameMode.Normal)
+                                ItemManager.Instance.ConsumeHolyWater();
+                            holyWater.BlessTurret(turret, turretBlessHit.point);
+                            activeConsumable = ConsumableType.None;
+                            break;
+                        }
                     }
-                    else
+                }
+                if (Physics.Raycast(ray, out RaycastHit splashHit, Mathf.Infinity, groundMask))
+                {
+                    bool hasCharge = ModeSelector.SelectedMode == GameMode.Infinite
+                        ? InfiniteConsumableManager.Instance.UseHolyWater()
+                        : ItemManager.Instance.HolyWaterUses > 0;
+
+                    if (hasCharge)
                     {
-                        Debug.Log("No turret found, splashing at: " + holyWaterHit.point);
-                        holyWater.SplashArea(holyWaterHit.point);
-                        ItemManager.Instance.ConsumeHolyWater();
+                        if (ModeSelector.SelectedMode == GameMode.Normal)
+                            ItemManager.Instance.ConsumeHolyWater();
+                        holyWater.SplashArea(splashHit.point);
                         activeConsumable = ConsumableType.None;
                     }
                 }

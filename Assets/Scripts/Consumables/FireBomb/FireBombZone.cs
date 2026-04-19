@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class FireBombZone : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class FireBombZone : MonoBehaviour
     private int damagePerTick;
     private float tickRate;
     private float duration;
+    private float elapsed = 0f;
+
+    private Dictionary<GameObject, Coroutine> tintedVampires = new Dictionary<GameObject, Coroutine>();
 
     public void Initialize(float radiusNum, LayerMask enemyMask, int damagePerTick, float tickRate, float duration)
     {
@@ -25,7 +29,7 @@ public class FireBombZone : MonoBehaviour
 
     IEnumerator DOTRoutine()
     {
-        float elapsed = 0f;
+        elapsed = 0f;
 
         while (elapsed < duration)
         {
@@ -34,9 +38,19 @@ public class FireBombZone : MonoBehaviour
 
             foreach (Collider enemy in enemies)
             {
+                if (!tintedVampires.ContainsKey(enemy.gameObject))
+                {
+                    Coroutine tintRoutine = StartCoroutine(TintVampire(enemy.gameObject));
+                    tintedVampires[enemy.gameObject] = tintRoutine;
+                }
+
                 vampireHealth health = enemy.GetComponent<vampireHealth>();
                 if (health != null)
                     health.TakeDamage(damagePerTick);
+
+                InfiniteVampireHealth infiniteHealth = enemy.GetComponent<InfiniteVampireHealth>();
+                if (infiniteHealth != null)
+                    infiniteHealth.TakeDamage(damagePerTick);
             }
 
             elapsed += tickRate;
@@ -44,7 +58,7 @@ public class FireBombZone : MonoBehaviour
             float alpha = Mathf.Lerp(0.9f, 0f, elapsed / duration);
             if (circleRenderer != null)
             {
-                Color faded = new Color(1f, 0.3f, 0.7f, alpha);
+                Color faded = new Color(1f, 0.3f, 0f, alpha);
                 circleRenderer.startColor = faded;
                 circleRenderer.endColor = faded;
             }
@@ -52,7 +66,63 @@ public class FireBombZone : MonoBehaviour
             yield return new WaitForSeconds(tickRate);
         }
 
+        foreach (var kvp in tintedVampires)
+        {
+            if (kvp.Key != null)
+                RevertVampireColor(kvp.Key);
+        }
+
         Destroy(gameObject);
+    }
+
+    IEnumerator TintVampire(GameObject vampire)
+    {
+        Renderer[] renderers = vampire.GetComponentsInChildren<Renderer>();
+        Dictionary<Renderer, Color[]> originalColors = new Dictionary<Renderer, Color[]>();
+
+        foreach (Renderer r in renderers)
+        {
+            Color[] colors = new Color[r.materials.Length];
+            for (int i = 0; i < r.materials.Length; i++)
+            {
+                if (r.materials[i].HasProperty("_Color"))
+                {
+                    colors[i] = r.materials[i].color;
+                    r.materials[i].color = new Color(1f, 0.3f, 0f);
+                }
+            }
+            originalColors[r] = colors;
+        }
+
+        yield return new WaitForSeconds(duration - elapsed);
+
+        foreach (var kvp in originalColors)
+        {
+            if (kvp.Key != null)
+            {
+                for (int i = 0; i < kvp.Key.materials.Length; i++)
+                {
+                    if (kvp.Key.materials[i].HasProperty("_Color"))
+                        kvp.Key.materials[i].color = kvp.Value[i];
+                }
+            }
+        }
+
+        if (tintedVampires.ContainsKey(vampire))
+            tintedVampires.Remove(vampire);
+    }
+
+    void RevertVampireColor(GameObject vampire)
+    {
+        Renderer[] renderers = vampire.GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in renderers)
+        {
+            foreach (Material m in r.materials)
+            {
+                if (m.HasProperty("_Color"))
+                    m.color = Color.white;
+            }
+        }
     }
 
     void DrawCircle(Vector3 center)
@@ -65,8 +135,8 @@ public class FireBombZone : MonoBehaviour
         circleRenderer.startWidth = 0.15f;
         circleRenderer.endWidth = 0.15f;
         circleRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        circleRenderer.startColor = new Color(1f, 0.3f, 7f, 0.9f);
-        circleRenderer.endColor = new Color(1f, 0.3f, 7f, 0.9f);
+        circleRenderer.startColor = new Color(1f, 0.3f, 0f, 0.9f);
+        circleRenderer.endColor = new Color(1f, 0.3f, 0f, 0.9f);
         circleRenderer.positionCount = 64;
         circleRenderer.useWorldSpace = true;
 

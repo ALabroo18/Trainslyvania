@@ -10,7 +10,7 @@ public class RouteWinCondition : MonoBehaviour
     public TextMeshProUGUI goldText;
 
     public vampireSpawn spawner;
-    public trainHealth[] trains;
+    private trainHealth[] trains;
 
     private float timer;
     private bool routeCompleted;
@@ -25,16 +25,22 @@ public class RouteWinCondition : MonoBehaviour
             winScreenUI.SetActive(false);
         if (loseScreenUI != null)
             loseScreenUI.SetActive(false);
+    }
+
+    public void SetTrains(trainHealth[] spawnedTrains)
+    {
+        trains = spawnedTrains;
 
         foreach (trainHealth train in trains)
         {
             if (train != null)
                 train.OnBreached += HandleBreach;
-        }    
+        }
     }
 
     void OnDestroy()
     {
+        if (trains == null) return;
         foreach (trainHealth train in trains)
         {
             if (train != null)
@@ -42,7 +48,6 @@ public class RouteWinCondition : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (routeCompleted)
@@ -63,11 +68,11 @@ public class RouteWinCondition : MonoBehaviour
     {
         routeCompleted = true;
 
-        CurrencyManager.Instance.AddCurrency(reward);
-
-        Debug.Log("Route completed! Earned" + reward);
-
-        goldText.text = reward.ToString() + "G";
+        int earned = Mathf.RoundToInt(reward * TrainManager.Instance.MoneyMultiplier);
+        CurrencyManager.Instance.AddCurrency(earned);
+        
+        if (goldText != null)
+        goldText.text = earned.ToString() + "G";
 
         if (winScreenUI != null)
             winScreenUI.SetActive(true);
@@ -78,6 +83,7 @@ public class RouteWinCondition : MonoBehaviour
     void HandleBreach()
     {
         if (routeCompleted) return;
+        if (trains == null) return;
 
         foreach (trainHealth train in trains)
         {

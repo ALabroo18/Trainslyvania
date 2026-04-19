@@ -11,10 +11,10 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private int holyWaterCharges = 0;
     public event Action<int> OnHolyWaterChanged;
 
-    [Header("Fireball")]
-    public int maxFireball = 5;
-    [SerializeField] private int fireballCharges = 0;
-    public event Action<int> OnFireballChanged;
+    [Header("Firebomb")]
+    public int maxFirebomb = 5;
+    [SerializeField] private int firebombCharges = 0;
+    public event Action<int> OnFirebombChanged;
 
 
     [Header("Caltrops")]
@@ -40,7 +40,7 @@ public class ItemManager : MonoBehaviour
     void OnValidate()
     {
         holyWaterCharges = Mathf.Clamp(holyWaterCharges, 0, maxHolyWater);
-        fireballCharges = Mathf.Clamp(fireballCharges, 0, maxFireball);
+        firebombCharges = Mathf.Clamp(firebombCharges, 0, maxFirebomb);
         caltropCharges = Mathf.Clamp(fireballCharges, 0, maxFireball);
     }
 
@@ -63,25 +63,23 @@ public class ItemManager : MonoBehaviour
         Debug.Log("Holy Water left: " + holyWaterCharges + "/" + maxHolyWater);
     }
 
-    public int FireballUses => fireballCharges;
-    public bool CanBuyFireball => fireballCharges < maxFireball;
+    public int FirebombUses => firebombCharges;
+    public bool CanBuyFirebomb => firebombCharges < maxFirebomb;
 
-    public void AddFireball(int amount)
+    public void AddFirebomb(int amount)
     {
-        fireballCharges = Mathf.Clamp(fireballCharges + amount, 0, maxFireball);
+        firebombCharges = Mathf.Clamp(firebombCharges + amount, 0, maxFirebomb);
         Save();
-        OnFireballChanged?.Invoke(fireballCharges);
-        Debug.Log("Fireball: " + fireballCharges + "/" + maxFireball);
+        OnFirebombChanged?.Invoke(firebombCharges);
+        Debug.Log("Firebomb: " + firebombCharges + "/" + maxFirebomb);
     }
 
-
-    
-    public void ConsumeFireball()
+    public void ConsumeFirebomb()
     {
-        fireballCharges = Mathf.Max(fireballCharges - 1, 0);
+        firebombCharges = Mathf.Max(firebombCharges - 1, 0);
         Save();
-        OnFireballChanged?.Invoke(fireballCharges);
-        Debug.Log("Fireball left: " + fireballCharges + "/" + maxFireball);
+        OnFirebombChanged?.Invoke(firebombCharges);
+        Debug.Log("Firebomb left: " + firebombCharges + "/" + maxFirebomb);
     }
 
     public int CaltropsUses => caltropCharges;
@@ -105,15 +103,16 @@ public class ItemManager : MonoBehaviour
     void Save()
     {
         PlayerPrefs.SetInt("HolyWaterCharges", holyWaterCharges);
-        PlayerPrefs.SetInt("FireballCharges", fireballCharges);
+        PlayerPrefs.SetInt("FirebombCharges", firebombCharges);
         PlayerPrefs.SetInt("CaltropCharges", caltropCharges);
+
         PlayerPrefs.Save();
     }
 
     void Load()
     {
         holyWaterCharges = PlayerPrefs.GetInt("HolyWaterCharges", 0);
-        fireballCharges = PlayerPrefs.GetInt("FireballCharges", 0);
+        firebombCharges = PlayerPrefs.GetInt("FirebombCharges", 0);
         fireballCharges = PlayerPrefs.GetInt("caltropCharges", 0);
     }
 }

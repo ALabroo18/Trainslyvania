@@ -1,17 +1,16 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public string sceneName;
     public string nextScene;
-    
+    public string infiniteSceneName = "InfiniteLevel1";
+
     public GameObject ShopUI;
     public void LoadScene()
     {
-        StartCoroutine(delayLoad());
+        StartCoroutine(delayLoad(sceneName));
     }
 
     
@@ -21,9 +20,9 @@ public class SceneLoader : MonoBehaviour
         ShopUI.SetActive(true);
     }
 
-    IEnumerator delayLoad() {
+    IEnumerator delayLoad(string scene) {
         yield return new WaitForSeconds(0.7f);
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(scene);
     }
 
     public void LoadRoute() {
@@ -33,12 +32,32 @@ public class SceneLoader : MonoBehaviour
 
     public void SetNextScene1()
     {
-        sceneName = "Level1";
+        sceneName = "Level 1";
     }
 
     public void SetNextScene2()
     {
         sceneName = "Level2";
+    }
+
+    public void LoadLevel1()
+    {
+        Time.timeScale = 1;
+
+        switch (ModeSelector.SelectedMode)
+        {
+            case GameMode.Normal:
+                StartCoroutine(delayLoad("Level 1"));
+                break;
+
+            case GameMode.Infinite:
+                StartCoroutine(delayLoad("InfiniteLevel1"));
+                break;
+
+            default:
+                StartCoroutine(delayLoad("Level 1"));
+                break;
+        }
     }
 
     public void LoadNextScene()
