@@ -17,6 +17,12 @@ public class ItemManager : MonoBehaviour
     public event Action<int> OnFireballChanged;
 
 
+    [Header("Caltrops")]
+    public int maxCaltrops = 5;
+    [SerializeField] private int caltropCharges = 0;
+    public event Action<int> OnCaltropsChanged;
+
+
     void Awake()
     {
         if (Instance == null)
@@ -35,6 +41,7 @@ public class ItemManager : MonoBehaviour
     {
         holyWaterCharges = Mathf.Clamp(holyWaterCharges, 0, maxHolyWater);
         fireballCharges = Mathf.Clamp(fireballCharges, 0, maxFireball);
+        caltropCharges = Mathf.Clamp(fireballCharges, 0, maxFireball);
     }
 
     public int HolyWaterUses => holyWaterCharges;
@@ -67,6 +74,8 @@ public class ItemManager : MonoBehaviour
         Debug.Log("Fireball: " + fireballCharges + "/" + maxFireball);
     }
 
+
+    
     public void ConsumeFireball()
     {
         fireballCharges = Mathf.Max(fireballCharges - 1, 0);
@@ -75,10 +84,29 @@ public class ItemManager : MonoBehaviour
         Debug.Log("Fireball left: " + fireballCharges + "/" + maxFireball);
     }
 
+    public int CaltropsUses => caltropCharges;
+    public bool CanBuyCaltrops => caltropCharges < maxCaltrops;
+    public void AddCaltrops(int amount)
+    {
+        caltropCharges = Mathf.Clamp(caltropCharges + amount, 0, caltropCharges);
+        Save();
+        OnCaltropsChanged?.Invoke(caltropCharges);
+        Debug.Log("Fireball: " + caltropCharges + "/" + maxCaltrops);
+    }
+
+    public void ConsumeCaltrops()
+    {
+        caltropCharges = Mathf.Max(caltropCharges - 1, 0);
+        Save();
+        OnCaltropsChanged?.Invoke(caltropCharges);
+        Debug.Log("Fireball left: " + caltropCharges + "/" + maxCaltrops);
+    }
+
     void Save()
     {
         PlayerPrefs.SetInt("HolyWaterCharges", holyWaterCharges);
         PlayerPrefs.SetInt("FireballCharges", fireballCharges);
+        PlayerPrefs.SetInt("CaltropCharges", caltropCharges);
         PlayerPrefs.Save();
     }
 
@@ -86,5 +114,6 @@ public class ItemManager : MonoBehaviour
     {
         holyWaterCharges = PlayerPrefs.GetInt("HolyWaterCharges", 0);
         fireballCharges = PlayerPrefs.GetInt("FireballCharges", 0);
+        fireballCharges = PlayerPrefs.GetInt("caltropCharges", 0);
     }
 }

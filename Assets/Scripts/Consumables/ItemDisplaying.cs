@@ -9,6 +9,9 @@ public class ItemDisplaying : MonoBehaviour
     [Header("Fireball")]
     public TextMeshProUGUI fireballText;
 
+    [Header("Caltrops")]
+    public TextMeshProUGUI caltropsText;
+
     void OnEnable()
     {
         if (ItemManager.Instance != null)
@@ -18,6 +21,7 @@ public class ItemDisplaying : MonoBehaviour
         }
         UpdateHolyWater(ItemManager.Instance.HolyWaterUses);
         UpdateFireball(ItemManager.Instance.FireballUses);
+        UpdateCaltrops(ItemManager.Instance.CaltropsUses);
     }
 
     void OnDisable()
@@ -26,6 +30,7 @@ public class ItemDisplaying : MonoBehaviour
         {
             ItemManager.Instance.OnHolyWaterChanged -= UpdateHolyWater;
             ItemManager.Instance.OnFireballChanged -= UpdateFireball;
+            ItemManager.Instance.OnCaltropsChanged -= UpdateCaltrops;
         }
     }
 
@@ -39,5 +44,10 @@ public class ItemDisplaying : MonoBehaviour
     {
         if (fireballText != null)
             fireballText.text = amount.ToString();
+    }
+    void UpdateCaltrops(int amount)
+    {
+        if (caltropsText != null)
+            caltropsText.text = amount.ToString();
     }
 }

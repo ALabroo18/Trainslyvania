@@ -11,7 +11,8 @@ public enum ConsumableType
 {
     None,
     Fireball,
-    HolyWater
+    HolyWater,
+    Caltrops
 }
 
 public class InputManager : MonoBehaviour
@@ -162,6 +163,13 @@ public class InputManager : MonoBehaviour
                     }
                 }
                 break;
+
+             case ConsumableType.Caltrops:
+                // Caltrops logic here
+
+                activeConsumable = ConsumableType.None;
+                break;
+            
         }
 
 
