@@ -41,7 +41,7 @@ public class ItemManager : MonoBehaviour
     {
         holyWaterCharges = Mathf.Clamp(holyWaterCharges, 0, maxHolyWater);
         firebombCharges = Mathf.Clamp(firebombCharges, 0, maxFirebomb);
-        caltropCharges = Mathf.Clamp(fireballCharges, 0, maxFireball);
+        caltropCharges = Mathf.Clamp(caltropCharges, 0, maxCaltrops);
     }
 
     public int HolyWaterUses => holyWaterCharges;
@@ -113,6 +113,6 @@ public class ItemManager : MonoBehaviour
     {
         holyWaterCharges = PlayerPrefs.GetInt("HolyWaterCharges", 0);
         firebombCharges = PlayerPrefs.GetInt("FirebombCharges", 0);
-        fireballCharges = PlayerPrefs.GetInt("caltropCharges", 0);
+        caltropCharges = PlayerPrefs.GetInt("CaltropCharges", 0);
     }
 }
