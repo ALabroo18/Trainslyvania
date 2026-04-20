@@ -171,6 +171,20 @@ public class InputManager : MonoBehaviour
              case ConsumableType.Caltrops:
                 // Caltrops logic here
 
+                if (Physics.Raycast(ray, out RaycastHit caltropsHit, Mathf.Infinity, groundMask))
+                {
+                    bool hasCharge = ModeSelector.SelectedMode == GameMode.Infinite
+                                ? InfiniteConsumableManager.Instance.UseFirebomb()
+                                : ItemManager.Instance.FirebombUses > 0;
+
+                    if (hasCharge)
+                    {
+                        if (ModeSelector.SelectedMode == GameMode.Normal)
+                            ItemManager.Instance.ConsumeFirebomb();
+                        FireBomb.FireRadius(caltropsHit.point);
+                        activeConsumable = ConsumableType.None;
+                    }
+                }
                 activeConsumable = ConsumableType.None;
                 break;
             
