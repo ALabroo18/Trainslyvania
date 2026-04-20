@@ -57,4 +57,4 @@ MonoBehaviour:
   turretLayer:
     serializedVersion: 2
     m_Bits: 256
-  holyWaterZonePrefab: {fileID: 0}
+  holyWaterZonePrefab: {fileID: 7338956891178842411, guid: 3d6acf636840a7f40a4e6c13198b28f6, type: 3}

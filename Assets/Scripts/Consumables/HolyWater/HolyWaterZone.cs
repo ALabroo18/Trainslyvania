@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.VFX;
 
 public class HolyWaterZone : MonoBehaviour
 {
@@ -9,19 +10,21 @@ public class HolyWaterZone : MonoBehaviour
     private float tickRate;
     private float duration;
     private LayerMask enemyLayer;
+    private VisualEffect waterShader;
 
     private Dictionary<GameObject, Coroutine> tintedVampires = new Dictionary<GameObject, Coroutine>();
 
     private LineRenderer circleRenderer;
     private float elapsed = 0f;
 
-    public void Initialize(float radius, int damagePerTick, float tickRate, float duration, LayerMask enemyLayer)
+    public void Initialize(float radius, int damagePerTick, float tickRate, float duration, LayerMask enemyLayer, VisualEffect waterShader)
     {
         this.radius = radius;
         this.damagePerTick = damagePerTick;
         this.tickRate = tickRate;
         this.duration = duration;
         this.enemyLayer = enemyLayer;
+        this.waterShader = waterShader;
 
         DrawCircle();
         StartCoroutine(DOTRoutine());
@@ -29,6 +32,11 @@ public class HolyWaterZone : MonoBehaviour
 
     void DrawCircle()
     {
+
+        waterShader.SetFloat("Zone Size", radius);
+        waterShader.SetFloat("Zone Lifetime", duration);
+        waterShader.Play();
+        /*
         circleRenderer = gameObject.AddComponent<LineRenderer>();
         circleRenderer.loop = true;
         circleRenderer.startWidth = 0.15f;
@@ -46,6 +54,9 @@ public class HolyWaterZone : MonoBehaviour
             float z = Mathf.Sin(angle) * radius;
             circleRenderer.SetPosition(i, transform.position + new Vector3(x, 0.1f, z));
         }
+        */
+
+
     }
 
     IEnumerator DOTRoutine()

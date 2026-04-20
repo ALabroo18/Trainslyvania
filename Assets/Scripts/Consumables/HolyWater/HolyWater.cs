@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class HolyWater : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class HolyWater : MonoBehaviour
 
     [Header("DOT Zone")]
     public GameObject holyWaterZonePrefab;
+
+    private VisualEffect shaderEffect;
 
     public void SplashArea(Vector3 center)
     {
@@ -51,9 +54,10 @@ public class HolyWater : MonoBehaviour
         {
             GameObject zone = Instantiate(holyWaterZonePrefab, center, Quaternion.identity);
             HolyWaterZone zoneScript = zone.GetComponent<HolyWaterZone>();
+            VisualEffect water = zoneScript.GetComponent<VisualEffect>();
             if (zoneScript != null)
             {
-                zoneScript.Initialize(radius, dot, dotTickRate, duration, enemyLayer);
+                zoneScript.Initialize(radius, dot, dotTickRate, duration, enemyLayer, water);
             }
         }
         else
@@ -61,7 +65,8 @@ public class HolyWater : MonoBehaviour
             GameObject zone = new GameObject("HolyWaterZone");
             zone.transform.position = center;
             HolyWaterZone zoneScript = zone.AddComponent<HolyWaterZone>();
-            zoneScript.Initialize(radius, dot, dotTickRate, duration, enemyLayer);
+            VisualEffect water = zoneScript.GetComponent<VisualEffect>();
+            zoneScript.Initialize(radius, dot, dotTickRate, duration, enemyLayer, water);
         }
 
         Debug.Log("Holy Water splashed - radius: " + radius + " DOT: " + dot + " duration: " + duration);
