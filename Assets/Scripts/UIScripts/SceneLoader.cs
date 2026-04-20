@@ -40,6 +40,21 @@ public class SceneLoader : MonoBehaviour
         sceneName = "Level2";
     }
 
+    public void SetNextScene3()
+    {
+        sceneName = "Level 3";
+    }
+
+    public void SetNextScene4()
+    {
+        sceneName = "Level 4";
+    }
+
+    public void SetNextScene5()
+    {
+        sceneName = "Level 5";
+    }
+
     public void LoadLevel1()
     {
         Time.timeScale = 1;
