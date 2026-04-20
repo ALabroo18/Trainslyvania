@@ -636,6 +636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
   sceneName: RouteSelect
   nextScene: 
+  infiniteSceneName: InfiniteLevel1
   ShopUI: {fileID: 0}
 --- !u!1 &56457496
 GameObject:
@@ -753,64 +754,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6830894449713128220, guid: 1e2d9b5be348f2347bc00dcf0c4c7037, type: 3}
   m_PrefabInstance: {fileID: 63531974}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &67691033
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 67691035}
-  - component: {fileID: 67691034}
-  m_Layer: 0
-  m_Name: HolyWater
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &67691034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67691033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4670f64804713b24884aaf501ecc3388, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HolyWater
-  splashDamage: 150
-  splashRadius: 5
-  dotDamagePerTick: 25
-  dotTickRate: 0.5
-  dotDuration: 5
-  blessDuration: 10
-  blessFireRateMultiplier: 2
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  turretLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  holyWaterZonePrefab: {fileID: 0}
---- !u!4 &67691035
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67691033}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 530.14526, y: 0, z: 980.6848}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &73522976 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6717452846331348358, guid: d9e4636617f29034692c3a0728671579, type: 3}
@@ -2819,6 +2762,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277109233}
   m_CullTransparentMesh: 1
+--- !u!1001 &307730953
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7939578398100639652, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_Name
+      value: HolyWater (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.56455
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.44836
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.96839
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+--- !u!114 &307730954 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7976498494449323779, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+  m_PrefabInstance: {fileID: 307730953}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4670f64804713b24884aaf501ecc3388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HolyWater
 --- !u!4 &311007427 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6830894449713128220, guid: 1e2d9b5be348f2347bc00dcf0c4c7037, type: 3}
@@ -6381,7 +6392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemDisplaying
   holyWaterText: {fileID: 1925602231}
-  fireballText: {fileID: 505715438}
+  firebombText: {fileID: 0}
 --- !u!1 &639318912
 GameObject:
   m_ObjectHideFlags: 0
@@ -19645,7 +19656,7 @@ MonoBehaviour:
     m_Bits: 8
   playerCharacter: {fileID: 7032533916340315850, guid: 585a36e8c4c897441845d32b7708455e, type: 3}
   PressedImage: {fileID: 8765626488536303788, guid: d1dc83c19999d5d4b9a54efba64323f6, type: 3}
-  holyWater: {fileID: 67691034}
+  holyWater: {fileID: 307730954}
   turretLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -22864,6 +22875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
   sceneName: RouteSelect
   nextScene: 
+  infiniteSceneName: InfiniteLevel1
   ShopUI: {fileID: 0}
 --- !u!1 &8968950471949660402
 GameObject:
@@ -23005,7 +23017,7 @@ SceneRoots:
   - {fileID: 1572218364}
   - {fileID: 817974085}
   - {fileID: 659310739}
-  - {fileID: 67691035}
+  - {fileID: 307730953}
   - {fileID: 1759645611}
   - {fileID: 5628174822396035208}
   - {fileID: 1030942855}

@@ -10,7 +10,7 @@ public class HolyWater : MonoBehaviour
     [Header("DOT Settings")]
     public int dotDamagePerTick = 25;
     public float dotTickRate = 0.5f;
-    public float dotDuration = 5f;
+    public float dotDuration = 50f;
 
     [Header("Bless Settings")]
     public float blessDuration = 10f;
@@ -23,7 +23,8 @@ public class HolyWater : MonoBehaviour
     [Header("DOT Zone")]
     public GameObject holyWaterZonePrefab;
 
-    private VisualEffect shaderEffect;
+    [Header("DOT Effect")]
+    public VisualEffect shaderEffect;
 
     public void SplashArea(Vector3 center)
     {
@@ -54,19 +55,27 @@ public class HolyWater : MonoBehaviour
         {
             GameObject zone = Instantiate(holyWaterZonePrefab, center, Quaternion.identity);
             HolyWaterZone zoneScript = zone.GetComponent<HolyWaterZone>();
-            VisualEffect water = zoneScript.GetComponent<VisualEffect>();
             if (zoneScript != null)
             {
-                zoneScript.Initialize(radius, dot, dotTickRate, duration, enemyLayer, water);
+               
+                zoneScript.Initialize(radius, dot, dotTickRate, duration, enemyLayer, shaderEffect);
+                shaderEffect.SetFloat("Zone Size", radius);
+                shaderEffect.SetFloat("Zone Lifetime", duration);
+                shaderEffect.Play();
             }
+
         }
         else
         {
             GameObject zone = new GameObject("HolyWaterZone");
             zone.transform.position = center;
             HolyWaterZone zoneScript = zone.AddComponent<HolyWaterZone>();
-            VisualEffect water = zoneScript.GetComponent<VisualEffect>();
-            zoneScript.Initialize(radius, dot, dotTickRate, duration, enemyLayer, water);
+            VisualEffect effect = zone.AddComponent<VisualEffect>();
+            effect.visualEffectAsset = shaderEffect.visualEffectAsset;
+            zoneScript.Initialize(radius, dot, dotTickRate, duration, enemyLayer, shaderEffect);
+           // shaderEffect.SetFloat("Zone Size", radius);
+           // shaderEffect.SetFloat("Zone Lifetime", duration);
+           // shaderEffect.Play();
         }
 
         Debug.Log("Holy Water splashed - radius: " + radius + " DOT: " + dot + " duration: " + duration);

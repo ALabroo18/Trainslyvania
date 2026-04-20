@@ -10,7 +10,7 @@ public class HolyWaterZone : MonoBehaviour
     private float tickRate;
     private float duration;
     private LayerMask enemyLayer;
-    private VisualEffect waterShader;
+    private VisualEffect shaderEffect;
 
     private Dictionary<GameObject, Coroutine> tintedVampires = new Dictionary<GameObject, Coroutine>();
 
@@ -24,7 +24,7 @@ public class HolyWaterZone : MonoBehaviour
         this.tickRate = tickRate;
         this.duration = duration;
         this.enemyLayer = enemyLayer;
-        this.waterShader = waterShader;
+        this.shaderEffect = waterShader;
 
         DrawCircle();
         StartCoroutine(DOTRoutine());
@@ -32,10 +32,17 @@ public class HolyWaterZone : MonoBehaviour
 
     void DrawCircle()
     {
-
-        waterShader.SetFloat("Zone Size", radius);
-        waterShader.SetFloat("Zone Lifetime", duration);
-        waterShader.Play();
+        if(shaderEffect!=null)
+        {
+            shaderEffect.SetFloat("Zone Size", radius);
+            shaderEffect.SetFloat("Zone Lifetime", duration);
+            shaderEffect.Play();
+        }
+        else
+        {
+            Debug.Log("Shader is cooked");
+        }
+        
         /*
         circleRenderer = gameObject.AddComponent<LineRenderer>();
         circleRenderer.loop = true;
@@ -54,8 +61,8 @@ public class HolyWaterZone : MonoBehaviour
             float z = Mathf.Sin(angle) * radius;
             circleRenderer.SetPosition(i, transform.position + new Vector3(x, 0.1f, z));
         }
+        
         */
-
 
     }
 
