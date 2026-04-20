@@ -32,6 +32,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ROUTES/InfiniteLevel1.unity
     guid: 14900f75ffba27d498c7489450eba874
+  - enabled: 1
+    path: Assets/Scenes/ROUTES/Level 4.unity
+    guid: 310eb4ceedbff894d8aa315bb0b5bc25
+  - enabled: 1
+    path: Assets/Scenes/ROUTES/Level 5.unity
+    guid: aeced9b88524bdd4b958b43421d1f277
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 25a083dc446387f48b9194705f31f509, type: 3}

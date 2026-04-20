@@ -37,6 +37,9 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] private FireBomb FireBomb;
 
+
+    [SerializeField] private Caltrops Caltrops;
+
     //consumabletype.none default, sets a type from the enum by a button press, which then lets you use it
     public ConsumableType activeConsumable = ConsumableType.None;
 
@@ -94,6 +97,21 @@ public class InputManager : MonoBehaviour
         activeConsumable = activeConsumable == ConsumableType.HolyWater
             ? ConsumableType.None
             : ConsumableType.HolyWater;
+    }
+    public void SelectCaltrops()
+    {
+        bool hasCharges = ModeSelector.SelectedMode == GameMode.Infinite
+               ? InfiniteConsumableManager.Instance != null && InfiniteConsumableManager.Instance.CaltropsCharges > 0
+               : ItemManager.Instance.CaltropsUses > 0;
+
+        if (!hasCharges)
+        {
+            Debug.Log("No Caltrops!");
+            return;
+        }
+        activeConsumable = activeConsumable == ConsumableType.Caltrops
+            ? ConsumableType.None
+            : ConsumableType.Caltrops;
     }
 
     public void Deselect()
@@ -174,14 +192,15 @@ public class InputManager : MonoBehaviour
                 if (Physics.Raycast(ray, out RaycastHit caltropsHit, Mathf.Infinity, groundMask))
                 {
                     bool hasCharge = ModeSelector.SelectedMode == GameMode.Infinite
-                                ? InfiniteConsumableManager.Instance.UseFirebomb()
-                                : ItemManager.Instance.FirebombUses > 0;
+                                ? InfiniteConsumableManager.Instance.UseCaltrops()
+                                : ItemManager.Instance.CaltropsUses > 0;
 
                     if (hasCharge)
                     {
                         if (ModeSelector.SelectedMode == GameMode.Normal)
-                            ItemManager.Instance.ConsumeFirebomb();
-                        FireBomb.FireRadius(caltropsHit.point);
+                            ItemManager.Instance.ConsumeCaltrops();
+                        Caltrops.FireRadius(caltropsHit.point);
+                        Debug.Log("Sup");
                         activeConsumable = ConsumableType.None;
                     }
                 }

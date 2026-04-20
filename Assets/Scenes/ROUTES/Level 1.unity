@@ -12882,6 +12882,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2357381072794651858, guid: 0dbd7f43bb10ab5468ec7a17bbc5a8da, type: 3}
   m_PrefabInstance: {fileID: 1528609388}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1532071643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1532071645}
+  - component: {fileID: 1532071644}
+  m_Layer: 0
+  m_Name: Caltrops
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1532071644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532071643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf37b8bad3db0714f9fd927f31cd6ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Caltrops
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 64
+  immediateDamage: 50
+  damageOverTime: 50
+  dotDuration: 15
+  dotTickRate: 1
+  radiusNum: 3
+  CaltropsZonePrefab: {fileID: 0}
+  inRadius: 0
+--- !u!4 &1532071645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532071643}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 530.14526, y: 0, z: 980.6848}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1536089151 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6717452846331348358, guid: d9e4636617f29034692c3a0728671579, type: 3}
@@ -16471,6 +16525,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
+  Caltrops: {fileID: 1532071644}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &2062824796
@@ -18627,6 +18682,34 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2062824795}
+    - target: {fileID: 1895919165393402997, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895919165393402997, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895919165393402997, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2062824795}
+    - target: {fileID: 1895919165393402997, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895919165393402997, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectCaltrops
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895919165393402997, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InputManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895919165393402997, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3431487540688123969, guid: a87a38336642e34478b203081bf9f475, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -18715,6 +18798,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2062824795}
+    - target: {fileID: 5009170218500266329, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectFirebomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615914838651689313, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: caltropsText
+      value: 
+      objectReference: {fileID: 3383470530716938218}
+    - target: {fileID: 6615914838651689313, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: firebombText
+      value: 
+      objectReference: {fileID: 3383470530716938219}
     - target: {fileID: 8359574920996087141, guid: a87a38336642e34478b203081bf9f475, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -18724,6 +18819,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a87a38336642e34478b203081bf9f475, type: 3}
+--- !u!114 &3383470530716938218 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1078700681239289857, guid: a87a38336642e34478b203081bf9f475, type: 3}
+  m_PrefabInstance: {fileID: 3383470530716938217}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &3383470530716938219 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5020136059034842700, guid: a87a38336642e34478b203081bf9f475, type: 3}
+  m_PrefabInstance: {fileID: 3383470530716938217}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!222 &3397608192825977719
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19693,4 +19810,5 @@ SceneRoots:
   - {fileID: 817974085}
   - {fileID: 659310739}
   - {fileID: 67691035}
+  - {fileID: 1532071645}
   - {fileID: 1759645611}

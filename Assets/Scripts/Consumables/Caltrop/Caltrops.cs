@@ -8,12 +8,13 @@ public class Caltrops : MonoBehaviour
     public float dotDuration = 15f;
     public float dotTickRate = 1f;
     [SerializeField] public float radiusNum;
-    public GameObject FireBombZonePrefab;
+    public GameObject CaltropsZonePrefab;
 
     [SerializeField] private bool inRadius;
 
     public void FireRadius(Vector3 worldPosition)
     {
+        
         float radius = radiusNum;
         int dot = damageOverTime;
         float duration = dotDuration;
@@ -25,36 +26,38 @@ public class Caltrops : MonoBehaviour
             duration += InfiniteUpgradeManager.Instance.firebombDurationBonus;
         }
 
-        // Collider[] enemies = Physics.OverlapSphere(worldPosition, radiusNum, enemyMask);
-        // Debug.Log("Caltrop hit " + enemies.Length + " enemies at radius: " + radius);
+        Collider[] enemies = Physics.OverlapSphere(worldPosition, radiusNum, enemyMask);
+        Debug.Log("Caltrop hit " + enemies.Length + " enemies at radius: " + radius);
 
-        // Debug.Log("Enemies: " + enemies.Length);
-        // Debug.Log("In fireradius");
+        Debug.Log("Enemies: " + enemies.Length);
+        Debug.Log("In fireradius");
 
-        // foreach (Collider enemy in enemies)
-        // {
-        //     if (enemy == null) continue;
+        foreach (Collider enemy in enemies)
+        {
+            Debug.Log("Inside Enemies");
+            if (enemy == null) continue;
 
-        //     vampireHealth health = enemy.GetComponent<vampireHealth>();
-        //     if (health != null)
-        //     {
-        //         health.TakeDamage(immediateDamage);
-        //         continue;
-        //     }
+            vampireHealth health = enemy.GetComponent<vampireHealth>();
+            if (health != null)
+            {
+                health.TakeDamage(immediateDamage);
+                continue;
+            }
 
-        //     InfiniteVampireHealth infiniteHealth = enemy.GetComponent<InfiniteVampireHealth>();
-        //     if (infiniteHealth != null)
-        //         infiniteHealth.TakeDamage(immediateDamage);
-        // }
+            InfiniteVampireHealth infiniteHealth = enemy.GetComponent<InfiniteVampireHealth>();
+            if (infiniteHealth != null)
+                infiniteHealth.TakeDamage(immediateDamage);
+        }
         FireZone(worldPosition, radius, dot, duration);
     }
 
     public void FireZone(Vector3 position, float radius, int dot, float duration)
     {
-        if (FireBombZonePrefab != null)
+        
+        if (CaltropsZonePrefab != null)
         {
-            GameObject zone = Instantiate(FireBombZonePrefab, position, Quaternion.identity);
-            FireBombZone zoneScript = zone.GetComponent<FireBombZone>();
+            GameObject zone = Instantiate(CaltropsZonePrefab, position, Quaternion.identity);
+            CaltropsZone zoneScript = zone.GetComponent<CaltropsZone>();
             if (zoneScript != null)
             {
                 zoneScript.Initialize(radius, enemyMask, dot, dotTickRate, duration);
@@ -62,10 +65,11 @@ public class Caltrops : MonoBehaviour
         }
         else
         {
-            GameObject zone = new GameObject("FireBombZone");
+            GameObject zone = new GameObject("CaltropsZone");
             zone.transform.position = position;
-            FireBombZone zoneScript = zone.AddComponent<FireBombZone>();
+            CaltropsZone zoneScript = zone.AddComponent<CaltropsZone>();
             zoneScript.Initialize(radius, enemyMask, dot, dotTickRate, duration);
+            Debug.Log("Hello motherfucker");
         }
     }
 
@@ -74,14 +78,17 @@ public class Caltrops : MonoBehaviour
         if(other.gameObject.layer == enemyMask)
         {
             vampireHealth health = other.GetComponent<vampireHealth>();
-
-            if (health != null)
+            vampireMovement movement = other.GetComponent<vampireMovement>();
+            if (movement != null)
             {
+                float originalSpeed = movement.moveSpeed;
                 inRadius = true;
                 while(inRadius == true)
                 {
-                    health.TakeDamage(15);
+                    movement.moveSpeed *= 0.25f;
                 }
+                movement.moveSpeed = originalSpeed;
+                
                 
             }
         }

@@ -2377,8 +2377,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   maxHolyWater: 5
   holyWaterCharges: 0
-  maxFireball: 5
-  fireballCharges: 0
+  maxFirebomb: 5
+  firebombCharges: 0
+  maxCaltrops: 5
+  caltropCharges: 1
 --- !u!114 &450687168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5484,6 +5486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
   sceneName: RouteSelect
   nextScene: 
+  infiniteSceneName: InfiniteLevel1
   ShopUI: {fileID: 0}
 --- !u!4 &1325435676
 Transform:
