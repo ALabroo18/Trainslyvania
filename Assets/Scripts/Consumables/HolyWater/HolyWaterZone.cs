@@ -37,13 +37,14 @@ public class HolyWaterZone : MonoBehaviour
             shaderEffect.SetFloat("Zone Size", radius);
             shaderEffect.SetFloat("Zone Lifetime", duration);
             shaderEffect.Play();
+           
         }
         else
         {
             Debug.Log("Shader is cooked");
         }
         
-        /*
+        
         circleRenderer = gameObject.AddComponent<LineRenderer>();
         circleRenderer.loop = true;
         circleRenderer.startWidth = 0.15f;
@@ -61,8 +62,7 @@ public class HolyWaterZone : MonoBehaviour
             float z = Mathf.Sin(angle) * radius;
             circleRenderer.SetPosition(i, transform.position + new Vector3(x, 0.1f, z));
         }
-        
-        */
+       
 
     }
 

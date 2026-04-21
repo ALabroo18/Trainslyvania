@@ -55,13 +55,15 @@ public class HolyWater : MonoBehaviour
         {
             GameObject zone = Instantiate(holyWaterZonePrefab, center, Quaternion.identity);
             HolyWaterZone zoneScript = zone.GetComponent<HolyWaterZone>();
+            VisualEffect effect = zone.AddComponent<VisualEffect>();
+            effect.visualEffectAsset = shaderEffect.visualEffectAsset;
             if (zoneScript != null)
             {
                
                 zoneScript.Initialize(radius, dot, dotTickRate, duration, enemyLayer, shaderEffect);
-                shaderEffect.SetFloat("Zone Size", radius);
-                shaderEffect.SetFloat("Zone Lifetime", duration);
-                shaderEffect.Play();
+                //shaderEffect.SetFloat("Zone Size", radius);
+                //shaderEffect.SetFloat("Zone Lifetime", duration);
+                //shaderEffect.Play();
             }
 
         }
