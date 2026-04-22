@@ -36,6 +36,8 @@ public class HolyWaterZone : MonoBehaviour
         {
             shaderEffect.SetFloat("Zone Size", radius * 2);
             shaderEffect.SetFloat("Zone Lifetime", duration);
+            Vector3 newPos = new Vector3(transform.position.x, .02f ,transform.position.z);
+            gameObject.transform.position = newPos;
             shaderEffect.Play();
            
         }
@@ -78,6 +80,7 @@ public class HolyWaterZone : MonoBehaviour
                 if (health != null)
                 {
                     health.TakeDamage(damagePerTick);
+                    Debug.Log("Taking DOT tick");
                     if (!tintedVampires.ContainsKey(col.gameObject))
                     {
                         Coroutine tintRoutine = StartCoroutine(TintVampire(col.gameObject));
