@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.VFX;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,16 +13,18 @@ public class FireBombZone : MonoBehaviour
     private float tickRate;
     private float duration;
     private float elapsed = 0f;
+    private VisualEffect explosion;
 
     private Dictionary<GameObject, Coroutine> tintedVampires = new Dictionary<GameObject, Coroutine>();
 
-    public void Initialize(float radiusNum, LayerMask enemyMask, int damagePerTick, float tickRate, float duration)
+    public void Initialize(float radiusNum, LayerMask enemyMask, int damagePerTick, float tickRate, float duration, VisualEffect explosion)
     {
         this.radiusNum = radiusNum;
         this.enemyMask = enemyMask;
         this.damagePerTick = damagePerTick;
         this.tickRate = tickRate;
         this.duration = duration;
+        this.explosion = explosion;
 
         DrawCircle(transform.position);
         StartCoroutine(DOTRoutine());
@@ -127,6 +130,20 @@ public class FireBombZone : MonoBehaviour
 
     void DrawCircle(Vector3 center)
     {
+
+        if (explosion != null)
+        {
+            explosion.SetFloat("Flash Size", radiusNum * 2);
+            explosion.Play();
+
+        }
+        else
+        {
+            Debug.Log("Shader is cooked");
+        }
+
+
+        /*
         circleRenderer = gameObject.GetComponent<LineRenderer>();
         if (circleRenderer == null)
             circleRenderer = gameObject.AddComponent<LineRenderer>();
@@ -157,5 +174,7 @@ public class FireBombZone : MonoBehaviour
             }
         }
         Debug.Log("Circle Drawn");
+        */
     }
+        
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class vampireHealth : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class vampireHealth : MonoBehaviour
 
     public int maxHealth = 200;
     public int currentHealth;
+    public VisualEffect blood;
 
     void Start()
     {
@@ -15,6 +17,8 @@ public class vampireHealth : MonoBehaviour
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
+        
+        blood.Play();
 
         if (currentHealth <= 0)
         {

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.VFX;
 
 public class FireBomb : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class FireBomb : MonoBehaviour
     public float dotTickRate = 1f;
     [SerializeField] public float radiusNum;
     public GameObject FireBombZonePrefab;
+    public VisualEffect explosion;
 
     public void FireRadius(Vector3 worldPosition)
     {
@@ -56,9 +58,11 @@ public class FireBomb : MonoBehaviour
         {
             GameObject zone = Instantiate(FireBombZonePrefab, position, Quaternion.identity);
             FireBombZone zoneScript = zone.GetComponent<FireBombZone>();
+            VisualEffect effect = zone.GetComponent<VisualEffect>();
+            effect.visualEffectAsset = explosion.visualEffectAsset;
             if (zoneScript != null)
             {
-                zoneScript.Initialize(radius, enemyMask, dot, dotTickRate, duration);
+                zoneScript.Initialize(radius, enemyMask, dot, dotTickRate, duration, effect);
             }
         }
         else
@@ -66,7 +70,9 @@ public class FireBomb : MonoBehaviour
             GameObject zone = new GameObject("FireBombZone");
             zone.transform.position = position;
             FireBombZone zoneScript = zone.AddComponent<FireBombZone>();
-            zoneScript.Initialize(radius, enemyMask, dot, dotTickRate, duration);
+            VisualEffect effect = zone.AddComponent<VisualEffect>();
+            effect.visualEffectAsset = explosion.visualEffectAsset;
+            zoneScript.Initialize(radius, enemyMask, dot, dotTickRate, duration, effect);
         }
     }
 }

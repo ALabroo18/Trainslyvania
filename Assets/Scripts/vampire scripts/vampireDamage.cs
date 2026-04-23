@@ -9,6 +9,7 @@ public class vampireDamage : MonoBehaviour
 
     private float lastAttackTime;
     private trainHealth trainHealth;
+    public 
 
     void OnTriggerEnter(Collider other)
     {
