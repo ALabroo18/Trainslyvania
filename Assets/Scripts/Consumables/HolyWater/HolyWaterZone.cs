@@ -121,7 +121,8 @@ public class HolyWaterZone : MonoBehaviour
 
     IEnumerator TintVampire(GameObject vampire)
     {
-        Renderer[] renderers = vampire.GetComponentsInChildren<Renderer>();
+        // grab the skinned mesh renderer of all of the skinned meshcomponents inside of the vampire prefab
+        Renderer[] renderers = vampire.GetComponentsInChildren<SkinnedMeshRenderer>();
         Dictionary<Renderer, Color[]> originalColors = new Dictionary<Renderer, Color[]>();
 
         foreach (Renderer r in renderers)
