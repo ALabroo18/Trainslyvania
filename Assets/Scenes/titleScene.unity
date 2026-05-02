@@ -2037,7 +2037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
-  m_EffectColor: {r: 0.84313726, g: 0.64705884, b: 0.4509804, a: 1}
+  m_EffectColor: {r: 0.75686276, g: 0.68235296, b: 0.49019608, a: 1}
   m_EffectDistance: {x: 8.5, y: 8.5}
   m_UseGraphicAlpha: 1
 --- !u!114 &308001268
@@ -5691,7 +5691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.74509805, g: 0.72156864, b: 0.6666667, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7190,14 +7190,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8980392, g: 0.8980392, b: 0.8980392, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 06cbdf7847cf5b1458cfc51fb2f55709, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 74952e1726ed93147b48fc9da496b4a5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7831,7 +7831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
-  m_EffectColor: {r: 0.8415094, g: 0.64744335, b: 0.44933423, a: 1}
+  m_EffectColor: {r: 0.75686276, g: 0.68235296, b: 0.49019608, a: 1}
   m_EffectDistance: {x: 8.5, y: 8.5}
   m_UseGraphicAlpha: 1
 --- !u!114 &1301360891
@@ -9790,14 +9790,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8901961, g: 0.80784315, b: 0.72156864, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 416525b8047683e429322080ae133c28, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10046,7 +10046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
-  m_EffectColor: {r: 0.84313726, g: 0.64705884, b: 0.4509804, a: 1}
+  m_EffectColor: {r: 0.75686276, g: 0.68235296, b: 0.49019608, a: 1}
   m_EffectDistance: {x: 8.5, y: 8.5}
   m_UseGraphicAlpha: 1
 --- !u!114 &1873270574
@@ -10386,7 +10386,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278335854
-  m_fontColor: {r: 0.43137258, g: 0.22352943, b: 0.007843138, a: 1}
+  m_fontColor: {r: 0.30980393, g: 0.21568628, b: 0.1254902, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

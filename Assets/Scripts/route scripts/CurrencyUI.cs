@@ -21,6 +21,6 @@ public class CurrencyUI : MonoBehaviour
 
     void UpdateCurrency(int amount)
     {
-        currencyText.text = "Gold   " + amount.ToString();
+        currencyText.text = amount.ToString();
     }
 }
