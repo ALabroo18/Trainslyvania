@@ -9,6 +9,9 @@ public class ItemDisplaying : MonoBehaviour
     [Header("Firebomb")]
     public TextMeshProUGUI firebombText;
 
+
+    [Header("Caltrops")]
+    public TextMeshProUGUI caltropsText;
     void Start()
     {
         if (ModeSelector.SelectedMode == GameMode.Infinite)
@@ -16,7 +19,7 @@ public class ItemDisplaying : MonoBehaviour
             if (InfiniteConsumableManager.Instance != null)
             {
                 InfiniteConsumableManager.Instance.OnChargesChanged += UpdateInfiniteDisplay;
-                UpdateInfiniteDisplay(InfiniteConsumableManager.Instance != null ? InfiniteConsumableManager.Instance.HolyWaterCharges : 0, InfiniteConsumableManager.Instance != null ? InfiniteConsumableManager.Instance.FirebombCharges : 0);
+                UpdateInfiniteDisplay(InfiniteConsumableManager.Instance != null ? InfiniteConsumableManager.Instance.HolyWaterCharges : 0, InfiniteConsumableManager.Instance != null ? InfiniteConsumableManager.Instance.FirebombCharges : 0, InfiniteConsumableManager.Instance != null ? InfiniteConsumableManager.Instance.CaltropsCharges : 0);
             }
         }
         else
@@ -28,6 +31,7 @@ public class ItemDisplaying : MonoBehaviour
             }
             UpdateHolyWater(ItemManager.Instance != null ? ItemManager.Instance.HolyWaterUses : 0);
             UpdateFirebomb(ItemManager.Instance != null ? ItemManager.Instance.FirebombUses : 0);
+            UpdateCaltrops(ItemManager.Instance != null ? ItemManager.Instance.CaltropsUses : 0);
         }
     }
 
@@ -44,16 +48,21 @@ public class ItemDisplaying : MonoBehaviour
             {
                 ItemManager.Instance.OnHolyWaterChanged -= UpdateHolyWater;
                 ItemManager.Instance.OnFirebombChanged -= UpdateFirebomb;
+                ItemManager.Instance.OnCaltropsChanged -= UpdateCaltrops;
+
             }
         }
     }
 
-    void UpdateInfiniteDisplay(int holyWater, int firebomb)
+    void UpdateInfiniteDisplay(int holyWater, int firebomb, int caltrops)
     {
         if (holyWaterText != null)
             holyWaterText.text = holyWater.ToString();
         if (firebombText != null)
             firebombText.text = firebomb.ToString();
+
+        if (caltropsText != null)
+            caltropsText.text = caltrops.ToString();
     }
 
     void UpdateHolyWater(int amount)
@@ -66,5 +75,10 @@ public class ItemDisplaying : MonoBehaviour
     {
         if (firebombText != null)
             firebombText.text = amount.ToString();
+    }
+    void UpdateCaltrops(int amount)
+    {
+        if (caltropsText != null)
+            caltropsText.text = amount.ToString();
     }
 }

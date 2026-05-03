@@ -8,10 +8,14 @@ public class InfiniteConsumableManager : MonoBehaviour
     [SerializeField] private int holyWaterCharges = 0;
     [SerializeField] private int firebombCharges = 0;
 
-    public event Action<int, int> OnChargesChanged;
+    [SerializeField] private int caltropsCharges = 0;
+
+    public event Action<int, int, int> OnChargesChanged;
 
     public int HolyWaterCharges => holyWaterCharges;
     public int FirebombCharges => firebombCharges;
+
+    public int CaltropsCharges => caltropsCharges;
 
     void Awake()
     {
@@ -27,14 +31,21 @@ public class InfiniteConsumableManager : MonoBehaviour
     public void AddHolyWater(int amount)
     {
         holyWaterCharges += amount;
-        OnChargesChanged?.Invoke(holyWaterCharges, firebombCharges);
+        OnChargesChanged?.Invoke(holyWaterCharges, firebombCharges, caltropsCharges);
         Debug.Log("Holy Water charges: " + holyWaterCharges);
     }
     public void AddFirebomb(int amount)
     {
         firebombCharges += amount;
-        OnChargesChanged?.Invoke(holyWaterCharges, firebombCharges);
+        OnChargesChanged?.Invoke(holyWaterCharges, firebombCharges, caltropsCharges);
         Debug.Log("Firebomb charges: " + firebombCharges);
+    }
+
+    public void AddCaltrops(int amount)
+    {
+        firebombCharges += amount;
+        OnChargesChanged?.Invoke(holyWaterCharges, firebombCharges, caltropsCharges);
+        Debug.Log("Caltrop charges: " + caltropsCharges);
     }
 
     public bool UseHolyWater()
@@ -45,7 +56,7 @@ public class InfiniteConsumableManager : MonoBehaviour
             return false;
         }
         holyWaterCharges--;
-        OnChargesChanged?.Invoke(holyWaterCharges, firebombCharges);
+        OnChargesChanged?.Invoke(holyWaterCharges, firebombCharges, caltropsCharges);
         return true;
     }
 
@@ -57,7 +68,19 @@ public class InfiniteConsumableManager : MonoBehaviour
             return false;
         }
         firebombCharges--;
-        OnChargesChanged?.Invoke(holyWaterCharges, firebombCharges);
+        OnChargesChanged?.Invoke(holyWaterCharges, firebombCharges, caltropsCharges);
+        return true;
+    }
+
+    public bool UseCaltrops()
+    {
+        if (caltropsCharges <= 0)
+        {
+            Debug.Log("No Firebomb charges!");
+            return false;
+        }
+        caltropsCharges--;
+        OnChargesChanged?.Invoke(holyWaterCharges, firebombCharges, caltropsCharges);
         return true;
     }
 }

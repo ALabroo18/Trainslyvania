@@ -102,6 +102,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::enemyDamage
   damage: 3
   attackCooldown: 3
+--- !u!1 &884611794062837663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e84e776d0a4e49045ada0c4b2a5e5cc2, type: 3}
+  m_PrefabInstance: {fileID: 38188703879903950}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 508085500008783141}
+  - component: {fileID: 4015683551776413685}
+  m_Layer: 0
+  m_Name: 'FlyingVampire (Missing Prefab with guid: e84e776d0a4e49045ada0c4b2a5e5cc2)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &508085500008783141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e84e776d0a4e49045ada0c4b2a5e5cc2, type: 3}
+  m_PrefabInstance: {fileID: 38188703879903950}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884611794062837663}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.010397, y: -1.005, z: 0.09}
+  m_LocalScale: {x: 17.580322, y: 17.580322, z: 17.580322}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8905112330308023846}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &38188703879903950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -186,16 +218,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4015683551776413685}
   m_SourcePrefab: {fileID: 100100000, guid: e84e776d0a4e49045ada0c4b2a5e5cc2, type: 3}
---- !u!4 &508085500008783141 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e84e776d0a4e49045ada0c4b2a5e5cc2, type: 3}
-  m_PrefabInstance: {fileID: 38188703879903950}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &884611794062837663 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e84e776d0a4e49045ada0c4b2a5e5cc2, type: 3}
-  m_PrefabInstance: {fileID: 38188703879903950}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &4015683551776413685
 Animator:
   serializedVersion: 7

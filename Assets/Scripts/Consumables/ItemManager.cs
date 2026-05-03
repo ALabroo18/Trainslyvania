@@ -17,6 +17,12 @@ public class ItemManager : MonoBehaviour
     public event Action<int> OnFirebombChanged;
 
 
+    [Header("Caltrops")]
+    public int maxCaltrops = 5;
+    [SerializeField] private int caltropCharges = 0;
+    public event Action<int> OnCaltropsChanged;
+
+
     void Awake()
     {
         if (Instance == null)
@@ -35,6 +41,7 @@ public class ItemManager : MonoBehaviour
     {
         holyWaterCharges = Mathf.Clamp(holyWaterCharges, 0, maxHolyWater);
         firebombCharges = Mathf.Clamp(firebombCharges, 0, maxFirebomb);
+        caltropCharges = Mathf.Clamp(caltropCharges, 0, maxCaltrops);
     }
 
     public int HolyWaterUses => holyWaterCharges;
@@ -75,10 +82,30 @@ public class ItemManager : MonoBehaviour
         Debug.Log("Firebomb left: " + firebombCharges + "/" + maxFirebomb);
     }
 
+    public int CaltropsUses => caltropCharges;
+    public bool CanBuyCaltrops => caltropCharges < maxCaltrops;
+    public void AddCaltrops(int amount)
+    {
+        caltropCharges = Mathf.Clamp(caltropCharges + amount, 0, caltropCharges);
+        Save();
+        OnCaltropsChanged?.Invoke(caltropCharges);
+        Debug.Log("Fireball: " + caltropCharges + "/" + maxCaltrops);
+    }
+
+    public void ConsumeCaltrops()
+    {
+        caltropCharges = Mathf.Max(caltropCharges - 1, 0);
+        Save();
+        OnCaltropsChanged?.Invoke(caltropCharges);
+        Debug.Log("Fireball left: " + caltropCharges + "/" + maxCaltrops);
+    }
+
     void Save()
     {
         PlayerPrefs.SetInt("HolyWaterCharges", holyWaterCharges);
         PlayerPrefs.SetInt("FirebombCharges", firebombCharges);
+        PlayerPrefs.SetInt("CaltropCharges", caltropCharges);
+
         PlayerPrefs.Save();
     }
 
@@ -86,5 +113,6 @@ public class ItemManager : MonoBehaviour
     {
         holyWaterCharges = PlayerPrefs.GetInt("HolyWaterCharges", 0);
         firebombCharges = PlayerPrefs.GetInt("FirebombCharges", 0);
+        caltropCharges = PlayerPrefs.GetInt("CaltropCharges", 0);
     }
 }
