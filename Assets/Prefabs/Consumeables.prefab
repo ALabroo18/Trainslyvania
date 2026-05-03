@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 8470637568555008850}
   - component: {fileID: 4074913593533557988}
   - component: {fileID: 5228770777152540482}
-  - component: {fileID: 4666224560106834739}
+  - component: {fileID: 3716699931181477748}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -227,7 +227,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4666224560106834739
+--- !u!114 &3716699931181477748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -236,11 +236,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 121303637535836262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cfe744e40fc4674eb3e11a8c0a5c2d3, type: 3}
+  m_Script: {fileID: 11500000, guid: b8ef97d87587c6247ac9032ef4c01765, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopManager
-  itemName: {fileID: 0}
-  price: 200
+  m_EditorClassIdentifier: Assembly-CSharp::CaltropsShop
+  price: 75
+  usesPerPurchase: 1
+  priceText: {fileID: 4299489002393965951}
 --- !u!1 &143983082224756955
 GameObject:
   m_ObjectHideFlags: 0
