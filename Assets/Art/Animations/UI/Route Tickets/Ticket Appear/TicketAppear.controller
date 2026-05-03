@@ -6,7 +6,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Route1Ticket
+  m_Name: TicketAppear
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -29,7 +29,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TicketFade
+  m_Name: TicketFadeIn
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -42,7 +42,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 070fcc916a555f74387c7150723a6cd4, type: 2}
+  m_Motion: {fileID: 7400000, guid: 06bba927540a3ee40a2061f50c014224, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

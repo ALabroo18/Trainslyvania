@@ -21,7 +21,7 @@ public class SceneLoader : MonoBehaviour
     }
 
     IEnumerator delayLoad(string scene) {
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(scene);
     }
 
