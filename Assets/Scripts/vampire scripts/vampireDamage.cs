@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class vampireDamage : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class vampireDamage : MonoBehaviour
 
     private float lastAttackTime;
     private trainHealth trainHealth;
-    public 
+    public VisualEffect effect;
 
     void OnTriggerEnter(Collider other)
     {
@@ -28,6 +29,7 @@ public class vampireDamage : MonoBehaviour
         {
             lastAttackTime = Time.time;
             trainHealth.TakeDamage(damage);
+            effect.Play();
         }
     }
 

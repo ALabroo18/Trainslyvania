@@ -127,6 +127,8 @@ public class FireBombZone : MonoBehaviour
             }
         }
     }
+    
+    // Now plays the explosion VFX
 
     void DrawCircle(Vector3 center)
     {
