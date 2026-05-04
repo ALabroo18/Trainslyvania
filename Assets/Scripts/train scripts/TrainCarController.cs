@@ -2,9 +2,16 @@ using UnityEngine;
 
 public class TrainCarController : MonoBehaviour
 {
-    [Header("Pre-placed turrets")]
-    public GameObject leftTurret;
-    public GameObject rightTurret;
+    [Header("Turret Prefabs")]
+    public GameObject mediumTurretPrefab;
+    public GameObject catapultTurretPrefab;
+
+    [Header("Turret Spawn Points")]
+    public Transform leftTurretSpawnPoint;
+    public Transform rightTurretSpawnPoint;
+
+    private GameObject spawnedLeftTurret;
+    private GameObject spawnedRightTurret;
 
     public trainHealth carHealth;
     public int trainIndex;
@@ -30,16 +37,40 @@ public class TrainCarController : MonoBehaviour
         }
     }
 
-    public void SetTurrets(bool hasLeft, bool hasRight)
+    public void SetTurrets(bool hasLeft, bool hasRight, TurretType leftType = TurretType.Medium, TurretType rightType = TurretType.Medium)
     {
-        if (leftTurret != null)
+        //left turret
+        if (hasLeft && spawnedLeftTurret == null)
         {
-            leftTurret.SetActive(hasLeft);
+            GameObject prefab = leftType == TurretType.Catapult ? catapultTurretPrefab : mediumTurretPrefab;
+            if (prefab != null && leftTurretSpawnPoint != null)
+            {
+                spawnedLeftTurret = Instantiate(prefab, leftTurretSpawnPoint.position, leftTurretSpawnPoint.rotation);
+                mediumTurret t = spawnedLeftTurret.GetComponent<mediumTurret>();
+                if (t != null) t.owningCar = carHealth;
+            }
+        }
+        else if (!hasLeft && spawnedLeftTurret != null)
+        {
+            Destroy(spawnedLeftTurret);
+            spawnedLeftTurret = null;
         }
 
-        if (rightTurret != null)
+        //right turret
+        if (hasRight && spawnedRightTurret == null)
         {
-            rightTurret.SetActive(hasRight);
+            GameObject prefab = rightType == TurretType.Catapult ? catapultTurretPrefab : mediumTurretPrefab;
+            if (prefab != null && rightTurretSpawnPoint != null)
+            {
+                spawnedRightTurret = Instantiate(prefab, rightTurretSpawnPoint.position, rightTurretSpawnPoint.rotation);
+                mediumTurret t = spawnedRightTurret.GetComponent<mediumTurret>();
+                if (t != null) t.owningCar = carHealth;
+            }
+        }
+        else if (!hasRight && spawnedRightTurret != null)
+        {
+            Destroy(spawnedRightTurret);
+            spawnedRightTurret = null;
         }
     }
 
@@ -47,6 +78,6 @@ public class TrainCarController : MonoBehaviour
     {
         CarData car = TrainManager.Instance.GetCar(trainIndex);
         if (car == null) return;
-        SetTurrets(car.leftTurret, car.rightTurret);
+        SetTurrets(car.leftTurret, car.rightTurret, car.leftTurretType, car.rightTurretType);
     }
 }

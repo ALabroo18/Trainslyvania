@@ -246,16 +246,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!65 &162195856 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 593757941808109490, guid: aac03ab8b5ed96740b6a198401e7f614, type: 3}
-  m_PrefabInstance: {fileID: 4050603737690016541}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &162195859 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8743934765546927234, guid: aac03ab8b5ed96740b6a198401e7f614, type: 3}
-  m_PrefabInstance: {fileID: 4050603737690016541}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &229188644
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,6 +861,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 607594916}
   m_CullTransparentMesh: 1
+--- !u!1001 &642097159
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2743495473193827180, guid: 2eea787b85634da43a0e5efcd9954d54, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.8502971
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743495473193827180, guid: 2eea787b85634da43a0e5efcd9954d54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743495473193827180, guid: 2eea787b85634da43a0e5efcd9954d54, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743495473193827180, guid: 2eea787b85634da43a0e5efcd9954d54, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.008184771
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743495473193827180, guid: 2eea787b85634da43a0e5efcd9954d54, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743495473193827180, guid: 2eea787b85634da43a0e5efcd9954d54, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.99996656
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743495473193827180, guid: 2eea787b85634da43a0e5efcd9954d54, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743495473193827180, guid: 2eea787b85634da43a0e5efcd9954d54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743495473193827180, guid: 2eea787b85634da43a0e5efcd9954d54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -179.062
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743495473193827180, guid: 2eea787b85634da43a0e5efcd9954d54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3267654225104757206, guid: 2eea787b85634da43a0e5efcd9954d54, type: 3}
+      propertyPath: m_Name
+      value: Catapult
+      objectReference: {fileID: 0}
+    - target: {fileID: 8324219925557059776, guid: 2eea787b85634da43a0e5efcd9954d54, type: 3}
+      propertyPath: splashRadius
+      value: 2.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2eea787b85634da43a0e5efcd9954d54, type: 3}
 --- !u!1 &649038354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,6 +1087,7 @@ MonoBehaviour:
   pauseClick: {fileID: 300079425}
   resumeClick: {fileID: 229188644}
   homeClick: {fileID: 607594916}
+  restartClick: {fileID: 0}
 --- !u!4 &1145369048
 Transform:
   m_ObjectHideFlags: 0
@@ -1355,8 +1407,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66c1465201ac1e542a82bbe0cd43a639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
+  maxTurrets: 6
+  maxTurretsPerCar: 2
+  trainCarLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
   playerCharacter: {fileID: 5071450710859688256, guid: c9a2224faa2cbbb4e8065c2dc5a6b028, type: 3}
   PressedImage: {fileID: 8765626488536303788, guid: d1dc83c19999d5d4b9a54efba64323f6, type: 3}
+  holyWater: {fileID: 0}
+  turretLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  FireBomb: {fileID: 0}
+  Caltrops: {fileID: 0}
+  activeConsumable: 0
   camera: {fileID: 1785288259}
 --- !u!114 &1569116939
 MonoBehaviour:
@@ -1678,11 +1745,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfb69da40f06024e897834350953181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::enemyspawn
-  vampirePrefab: {fileID: 708838261707664363, guid: d49cbd2037e99d24f811ebf50cfcb094, type: 3}
-  trainCenter: {fileID: 162195859}
-  trainCollider: {fileID: 162195856}
-  spawnInterval: 2
-  enemiesPerSpawn: 2
+  vampireTypes:
+  - prefab: {fileID: 708838261707664363, guid: d49cbd2037e99d24f811ebf50cfcb094, type: 3}
+    weight: 50
+  - prefab: {fileID: 6977052590101994742, guid: 32bedb32f7be5214d939c752dcea8344, type: 3}
+    weight: 50
+  spawnInterval: 1
+  enemiesPerSpawn: 4
+  maxVampires: 150
   spawnCenter: {fileID: 1847467516}
   boxSize: {x: 30, y: 30}
   spawnHeight: 0
@@ -2345,3 +2415,4 @@ SceneRoots:
   - {fileID: 598528720}
   - {fileID: 1569116940}
   - {fileID: 1145369048}
+  - {fileID: 642097159}

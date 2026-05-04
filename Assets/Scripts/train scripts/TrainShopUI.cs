@@ -8,6 +8,7 @@ public class TrainShopUI : MonoBehaviour
     public int passengerCarPrice = 200;
     public int defensiveCarPrice = 300;
     public int turretPrice = 100;
+    public int catapultTurretPrice = 200;
 
     [Header("Stats Display")]
     public TextMeshProUGUI turretSlotsText;
@@ -117,13 +118,10 @@ public class TrainShopUI : MonoBehaviour
     {
         if (selectedSlotIndex < 0) return;
 
-        //check inventory first, buy if none
         if (TrainManager.Instance.PassengerCarInventory <= 0)
         {
             if (!CurrencyManager.Instance.SubCurrency(passengerCarPrice))
-            {
                 return;
-            }
             TrainManager.Instance.AddToInventory(CarType.Passenger);
         }
 
@@ -159,8 +157,8 @@ public class TrainShopUI : MonoBehaviour
         CarData car = TrainManager.Instance.GetCar(carIndex);
         if (turretSlotStatusText != null && car != null)
         {
-            string left = car.leftTurret ? "[T]" : "[_]";
-            string right = car.rightTurret ? "[T]" : "[_]";
+            string left = car.leftTurret ? "[" + car.leftTurretType + "]" : "[_]";
+            string right = car.rightTurret ? "[" + car.rightTurretType + "]" : "[_]";
             turretSlotStatusText.text = "Slots: " + left + " " + right;
         }
     }
@@ -172,31 +170,41 @@ public class TrainShopUI : MonoBehaviour
             turretMenuPanel.SetActive(false);
     }
 
-    public void BuyAndPlaceTurret()
+    public void BuyAndPlaceMediumTurret()
+    {
+        BuyAndPlaceTurretOfType(TurretType.Medium, turretPrice);
+    }
+
+    public void BuyAndPlaceCatapultTurret()
+    {
+        BuyAndPlaceTurretOfType(TurretType.Catapult, catapultTurretPrice);
+    }
+
+    public void BuyAndPlaceTurretOfType(TurretType type, int price)
     {
         if (selectedCarIndex < 0)
         {
-            return; // if car doesnt exist leave this function
+            return;
         }
 
         if (TrainManager.Instance.FreeTurretCharges > 0)
         {
-            if (!TrainManager.Instance.PlaceTurret(selectedCarIndex))
+            if (!TrainManager.Instance.PlaceTurret(selectedCarIndex, type));
                 return;
-        }    
+        }
 
-        if (!CurrencyManager.Instance.SubCurrency(turretPrice))
+        if (!CurrencyManager.Instance.SubCurrency(price))
         {
             Debug.Log("You're broke.");
-            return; // if broke leave this function
+            return;
             
         }
 
         TrainManager.Instance.AddTurretCharge(1);
-        if (!TrainManager.Instance.PlaceTurret(selectedCarIndex))
+        if (!TrainManager.Instance.PlaceTurret(selectedCarIndex, type))
         {
             TrainManager.Instance.AddTurretCharge(-1);
-            CurrencyManager.Instance.AddCurrency(turretPrice);
+            CurrencyManager.Instance.AddCurrency(price);
         }
     }
 
