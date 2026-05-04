@@ -3,7 +3,12 @@ guid: b0effc29011a64d41af9fd1c54ba5fde
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_golem
+    second: {fileID: 2100000, guid: 6e828b1bb0357104fb8f78d1b18e2f53, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

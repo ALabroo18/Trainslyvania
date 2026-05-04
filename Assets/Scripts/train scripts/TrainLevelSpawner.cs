@@ -94,7 +94,7 @@ public class TrainLevelSpawner : MonoBehaviour
             {
                 controller.trainIndex = i;
                 controller.carHealth = health;
-                controller.SetTurrets(car.leftTurret, car.rightTurret);
+controller.SetTurrets(car.leftTurret, car.rightTurret, car.leftTurretType, car.rightTurretType);
             }
 
             spawnedCount++;

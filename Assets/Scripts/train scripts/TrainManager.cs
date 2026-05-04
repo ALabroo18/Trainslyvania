@@ -7,6 +7,8 @@ public class CarData
     public CarType carType;
     public bool leftTurret;
     public bool rightTurret;
+    public TurretType leftTurretType;
+    public TurretType rightTurretType;
 }
 
 public enum CarType
@@ -14,6 +16,12 @@ public enum CarType
     None,
     Passenger,
     Defensive
+}
+
+public enum TurretType
+{
+    Medium,
+    Catapult
 }
 
 public class TrainManager : MonoBehaviour
@@ -178,24 +186,34 @@ public class TrainManager : MonoBehaviour
         return true;
     }
 
-    public bool PlaceTurret(int carIndex)
+    public bool PlaceTurret(int carIndex, TurretType turretType = TurretType.Medium)
     {
-        if (cars[carIndex] == null || cars[carIndex].carType != CarType.Defensive) // doesnt place turrets on non defensive cars
+        if (carIndex < 0 || carIndex >= MAX_CARS)
         {
             return false;
         }
-        if (freeTurretCharges <= 0) // if no turrets in inventory doesn't place a turret
+        if (cars[carIndex] == null || cars[carIndex].carType != CarType.Defensive)
+        {
+            return false;
+        }
+        if (freeTurretCharges <= 0)
         {
             return false;
         }
 
-        if (!cars[carIndex].leftTurret) // place turret from left to right first
+        if (!cars[carIndex].leftTurret)
+        {
             cars[carIndex].leftTurret = true;
+            cars[carIndex].leftTurretType = turretType;
+        }
         else if (!cars[carIndex].rightTurret)
+        {
             cars[carIndex].rightTurret = true;
+            cars[carIndex].rightTurretType = turretType;
+        }
         else
         {
-            return false; //car is already filled with turrets
+            return false;
         }
 
         freeTurretCharges--;
@@ -276,12 +294,16 @@ public class TrainManager : MonoBehaviour
                 PlayerPrefs.SetInt("Car_" + i + "_Type", (int)CarType.None);
                 PlayerPrefs.SetInt("Car_" + i + "_Left", 0);
                 PlayerPrefs.SetInt("Car_" + i + "_Right", 0);
+                PlayerPrefs.SetInt("Car_" + i + "_LeftType", 0);
+                PlayerPrefs.SetInt("Car_" + i + "_RightType", 0);
             }
             else
             {
                 PlayerPrefs.SetInt("Car_" + i + "_Type", (int)cars[i].carType);
                 PlayerPrefs.SetInt("Car_" + i + "_Left", cars[i].leftTurret ? 1 : 0);
                 PlayerPrefs.SetInt("Car_" + i + "_Right", cars[i].rightTurret ? 1 : 0);
+                PlayerPrefs.SetInt("Car_" + i + "_LeftType", (int)cars[i].leftTurretType);
+                PlayerPrefs.SetInt("Car_" + i + "_RightType", (int)cars[i].rightTurretType);
             }
         }
         PlayerPrefs.Save();
@@ -295,12 +317,17 @@ public class TrainManager : MonoBehaviour
         for (int i = 0; i < MAX_CARS; i++)
         {
             CarType type = (CarType)PlayerPrefs.GetInt("Car_" + i + "_Type", (int)CarType.None);
-            cars[i] = type == CarType.None ? null : new CarData
-            {
-                carType = type,
-                leftTurret = PlayerPrefs.GetInt("Car_" + i + "_Left", 0) == 1,
-                rightTurret = PlayerPrefs.GetInt("Car_" + i + "_Right", 0) == 1
-            };
+            if (type == CarType.None)
+                cars[i] = null;
+            else
+                cars[i] = new CarData
+                {
+                    carType = type,
+                    leftTurret = PlayerPrefs.GetInt("Car_" + i + "_Left", 0) == 1,
+                    rightTurret = PlayerPrefs.GetInt("Car_" + i + "_Right", 0) == 1,
+                    leftTurretType = (TurretType)PlayerPrefs.GetInt("Car_" + i + "_LeftType", 0),
+                    rightTurretType = (TurretType)PlayerPrefs.GetInt("Car_" + i + "_RightType", 0)
+                };
         }
         SetupDefaultCars();
     }

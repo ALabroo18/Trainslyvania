@@ -4359,6 +4359,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
+  Caltrops: {fileID: 0}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &259129227
@@ -4678,6 +4679,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
+  Caltrops: {fileID: 0}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &278956116
@@ -5423,6 +5425,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
+  Caltrops: {fileID: 0}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &347930037
@@ -10173,6 +10176,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
+  Caltrops: {fileID: 0}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &681287657
@@ -12451,7 +12455,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::vampireSpawn
   vampireTypes:
   - prefab: {fileID: 708838261707664363, guid: d49cbd2037e99d24f811ebf50cfcb094, type: 3}
-    weight: 100
+    weight: 30
+  - prefab: {fileID: 6977052590101994742, guid: 32bedb32f7be5214d939c752dcea8344, type: 3}
+    weight: 70
   spawnInterval: 1
   enemiesPerSpawn: 2
   maxVampires: 120
@@ -20468,6 +20474,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
+  Caltrops: {fileID: 0}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &1433544141
@@ -21938,6 +21945,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
+  Caltrops: {fileID: 0}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &1516271123
@@ -22709,6 +22717,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
+  Caltrops: {fileID: 0}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &1568050022
@@ -27966,6 +27975,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
+  Caltrops: {fileID: 0}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &2062824796
