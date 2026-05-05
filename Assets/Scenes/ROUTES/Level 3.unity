@@ -811,6 +811,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   holyWaterZonePrefab: {fileID: 0}
+  shaderEffect: {fileID: 0}
 --- !u!4 &67691035
 Transform:
   m_ObjectHideFlags: 0
@@ -9504,6 +9505,7 @@ MonoBehaviour:
   dotTickRate: 1
   radiusNum: 3
   FireBombZonePrefab: {fileID: 0}
+  explosion: {fileID: 0}
 --- !u!4 &659310739
 Transform:
   m_ObjectHideFlags: 0
@@ -23672,6 +23674,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8079434107073877721, guid: 233401f248b8b644080015277f2133dc, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -7260707718415618280, guid: e5b0d3103437e674f88eedf463b8be14, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

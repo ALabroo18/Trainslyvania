@@ -16405,7 +16405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66c1465201ac1e542a82bbe0cd43a639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  maxTurrets: 6
+  maxTurrets: 7
   maxTurretsPerCar: 2
   trainCarLayer:
     serializedVersion: 2

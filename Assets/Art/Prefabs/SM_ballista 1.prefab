@@ -832,10 +832,14 @@ MonoBehaviour:
   damagePerShot: 50
   shotsPerSecond: 3.5
   firePoint: {fileID: 1017851992185697706}
+  isCatapult: 0
+  splashRadius: 3
+  splashDamage: 75
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
   searchRadius: 100
+  smartTargeting: 1
   turnSpeed: 10
   turretHead: {fileID: 8742772726602352567}
   brokenAngle: 45
@@ -859,7 +863,7 @@ AudioSource:
   m_GameObject: {fileID: 8223363831371078925}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7260707718415618280, guid: e5b0d3103437e674f88eedf463b8be14, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
