@@ -12907,60 +12907,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2357381072794651858, guid: 0dbd7f43bb10ab5468ec7a17bbc5a8da, type: 3}
   m_PrefabInstance: {fileID: 1528609388}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1532071643
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1532071645}
-  - component: {fileID: 1532071644}
-  m_Layer: 0
-  m_Name: Caltrops
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1532071644
+--- !u!114 &1532071644 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6824079980849724443, guid: 25d89d6a97090a84d9c3b29d1e24484d, type: 3}
+  m_PrefabInstance: {fileID: 8960464556616720596}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1532071643}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf37b8bad3db0714f9fd927f31cd6ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Caltrops
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 64
-  immediateDamage: 50
-  damageOverTime: 50
-  dotDuration: 15
-  dotTickRate: 1
-  radiusNum: 3
-  CaltropsZonePrefab: {fileID: 0}
-  inRadius: 0
---- !u!4 &1532071645
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1532071643}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 530.14526, y: 0, z: 980.6848}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1536089151 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6717452846331348358, guid: d9e4636617f29034692c3a0728671579, type: 3}
@@ -19654,6 +19611,63 @@ MonoBehaviour:
   nextScene: 
   infiniteSceneName: InfiniteLevel1
   ShopUI: {fileID: 0}
+--- !u!1001 &8960464556616720596
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4017260169033298554, guid: 25d89d6a97090a84d9c3b29d1e24484d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 530.14526
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017260169033298554, guid: 25d89d6a97090a84d9c3b29d1e24484d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017260169033298554, guid: 25d89d6a97090a84d9c3b29d1e24484d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 980.6848
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017260169033298554, guid: 25d89d6a97090a84d9c3b29d1e24484d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017260169033298554, guid: 25d89d6a97090a84d9c3b29d1e24484d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017260169033298554, guid: 25d89d6a97090a84d9c3b29d1e24484d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017260169033298554, guid: 25d89d6a97090a84d9c3b29d1e24484d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017260169033298554, guid: 25d89d6a97090a84d9c3b29d1e24484d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017260169033298554, guid: 25d89d6a97090a84d9c3b29d1e24484d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017260169033298554, guid: 25d89d6a97090a84d9c3b29d1e24484d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7771695587913788153, guid: 25d89d6a97090a84d9c3b29d1e24484d, type: 3}
+      propertyPath: m_Name
+      value: Caltrops
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 25d89d6a97090a84d9c3b29d1e24484d, type: 3}
 --- !u!1 &8968950471949660402
 GameObject:
   m_ObjectHideFlags: 0
@@ -19891,7 +19905,7 @@ SceneRoots:
   - {fileID: 2028185527}
   - {fileID: 1572218364}
   - {fileID: 817974085}
-  - {fileID: 1532071645}
+  - {fileID: 8960464556616720596}
   - {fileID: 1738698627}
   - {fileID: 1759645611}
   - {fileID: 1230948658}

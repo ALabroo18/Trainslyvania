@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class InfiniteVampireHealth : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class InfiniteVampireHealth : MonoBehaviour
     public int currentHealth;
     public event System.Action OnDied;
 
+    public VisualEffect blood;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -16,6 +19,7 @@ public class InfiniteVampireHealth : MonoBehaviour
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
+        blood.Play();
         if (currentHealth <= 0)
         {
             OnDied?.Invoke();

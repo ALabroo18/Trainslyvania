@@ -811,6 +811,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   holyWaterZonePrefab: {fileID: 0}
+  shaderEffect: {fileID: 0}
+  onHoly: {fileID: 0}
 --- !u!4 &67691035
 Transform:
   m_ObjectHideFlags: 0
@@ -4359,6 +4361,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
+  Caltrops: {fileID: 0}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &259129227
@@ -4678,6 +4681,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
+  Caltrops: {fileID: 0}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &278956116
@@ -5423,6 +5427,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
+  Caltrops: {fileID: 0}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &347930037
@@ -9501,6 +9506,8 @@ MonoBehaviour:
   dotTickRate: 1
   radiusNum: 3
   FireBombZonePrefab: {fileID: 0}
+  explosion: {fileID: 0}
+  onFire: {fileID: 0}
 --- !u!4 &659310739
 Transform:
   m_ObjectHideFlags: 0
@@ -10173,6 +10180,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
+  Caltrops: {fileID: 0}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &681287657
@@ -12451,7 +12459,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::vampireSpawn
   vampireTypes:
   - prefab: {fileID: 708838261707664363, guid: d49cbd2037e99d24f811ebf50cfcb094, type: 3}
-    weight: 100
+    weight: 34
+  - prefab: {fileID: 708838261707664363, guid: 3f8d95e0b0259e54cb3186554712de43, type: 3}
+    weight: 33
+  - prefab: {fileID: 708838261707664363, guid: a7f3f50e12bada54a929797e1b0629a4, type: 3}
+    weight: 33
   spawnInterval: 1
   enemiesPerSpawn: 2
   maxVampires: 120
@@ -20468,6 +20480,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
+  Caltrops: {fileID: 0}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &1433544141
@@ -21938,6 +21951,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
+  Caltrops: {fileID: 0}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &1516271123
@@ -22709,6 +22723,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
+  Caltrops: {fileID: 0}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &1568050022
@@ -27966,6 +27981,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
+  Caltrops: {fileID: 0}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &2062824796

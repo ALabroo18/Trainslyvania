@@ -5,16 +5,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Trainslyvania/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Trainslyvania/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Art/Font/Anta-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Font/Anta-Regular SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Art/Font/GrenzeGotisch-VariableFont_wght SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Font/GrenzeGotisch-VariableFont_wght SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/VFX/Train Dmg/Claw.vfx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/VFX/Train Dmg/Claw.vfx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunInfo.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunInfo.json.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunSettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PerformanceTestRunSettings.json.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/Scriptable Render Pipeline Core/17.3.0/Common/Scripts/InstallPackage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/Scriptable Render Pipeline Core/17.3.0/Common/Scripts/InstallPackage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/InfiniteVampire.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/InfiniteVampire.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Prefabs/VampireTank.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Prefabs/VampireTank.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Shop Prefab/WaveShop.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/UI/Shop Prefab/WaveShop.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ROUTES/InfiniteLevel1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ROUTES/InfiniteLevel1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ROUTES/Level 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ROUTES/Level 1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ROUTES/Level 3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ROUTES/Level 3.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/RouteSelect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/RouteSelect.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unity Packages/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity Packages/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/1_InfiniteGamemodeScripts/InfiniteVampireHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/1_InfiniteGamemodeScripts/InfiniteVampireHealth.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +51,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Documents/Gameplay Video\Trainslyvania.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Documents/Final Build\Trainslyvania.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="D:\Documents\Gameplay Video" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -113,7 +111,7 @@
       <workItem from="1777851749086" duration="5093000" />
       <workItem from="1777920276034" duration="16622000" />
       <workItem from="1777994221391" duration="653000" />
-      <workItem from="1777995227381" duration="522000" />
+      <workItem from="1777995227381" duration="2161000" />
     </task>
     <servers />
   </component>
