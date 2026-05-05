@@ -14,6 +14,7 @@ public class FireBomb : MonoBehaviour
     [SerializeField] public float radiusNum;
     public GameObject FireBombZonePrefab;
     public VisualEffect explosion;
+    public Material onFire;
 
     public void FireRadius(Vector3 worldPosition)
     {
@@ -62,7 +63,7 @@ public class FireBomb : MonoBehaviour
             effect.visualEffectAsset = explosion.visualEffectAsset;
             if (zoneScript != null)
             {
-                zoneScript.Initialize(radius, enemyMask, dot, dotTickRate, duration, effect);
+                zoneScript.Initialize(radius, enemyMask, dot, dotTickRate, duration, effect, onFire);
             }
         }
         else
@@ -72,7 +73,7 @@ public class FireBomb : MonoBehaviour
             FireBombZone zoneScript = zone.AddComponent<FireBombZone>();
             VisualEffect effect = zone.AddComponent<VisualEffect>();
             effect.visualEffectAsset = explosion.visualEffectAsset;
-            zoneScript.Initialize(radius, enemyMask, dot, dotTickRate, duration, effect);
+            zoneScript.Initialize(radius, enemyMask, dot, dotTickRate, duration, effect, onFire);
         }
     }
 }

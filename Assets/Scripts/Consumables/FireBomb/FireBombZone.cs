@@ -14,10 +14,13 @@ public class FireBombZone : MonoBehaviour
     private float duration;
     private float elapsed = 0f;
     private VisualEffect explosion;
-
+    private Material _material;
+    
+    
+    private Dictionary<GameObject, Dictionary<Renderer, Material[]>> vampireOriginalMaterials = new Dictionary<GameObject, Dictionary<Renderer, Material[]>>();
     private Dictionary<GameObject, Coroutine> tintedVampires = new Dictionary<GameObject, Coroutine>();
 
-    public void Initialize(float radiusNum, LayerMask enemyMask, int damagePerTick, float tickRate, float duration, VisualEffect explosion)
+    public void Initialize(float radiusNum, LayerMask enemyMask, int damagePerTick, float tickRate, float duration, VisualEffect explosion, Material _material)
     {
         this.radiusNum = radiusNum;
         this.enemyMask = enemyMask;
@@ -25,6 +28,7 @@ public class FireBombZone : MonoBehaviour
         this.tickRate = tickRate;
         this.duration = duration;
         this.explosion = explosion;
+        this._material = _material;
 
         DrawCircle(transform.position);
         StartCoroutine(DOTRoutine());
@@ -43,6 +47,7 @@ public class FireBombZone : MonoBehaviour
             {
                 if (!tintedVampires.ContainsKey(enemy.gameObject))
                 {
+                    // DOT is called
                     Coroutine tintRoutine = StartCoroutine(TintVampire(enemy.gameObject));
                     tintedVampires[enemy.gameObject] = tintRoutine;
                 }
@@ -80,36 +85,44 @@ public class FireBombZone : MonoBehaviour
 
     IEnumerator TintVampire(GameObject vampire)
     {
+        //grabs the render attached to the vampire 
         Renderer[] renderers = vampire.GetComponentsInChildren<Renderer>();
-        Dictionary<Renderer, Color[]> originalColors = new Dictionary<Renderer, Color[]>();
+        
+        // Now we need to created a copy of the renderer array so that we can modify the the array and swap it back
+       Dictionary<Renderer, Material[]> originalColors = new Dictionary<Renderer, Material[]>();
+
+        Dictionary<Renderer, Material[]> newColors = new Dictionary<Renderer, Material[]>();
 
         foreach (Renderer r in renderers)
         {
-            Color[] colors = new Color[r.materials.Length];
-            for (int i = 0; i < r.materials.Length; i++)
+            //creates a material array that will be one size larger than the object's array
+            Material[] copy = new Material[r.materials.Length + 1];
+            Material [] storedColors = r.sharedMaterials;
+            originalColors[r] = storedColors;
+            
+            //for every renderer hit by the dot grab its amterial library and copy it over to the copy arrray
+            for (int i = 0; i < storedColors.Length; i++)
             {
-                if (r.materials[i].HasProperty("_Color"))
-                {
-                    colors[i] = r.materials[i].color;
-                    r.materials[i].color = new Color(1f, 0.3f, 0f);
-                }
+               copy[i] = r.sharedMaterials[i];
             }
-            originalColors[r] = colors;
+            
+            //add the new material to the end of the copy array
+            copy[storedColors.Length] = _material; 
+            
+            //set the material renderer to the new copy array
+            newColors[r] = copy;
         }
+        // now we have added copies of the renderer material libraries both new and old
+        vampireOriginalMaterials[vampire] = originalColors;
 
-        yield return new WaitForSeconds(duration - elapsed);
 
-        foreach (var kvp in originalColors)
+        foreach (var kvp in newColors)
         {
             if (kvp.Key != null)
-            {
-                for (int i = 0; i < kvp.Key.materials.Length; i++)
-                {
-                    if (kvp.Key.materials[i].HasProperty("_Color"))
-                        kvp.Key.materials[i].color = kvp.Value[i];
-                }
-            }
+                kvp.Key.sharedMaterials = kvp.Value;
         }
+        
+        yield return new WaitForSeconds(duration - elapsed);
 
         if (tintedVampires.ContainsKey(vampire))
             tintedVampires.Remove(vampire);
@@ -117,14 +130,25 @@ public class FireBombZone : MonoBehaviour
 
     void RevertVampireColor(GameObject vampire)
     {
+        if (!vampireOriginalMaterials.ContainsKey(vampire))
+            return;
+        
         Renderer[] renderers = vampire.GetComponentsInChildren<Renderer>();
+        Dictionary<Renderer, Material[]> originalMats = vampireOriginalMaterials[vampire];
+        
         foreach (Renderer r in renderers)
         {
-            foreach (Material m in r.materials)
-            {
-                if (m.HasProperty("_Color"))
-                    m.color = Color.white;
-            }
+            r.sharedMaterials = originalMats[r];
+        }
+        
+        vampireOriginalMaterials.Remove(vampire);
+        
+        // Stop and remove the coroutine reference
+        if (tintedVampires.ContainsKey(vampire))
+        {
+            if (tintedVampires[vampire] != null)
+                StopCoroutine(tintedVampires[vampire]);
+            tintedVampires.Remove(vampire);
         }
     }
     
@@ -145,38 +169,7 @@ public class FireBombZone : MonoBehaviour
         }
 
 
-        /*
-        circleRenderer = gameObject.GetComponent<LineRenderer>();
-        if (circleRenderer == null)
-            circleRenderer = gameObject.AddComponent<LineRenderer>();
 
-        circleRenderer.loop = true;
-        circleRenderer.startWidth = 0.15f;
-        circleRenderer.endWidth = 0.15f;
-        circleRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        circleRenderer.startColor = new Color(1f, 0.3f, 0f, 0.9f);
-        circleRenderer.endColor = new Color(1f, 0.3f, 0f, 0.9f);
-        circleRenderer.positionCount = 64;
-        circleRenderer.useWorldSpace = true;
-
-        for (int i = 0; i < 64; i++)
-        {
-            float angle = i / 64f * Mathf.PI * 2f;
-            float x = Mathf.Cos(angle) * radiusNum;
-            float z = Mathf.Sin(angle) * radiusNum;
-
-            Vector3 point = new Vector3(center.x + x, 100f, center.z + z);
-            if (Physics.Raycast(point, Vector3.down, out RaycastHit hit, 200f))
-            {
-                circleRenderer.SetPosition(i, hit.point + Vector3.up * 0.1f);
-            }
-            else
-            {
-                circleRenderer.SetPosition(i, new Vector3(center.x + x, center.y + 0.1f, center.z + z));
-            }
-        }
-        Debug.Log("Circle Drawn");
-        */
     }
         
 }

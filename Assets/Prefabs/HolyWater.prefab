@@ -61,6 +61,7 @@ MonoBehaviour:
     m_Bits: 256
   holyWaterZonePrefab: {fileID: 0}
   shaderEffect: {fileID: 5181812959134384313}
+  onHoly: {fileID: 2100000, guid: da15f96030b1ff34e8f47fca9ee18f16, type: 2}
 --- !u!2083052967 &5181812959134384313
 VisualEffect:
   m_ObjectHideFlags: 0

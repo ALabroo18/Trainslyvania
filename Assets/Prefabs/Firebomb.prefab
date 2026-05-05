@@ -56,6 +56,7 @@ MonoBehaviour:
   radiusNum: 3
   FireBombZonePrefab: {fileID: 0}
   explosion: {fileID: 7346572594444271147}
+  onFire: {fileID: 2100000, guid: c5843cb2a4d49764d8dd188391ed2467, type: 2}
 --- !u!2083052967 &7346572594444271147
 VisualEffect:
   m_ObjectHideFlags: 0

@@ -21802,10 +21802,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Our Heavenly father above hallowed be thy name. \n\nTo you we commit our
-    spirits as we depart upon this pilgrimage you have set upon us. With your sword
-    of righteousness, and shield of faith we shall cleanse the chaff that clings
-    to the world of the living, so that your kingdom may come on earth.\n"
+  m_text: As our journey is sunsetted on this corrupted plain. We give thanks to
+    the lord for watching over us as we walked through the valley of shadows, We
+    give praise for delivering us from the shadow of death, and now as we delve into
+    the heart of the scrouge we fear no evil.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ddb1b4516b5b80b42b04b20170bd7fb6, type: 2}
   m_sharedMaterial: {fileID: 1119806785008235125, guid: ddb1b4516b5b80b42b04b20170bd7fb6, type: 2}
@@ -48512,7 +48512,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Disgraced Path
+  m_text: Fear No Evil
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ddb1b4516b5b80b42b04b20170bd7fb6, type: 2}
   m_sharedMaterial: {fileID: 1119806785008235125, guid: ddb1b4516b5b80b42b04b20170bd7fb6, type: 2}
