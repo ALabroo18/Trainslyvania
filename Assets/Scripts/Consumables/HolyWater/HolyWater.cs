@@ -26,6 +26,8 @@ public class HolyWater : MonoBehaviour
     [Header("DOT Effect")]
     public VisualEffect shaderEffect;
 
+    public Material onHoly;
+
     public void SplashArea(Vector3 center)
     {
         float radius = splashRadius;
@@ -60,7 +62,7 @@ public class HolyWater : MonoBehaviour
             if (zoneScript != null)
             {
                
-                zoneScript.Initialize(radius, dot, dotTickRate, duration, enemyLayer, shaderEffect);
+                zoneScript.Initialize(radius, dot, dotTickRate, duration, enemyLayer, shaderEffect, onHoly);
                 //shaderEffect.SetFloat("Zone Size", radius);
                 //shaderEffect.SetFloat("Zone Lifetime", duration);
                 //shaderEffect.Play();
@@ -74,7 +76,7 @@ public class HolyWater : MonoBehaviour
             HolyWaterZone zoneScript = zone.AddComponent<HolyWaterZone>();
             VisualEffect effect = zone.AddComponent<VisualEffect>();
             effect.visualEffectAsset = shaderEffect.visualEffectAsset;
-            zoneScript.Initialize(radius, dot, dotTickRate, duration, enemyLayer, shaderEffect);
+            zoneScript.Initialize(radius, dot, dotTickRate, duration, enemyLayer, shaderEffect, onHoly);
            // shaderEffect.SetFloat("Zone Size", radius);
            // shaderEffect.SetFloat("Zone Lifetime", duration);
            // shaderEffect.Play();

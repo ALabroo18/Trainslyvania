@@ -11,20 +11,24 @@ public class HolyWaterZone : MonoBehaviour
     private float duration;
     private LayerMask enemyLayer;
     private VisualEffect shaderEffect;
-
+    private Material _material;
+    
+    
+    private Dictionary<GameObject, Dictionary<Renderer, Material[]>> vampireOriginalMaterials = new Dictionary<GameObject, Dictionary<Renderer, Material[]>>();
     private Dictionary<GameObject, Coroutine> tintedVampires = new Dictionary<GameObject, Coroutine>();
 
     private LineRenderer circleRenderer;
     private float elapsed = 0f;
 
-    public void Initialize(float radius, int damagePerTick, float tickRate, float duration, LayerMask enemyLayer, VisualEffect waterShader)
+    public void Initialize(float radius, int damagePerTick, float tickRate, float duration, LayerMask enemyLayer, VisualEffect shaderEffect, Material _material)
     {
         this.radius = radius;
         this.damagePerTick = damagePerTick;
         this.tickRate = tickRate;
         this.duration = duration;
         this.enemyLayer = enemyLayer;
-        this.shaderEffect = waterShader;
+        this.shaderEffect = shaderEffect;
+        this._material = _material;
 
         DrawCircle();
         StartCoroutine(DOTRoutine());
@@ -121,37 +125,44 @@ public class HolyWaterZone : MonoBehaviour
 
     IEnumerator TintVampire(GameObject vampire)
     {
-        // grab the skinned mesh renderer of all of the skinned meshcomponents inside of the vampire prefab
-        Renderer[] renderers = vampire.GetComponentsInChildren<SkinnedMeshRenderer>();
-        Dictionary<Renderer, Color[]> originalColors = new Dictionary<Renderer, Color[]>();
+        //grabs the render attached to the vampire 
+        Renderer[] renderers = vampire.GetComponentsInChildren<Renderer>();
+        
+        // Now we need to created a copy of the renderer array so that we can modify the the array and swap it back
+        Dictionary<Renderer, Material[]> originalColors = new Dictionary<Renderer, Material[]>();
+
+        Dictionary<Renderer, Material[]> newColors = new Dictionary<Renderer, Material[]>();
 
         foreach (Renderer r in renderers)
         {
-            Color[] colors = new Color[r.materials.Length];
-            for (int i = 0; i < r.materials.Length; i++)
+            //creates a material array that will be one size larger than the object's array
+            Material[] copy = new Material[r.materials.Length + 1];
+            Material [] storedColors = r.sharedMaterials;
+            originalColors[r] = storedColors;
+            
+            //for every renderer hit by the dot grab its amterial library and copy it over to the copy arrray
+            for (int i = 0; i < storedColors.Length; i++)
             {
-                if (r.materials[i].HasProperty("_Color"))
-                {
-                    colors[i] = r.materials[i].color;
-                    r.materials[i].color = Color.black;
-                }
+                copy[i] = r.sharedMaterials[i];
             }
-            originalColors[r] = colors;
+            
+            //add the new material to the end of the copy array
+            copy[storedColors.Length] = _material; 
+            
+            //set the material renderer to the new copy array
+            newColors[r] = copy;
         }
+        // now we have added copies of the renderer material libraries both new and old
+        vampireOriginalMaterials[vampire] = originalColors;
 
-        yield return new WaitForSeconds(duration - elapsed);
 
-        foreach (var kvp in originalColors)
+        foreach (var kvp in newColors)
         {
             if (kvp.Key != null)
-            {
-                for (int i = 0; i < kvp.Key.materials.Length; i++)
-                {
-                    if (kvp.Key.materials[i].HasProperty("_Color"))
-                        kvp.Key.materials[i].color = kvp.Value[i];
-                }
-            }
+                kvp.Key.sharedMaterials = kvp.Value;
         }
+        
+        yield return new WaitForSeconds(duration - elapsed);
 
         if (tintedVampires.ContainsKey(vampire))
             tintedVampires.Remove(vampire);
@@ -159,14 +170,25 @@ public class HolyWaterZone : MonoBehaviour
 
     void RevertVampireColor(GameObject vampire)
     {
+        if (!vampireOriginalMaterials.ContainsKey(vampire))
+            return;
+        
         Renderer[] renderers = vampire.GetComponentsInChildren<Renderer>();
+        Dictionary<Renderer, Material[]> originalMats = vampireOriginalMaterials[vampire];
+        
         foreach (Renderer r in renderers)
         {
-            foreach (Material m in r.materials)
-            {
-                if (m.HasProperty("_Color"))
-                    m.color = Color.white;
-            }
+            r.sharedMaterials = originalMats[r];
+        }
+        
+        vampireOriginalMaterials.Remove(vampire);
+        
+        // Stop and remove the coroutine reference
+        if (tintedVampires.ContainsKey(vampire))
+        {
+            if (tintedVampires[vampire] != null)
+                StopCoroutine(tintedVampires[vampire]);
+            tintedVampires.Remove(vampire);
         }
     }
 }
