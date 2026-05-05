@@ -3,7 +3,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using System.Collections.Generic;
 
-public class mediumTurret : MonoBehaviour
+public class catapultTurret : MonoBehaviour
 {
     //Mason Kuhn
 
@@ -12,12 +12,14 @@ public class mediumTurret : MonoBehaviour
     public float shotsPerSecond = 3.5f;
     public Transform firePoint;
 
+    [Header("Catapult")]
+    public bool isCatapult = true;
+    public float splashRadius = 3f;
+    public int splashDamage = 75;
+
     [Header("Targeting")]
     public LayerMask enemyLayer;
     public float searchRadius = 100f;
-
-    [Header("Target Priority")]
-    public bool smartTargeting = true;
 
     [Header("Aiming")]
     public float turnSpeed = 10f;
@@ -46,7 +48,7 @@ public class mediumTurret : MonoBehaviour
 
     public trainHealth owningCar;
     private bool isBroken;
-    private bool isBlessed = false;
+
     [Header("Audio")]
     public AudioClip shootAudio;
     public AudioSource audioSource;
@@ -55,7 +57,6 @@ public class mediumTurret : MonoBehaviour
 
     [HideInInspector] public int baseDamagePerShot;
     [HideInInspector] public float baseShotsPerSecond;
-    private Vector3 direction;
 
     void Start()
     {
@@ -66,43 +67,6 @@ public class mediumTurret : MonoBehaviour
 
         baseDamagePerShot = damagePerShot;
         baseShotsPerSecond = shotsPerSecond;
-    }
-
-    public static void RegisterQueuedDamage(GameObject enemy, int damage)
-    {
-        if (!queuedDamage.ContainsKey(enemy))
-            queuedDamage[enemy] = 0;
-        queuedDamage[enemy] += damage;
-    }
-
-    public static void ClearQueuedDamage(GameObject enemy)
-    {
-        if (queuedDamage.ContainsKey(enemy))
-            queuedDamage.Remove(enemy);
-    }
-
-    public static int GetQueuedDamage(GameObject enemy)
-    {
-        return queuedDamage.ContainsKey(enemy) ? queuedDamage[enemy] : 0;
-    }
-
-    bool IsAboutToDie(Transform target)
-    {
-        if (!smartTargeting) return false;
-        if (target == null) return false;
-
-        GameObject obj = target.gameObject;
-        int queued = GetQueuedDamage(obj);
-
-        vampireHealth health = obj.GetComponent<vampireHealth>();
-        if (health != null)
-            return (health.currentHealth - queued) <= damagePerShot;
-
-        InfiniteVampireHealth infiniteHealth = obj.GetComponent<InfiniteVampireHealth>();
-        if (infiniteHealth != null)
-            return (infiniteHealth.GetHealth() - queued) <= damagePerShot;
-
-        return false;
     }
 
     void OnDestroy()
@@ -133,7 +97,6 @@ public class mediumTurret : MonoBehaviour
             return;
         }
 
-        if (smartTargeting && IsAboutToDie(currentTarget))
         {
             Transform nextTarget = FindNextTarget(currentTarget);
             if (nextTarget != null)
@@ -164,47 +127,36 @@ public class mediumTurret : MonoBehaviour
 
         if (projectilePrefab != null)
         {
-            RegisterQueuedDamage(currentTarget.gameObject, damagePerShot);
 
             GameObject proj = Instantiate(projectilePrefab, origin, Quaternion.LookRotation(direction));
             TurretProjectile projectile = proj.GetComponent<TurretProjectile>();
+
             if (projectile != null)
-                projectile.Initialize(direction, damagePerShot, enemyLayer, proj);
+            {
+                if (isCatapult)
+                    projectile.InitializeSplash(direction, splashDamage, splashRadius, enemyLayer, currentTarget.position);
+                else
+                    projectile.Initialize(direction, damagePerShot, enemyLayer, currentTarget.gameObject);
+            }
         }
 
         else
             Debug.LogWarning("No projectile prefab assigned on " + gameObject.name);
 
-        RaycastHit hit;
-        if (Physics.Raycast(origin, direction, out hit, Mathf.Infinity, enemyLayer))
-        {
-            vampireHealth health = hit.collider.GetComponent<vampireHealth>();
-            if (health != null)
-                health.TakeDamage(damagePerShot);
-        }
-
-        InfiniteVampireHealth infiniteHealth = hit.collider.GetComponent<InfiniteVampireHealth>();
-        if (infiniteHealth != null)
-        {
-            infiniteHealth.TakeDamage(damagePerShot);
-            return;
-        }
-
-        Debug.LogWarning("Hit enemy layer but no health component found on: " + hit.collider.gameObject.name);
         audioSource.PlayOneShot(shootAudio);
     }
 
     void FindClosestEnemy()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, searchRadius, enemyLayer);
-
+        Debug.Log("found " + hits.Length + " enemies in range");
         float closestDist = Mathf.Infinity;
         Transform closest = null;
 
         foreach (Collider c in hits)
         {
+            Debug.Log("enemy found " + c.gameObject.name + "layer " + LayerMask.LayerToName(c.gameObject.layer));
             if (!c.transform.root.gameObject.activeInHierarchy) continue;
-            if (smartTargeting && IsAboutToDie(c.transform)) continue;
 
             float dist = Vector3.Distance(transform.position, c.transform.position);
             if (dist < closestDist)
@@ -242,7 +194,6 @@ public class mediumTurret : MonoBehaviour
         {
             if (c.transform == currentDyingTarget) continue;
             if (!c.transform.root.gameObject.activeInHierarchy) continue;
-            if (IsAboutToDie(c.transform)) continue;
 
             float dist = Vector3.Distance(transform.position, c.transform.position);
             if (dist < closestDist)
@@ -258,18 +209,14 @@ public class mediumTurret : MonoBehaviour
     void AimAtTarget()
     {
         if (currentTarget == null) return;
-        Debug.Log("Aiming at: " + currentTarget.name + " from: " + transform.position);
 
         Vector3 flatDirection = currentTarget.position - transform.position;
         flatDirection.y = 0f;
 
         if (flatDirection == Vector3.zero) return;
 
-        Debug.Log("Rotating toward: " + currentTarget.name + " flatDirection: " + flatDirection + " current rotation: " + transform.eulerAngles);
-
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(flatDirection), Time.deltaTime * turnSpeed);
 
-        Debug.Log("New rotation: " + transform.eulerAngles);
     }
 
     IEnumerator DropTurret()
@@ -302,7 +249,6 @@ public class mediumTurret : MonoBehaviour
 
     IEnumerator BlessRoutine(float duration, float multiplier)
     {
-        isBlessed = true;
         float originalFireRate = shotsPerSecond;
         shotsPerSecond *= multiplier;
 
@@ -314,7 +260,6 @@ public class mediumTurret : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         shotsPerSecond = originalFireRate;
-        isBlessed = false;
         blessCoroutine = null;
 
         DestroyBlessHalo();

@@ -167,10 +167,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b60b56888eedde4c9090f76ac562c7c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8324219925557059776}
+      addedObject: {fileID: 2891437253285739719}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b60b56888eedde4c9090f76ac562c7c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2891437253285739719}
+      addedObject: {fileID: 6028965154686604351}
   m_SourcePrefab: {fileID: 100100000, guid: 4b60b56888eedde4c9090f76ac562c7c, type: 3}
 --- !u!4 &2743495473193827180 stripped
 Transform:
@@ -182,43 +182,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b60b56888eedde4c9090f76ac562c7c, type: 3}
   m_PrefabInstance: {fileID: 2420794637529734279}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8324219925557059776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3267654225104757206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 332150d992f970f4692a1ff1bce14f98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::mediumTurret
-  damagePerShot: 50
-  shotsPerSecond: 1.5
-  firePoint: {fileID: 1488504369805513522}
-  isCatapult: 1
-  splashRadius: 5
-  splashDamage: 150
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  searchRadius: 100
-  smartTargeting: 1
-  turnSpeed: 10
-  turretHead: {fileID: 5155305305004917687}
-  brokenAngle: 45
-  breakRotateTime: 0.4
-  blessHaloColor: {r: 0.4, g: 0.8, b: 1, a: 0.8}
-  blessHaloRadius: 1.5
-  blessHaloHeight: 2
-  blessPulseSpeed: 2
-  projectilePrefab: {fileID: 5890838377727596806}
-  owningCar: {fileID: 0}
-  shootAudio: {fileID: 8300000, guid: cd02e0e990799a344abca6ef22ff41dc, type: 3}
-  audioSource: {fileID: 2891437253285739719}
-  baseDamagePerShot: 0
-  baseShotsPerSecond: 0
 --- !u!82 &2891437253285739719
 AudioSource:
   m_ObjectHideFlags: 0
@@ -316,11 +279,42 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &5155305305004917687 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -1868095295357706448, guid: 4b60b56888eedde4c9090f76ac562c7c, type: 3}
-  m_PrefabInstance: {fileID: 2420794637529734279}
+--- !u!114 &6028965154686604351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3267654225104757206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac1abee67209152408c6cfd237b8b401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::catapultTurret
+  damagePerShot: 50
+  shotsPerSecond: 1
+  firePoint: {fileID: 1488504369805513522}
+  isCatapult: 1
+  splashRadius: 3
+  splashDamage: 75
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  searchRadius: 100
+  turnSpeed: 10
+  turretHead: {fileID: 0}
+  brokenAngle: 45
+  breakRotateTime: 0.4
+  blessHaloColor: {r: 0.4, g: 0.8, b: 1, a: 0.8}
+  blessHaloRadius: 1.5
+  blessHaloHeight: 2
+  blessPulseSpeed: 2
+  projectilePrefab: {fileID: 3374799288091747234, guid: 58ba204638159044faa99a06ee492fac, type: 3}
+  owningCar: {fileID: 0}
+  shootAudio: {fileID: 0}
+  audioSource: {fileID: 2891437253285739719}
+  baseDamagePerShot: 0
+  baseShotsPerSecond: 0
 --- !u!1001 &9157441305322863268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -401,10 +395,5 @@ PrefabInstance:
 --- !u!4 &2127461013758341944 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7103169318787795356, guid: 58ba204638159044faa99a06ee492fac, type: 3}
-  m_PrefabInstance: {fileID: 9157441305322863268}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5890838377727596806 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3374799288091747234, guid: 58ba204638159044faa99a06ee492fac, type: 3}
   m_PrefabInstance: {fileID: 9157441305322863268}
   m_PrefabAsset: {fileID: 0}

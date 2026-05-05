@@ -130,22 +130,23 @@ public class TurretProjectile : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("fuck you");
         if (!active) return;
         if (((1 << other.gameObject.layer) & enemyLayer) == 0) return;
 
-        vampireHealth health = other.GetComponent<vampireHealth>();
+        vampireHealth health = other.GetComponentInParent<vampireHealth>();
         if (health != null)
         {
-            mediumTurret.ClearQueuedDamage(other.gameObject);
+            mediumTurret.ClearQueuedDamage(other.transform.root.gameObject);
             health.TakeDamage(damage);
             Destroy(gameObject);
             return;
         }
 
-        InfiniteVampireHealth infiniteHealth = other.GetComponent<InfiniteVampireHealth>();
+        InfiniteVampireHealth infiniteHealth = other.GetComponentInParent<InfiniteVampireHealth>();
         if (infiniteHealth != null)
         {
-            mediumTurret.ClearQueuedDamage(other.gameObject);
+            mediumTurret.ClearQueuedDamage(other.transform.root.gameObject);
             infiniteHealth.TakeDamage(damage);
             Destroy(gameObject);
         }

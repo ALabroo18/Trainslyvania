@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5742986190139740484, guid: fa650c2d02a7a9b4f9939980c8bcdb68, type: 3}
+      propertyPath: isCatapult
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742986190139740484, guid: fa650c2d02a7a9b4f9939980c8bcdb68, type: 3}
+      propertyPath: smartTargeting
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6287611427443614020, guid: fa650c2d02a7a9b4f9939980c8bcdb68, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
