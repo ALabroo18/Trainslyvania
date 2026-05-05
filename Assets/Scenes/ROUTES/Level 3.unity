@@ -119,6 +119,60 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &11287419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 11287421}
+  - component: {fileID: 11287420}
+  m_Layer: 0
+  m_Name: Caltrops
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &11287420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11287419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf37b8bad3db0714f9fd927f31cd6ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Caltrops
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 64
+  immediateDamage: 50
+  damageOverTime: 50
+  dotDuration: 15
+  dotTickRate: 1
+  radiusNum: 0
+  CaltropsZonePrefab: {fileID: 0}
+  inRadius: 0
+--- !u!4 &11287421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11287419}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 874.8541, y: 0.00004, z: 5213.652}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &12269621
 GameObject:
   m_ObjectHideFlags: 0
@@ -4269,115 +4323,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: de8c91d05b98f2f49bf4b05e5aff7cb5, type: 3}
   m_PrefabInstance: {fileID: 249105466}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &259129223
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 259129227}
-  - component: {fileID: 259129226}
-  - component: {fileID: 259129225}
-  - component: {fileID: 259129224}
-  m_Layer: 0
-  m_Name: InputManager (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &259129224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 259129223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd7eecd598c284459584ca2c8b6beaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraPan
-  cameraParent: {fileID: 0}
-  camera: {fileID: 51132198}
-  panSpeed: 4
---- !u!114 &259129225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 259129223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 25a083dc446387f48b9194705f31f509, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &259129226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 259129223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66c1465201ac1e542a82bbe0cd43a639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  maxTurrets: 6
-  maxTurretsPerCar: 2
-  trainCarLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 8
-  playerCharacter: {fileID: 7032533916340315850, guid: 585a36e8c4c897441845d32b7708455e, type: 3}
-  PressedImage: {fileID: 8765626488536303788, guid: d1dc83c19999d5d4b9a54efba64323f6, type: 3}
-  holyWater: {fileID: 67691034}
-  turretLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  FireBomb: {fileID: 659310738}
-  Caltrops: {fileID: 0}
-  activeConsumable: 0
-  camera: {fileID: 51132198}
---- !u!4 &259129227
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 259129223}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.53881, y: 0, z: 27.435308}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &259605284
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4589,115 +4534,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277109233}
   m_CullTransparentMesh: 1
---- !u!1 &278956112
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 278956116}
-  - component: {fileID: 278956115}
-  - component: {fileID: 278956114}
-  - component: {fileID: 278956113}
-  m_Layer: 0
-  m_Name: InputManager (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &278956113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278956112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd7eecd598c284459584ca2c8b6beaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraPan
-  cameraParent: {fileID: 0}
-  camera: {fileID: 51132198}
-  panSpeed: 4
---- !u!114 &278956114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278956112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 25a083dc446387f48b9194705f31f509, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &278956115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278956112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66c1465201ac1e542a82bbe0cd43a639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  maxTurrets: 6
-  maxTurretsPerCar: 2
-  trainCarLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 8
-  playerCharacter: {fileID: 7032533916340315850, guid: 585a36e8c4c897441845d32b7708455e, type: 3}
-  PressedImage: {fileID: 8765626488536303788, guid: d1dc83c19999d5d4b9a54efba64323f6, type: 3}
-  holyWater: {fileID: 67691034}
-  turretLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  FireBomb: {fileID: 659310738}
-  Caltrops: {fileID: 0}
-  activeConsumable: 0
-  camera: {fileID: 51132198}
---- !u!4 &278956116
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278956112}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.22816458, z: -0, w: 0.9736226}
-  m_LocalPosition: {x: -14.82, y: -0, z: 18.71}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -26.378, z: 0}
 --- !u!1001 &283845681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5335,115 +5171,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8469436322786399559, guid: 2dbc535868e5eb84eb8050ea8e401f3f, type: 3}
   m_PrefabInstance: {fileID: 241906092}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &347930033
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 347930037}
-  - component: {fileID: 347930036}
-  - component: {fileID: 347930035}
-  - component: {fileID: 347930034}
-  m_Layer: 0
-  m_Name: InputManager (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &347930034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 347930033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd7eecd598c284459584ca2c8b6beaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraPan
-  cameraParent: {fileID: 0}
-  camera: {fileID: 51132198}
-  panSpeed: 4
---- !u!114 &347930035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 347930033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 25a083dc446387f48b9194705f31f509, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &347930036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 347930033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66c1465201ac1e542a82bbe0cd43a639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  maxTurrets: 6
-  maxTurretsPerCar: 2
-  trainCarLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 8
-  playerCharacter: {fileID: 7032533916340315850, guid: 585a36e8c4c897441845d32b7708455e, type: 3}
-  PressedImage: {fileID: 8765626488536303788, guid: d1dc83c19999d5d4b9a54efba64323f6, type: 3}
-  holyWater: {fileID: 67691034}
-  turretLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  FireBomb: {fileID: 659310738}
-  Caltrops: {fileID: 0}
-  activeConsumable: 0
-  camera: {fileID: 51132198}
---- !u!4 &347930037
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 347930033}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.53881, y: -0, z: 18.71}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &360425995
 GameObject:
   m_ObjectHideFlags: 0
@@ -10087,115 +9814,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 83e53a35d74388049bdbbefc297312ec, type: 3}
   m_PrefabInstance: {fileID: 680721144}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &681287653
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 681287657}
-  - component: {fileID: 681287656}
-  - component: {fileID: 681287655}
-  - component: {fileID: 681287654}
-  m_Layer: 0
-  m_Name: InputManager (7)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &681287654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681287653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd7eecd598c284459584ca2c8b6beaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraPan
-  cameraParent: {fileID: 0}
-  camera: {fileID: 51132198}
-  panSpeed: 4
---- !u!114 &681287655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681287653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 25a083dc446387f48b9194705f31f509, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &681287656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681287653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66c1465201ac1e542a82bbe0cd43a639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  maxTurrets: 6
-  maxTurretsPerCar: 2
-  trainCarLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 8
-  playerCharacter: {fileID: 7032533916340315850, guid: 585a36e8c4c897441845d32b7708455e, type: 3}
-  PressedImage: {fileID: 8765626488536303788, guid: d1dc83c19999d5d4b9a54efba64323f6, type: 3}
-  holyWater: {fileID: 67691034}
-  turretLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  FireBomb: {fileID: 659310738}
-  Caltrops: {fileID: 0}
-  activeConsumable: 0
-  camera: {fileID: 51132198}
---- !u!4 &681287657
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681287653}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.34363255, z: -0, w: 0.9391042}
-  m_LocalPosition: {x: 16.552734, y: 0, z: 18.34}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 40.197, z: 0}
 --- !u!1 &687305589
 GameObject:
   m_ObjectHideFlags: 0
@@ -18754,6 +18372,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 219300332}
     m_Modifications:
+    - target: {fileID: 1863368714326508216, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2062824795}
+    - target: {fileID: 1863368714326508216, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectHolyWater
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895919165393402997, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895919165393402997, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895919165393402997, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2062824795}
+    - target: {fileID: 1895919165393402997, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895919165393402997, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectCaltrops
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895919165393402997, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InputManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895919165393402997, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3431487540688123969, guid: a87a38336642e34478b203081bf9f475, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -18838,6 +18492,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConsumablePanel (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5009170218500266329, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2062824795}
+    - target: {fileID: 5009170218500266329, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectFirebomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615914838651689313, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: caltropsText
+      value: 
+      objectReference: {fileID: 1309571890}
+    - target: {fileID: 6615914838651689313, guid: a87a38336642e34478b203081bf9f475, type: 3}
+      propertyPath: firebombText
+      value: 
+      objectReference: {fileID: 1309571891}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18848,6 +18518,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3431487540688123969, guid: a87a38336642e34478b203081bf9f475, type: 3}
   m_PrefabInstance: {fileID: 1309571888}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1309571890 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1078700681239289857, guid: a87a38336642e34478b203081bf9f475, type: 3}
+  m_PrefabInstance: {fileID: 1309571888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &1309571891 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5020136059034842700, guid: a87a38336642e34478b203081bf9f475, type: 3}
+  m_PrefabInstance: {fileID: 1309571888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &1319784161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20385,115 +20077,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6717452846331348358, guid: d9e4636617f29034692c3a0728671579, type: 3}
   m_PrefabInstance: {fileID: 1413694810}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1433544137
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1433544141}
-  - component: {fileID: 1433544140}
-  - component: {fileID: 1433544139}
-  - component: {fileID: 1433544138}
-  m_Layer: 0
-  m_Name: InputManager (6)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1433544138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1433544137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd7eecd598c284459584ca2c8b6beaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraPan
-  cameraParent: {fileID: 0}
-  camera: {fileID: 51132198}
-  panSpeed: 4
---- !u!114 &1433544139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1433544137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 25a083dc446387f48b9194705f31f509, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &1433544140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1433544137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66c1465201ac1e542a82bbe0cd43a639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  maxTurrets: 6
-  maxTurretsPerCar: 2
-  trainCarLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 8
-  playerCharacter: {fileID: 7032533916340315850, guid: 585a36e8c4c897441845d32b7708455e, type: 3}
-  PressedImage: {fileID: 8765626488536303788, guid: d1dc83c19999d5d4b9a54efba64323f6, type: 3}
-  holyWater: {fileID: 67691034}
-  turretLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  FireBomb: {fileID: 659310738}
-  Caltrops: {fileID: 0}
-  activeConsumable: 0
-  camera: {fileID: 51132198}
---- !u!4 &1433544141
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1433544137}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.34363255, z: -0, w: 0.9391042}
-  m_LocalPosition: {x: 16.552734, y: 0, z: 27.435308}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 40.197, z: 0}
 --- !u!1 &1433803033
 GameObject:
   m_ObjectHideFlags: 0
@@ -21856,115 +21439,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8728318409664474121, guid: 233401f248b8b644080015277f2133dc, type: 3}
   m_PrefabInstance: {fileID: 1616600618}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1516271119
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1516271123}
-  - component: {fileID: 1516271122}
-  - component: {fileID: 1516271121}
-  - component: {fileID: 1516271120}
-  m_Layer: 0
-  m_Name: InputManager (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1516271120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516271119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd7eecd598c284459584ca2c8b6beaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraPan
-  cameraParent: {fileID: 0}
-  camera: {fileID: 51132198}
-  panSpeed: 4
---- !u!114 &1516271121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516271119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 25a083dc446387f48b9194705f31f509, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &1516271122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516271119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66c1465201ac1e542a82bbe0cd43a639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  maxTurrets: 6
-  maxTurretsPerCar: 2
-  trainCarLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 8
-  playerCharacter: {fileID: 7032533916340315850, guid: 585a36e8c4c897441845d32b7708455e, type: 3}
-  PressedImage: {fileID: 8765626488536303788, guid: d1dc83c19999d5d4b9a54efba64323f6, type: 3}
-  holyWater: {fileID: 67691034}
-  turretLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  FireBomb: {fileID: 659310738}
-  Caltrops: {fileID: 0}
-  activeConsumable: 0
-  camera: {fileID: 51132198}
---- !u!4 &1516271123
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516271119}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.34363255, z: -0, w: 0.9391042}
-  m_LocalPosition: {x: 16.552734, y: 0, z: 22.35121}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 40.197, z: 0}
 --- !u!1 &1523702456
 GameObject:
   m_ObjectHideFlags: 0
@@ -22628,115 +22102,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5136607329980270415, guid: 988000442d7d8b54caca622ce52bfd1e, type: 3}
   m_PrefabInstance: {fileID: 1235904286}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1568050018
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1568050022}
-  - component: {fileID: 1568050021}
-  - component: {fileID: 1568050020}
-  - component: {fileID: 1568050019}
-  m_Layer: 0
-  m_Name: InputManager (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1568050019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568050018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd7eecd598c284459584ca2c8b6beaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraPan
-  cameraParent: {fileID: 0}
-  camera: {fileID: 51132198}
-  panSpeed: 4
---- !u!114 &1568050020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568050018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 25a083dc446387f48b9194705f31f509, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &1568050021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568050018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66c1465201ac1e542a82bbe0cd43a639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  maxTurrets: 6
-  maxTurretsPerCar: 2
-  trainCarLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 8
-  playerCharacter: {fileID: 7032533916340315850, guid: 585a36e8c4c897441845d32b7708455e, type: 3}
-  PressedImage: {fileID: 8765626488536303788, guid: d1dc83c19999d5d4b9a54efba64323f6, type: 3}
-  holyWater: {fileID: 67691034}
-  turretLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  FireBomb: {fileID: 659310738}
-  Caltrops: {fileID: 0}
-  activeConsumable: 0
-  camera: {fileID: 51132198}
---- !u!4 &1568050022
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568050018}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.53881, y: 0, z: 22.35121}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1568676010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27981,7 +27346,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
-  Caltrops: {fileID: 0}
+  Caltrops: {fileID: 11287420}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &2062824796
@@ -30989,13 +30354,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1616600618}
   - {fileID: 2062824796}
-  - {fileID: 1568050022}
-  - {fileID: 1516271123}
-  - {fileID: 681287657}
-  - {fileID: 347930037}
-  - {fileID: 259129227}
-  - {fileID: 1433544141}
-  - {fileID: 278956116}
   - {fileID: 542415423}
   - {fileID: 5721394965649619337}
   - {fileID: 1157867514}
@@ -31004,6 +30362,7 @@ SceneRoots:
   - {fileID: 1572218364}
   - {fileID: 817974085}
   - {fileID: 659310739}
+  - {fileID: 11287421}
   - {fileID: 67691035}
   - {fileID: 428907394}
   - {fileID: 2137190209}

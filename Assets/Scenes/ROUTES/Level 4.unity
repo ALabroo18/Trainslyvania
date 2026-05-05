@@ -874,6 +874,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   holyWaterZonePrefab: {fileID: 0}
+  shaderEffect: {fileID: 5181812959134384313, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
 --- !u!4 &67691035
 Transform:
   m_ObjectHideFlags: 0
@@ -5769,7 +5770,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemDisplaying
   holyWaterText: {fileID: 1925602231}
-  firebombText: {fileID: 0}
+  firebombText: {fileID: 1091195056}
+  caltropsText: {fileID: 505715438}
 --- !u!1 &639318912
 GameObject:
   m_ObjectHideFlags: 0
@@ -6031,6 +6033,7 @@ MonoBehaviour:
   dotTickRate: 1
   radiusNum: 3
   FireBombZonePrefab: {fileID: 0}
+  explosion: {fileID: 7346572594444271147, guid: 57b7846cd428dc745ba1c8d0a30db0cc, type: 3}
 --- !u!4 &659310739
 Transform:
   m_ObjectHideFlags: 0
@@ -6266,7 +6269,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 678087936}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2062824795}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: SelectCaltrops
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &678087936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14975,6 +14990,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544779145}
   m_CullTransparentMesh: 1
+--- !u!1 &1555636374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1555636376}
+  - component: {fileID: 1555636375}
+  m_Layer: 0
+  m_Name: Caltrop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1555636375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555636374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf37b8bad3db0714f9fd927f31cd6ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Caltrops
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 64
+  immediateDamage: 50
+  damageOverTime: 50
+  dotDuration: 15
+  dotTickRate: 1
+  radiusNum: 0
+  CaltropsZonePrefab: {fileID: 0}
+  inRadius: 0
+--- !u!4 &1555636376
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555636374}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 720.23114, y: 0.00001, z: 1197.0676}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1564849975 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5136607329980270415, guid: 988000442d7d8b54caca622ce52bfd1e, type: 3}
@@ -18902,6 +18971,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   FireBomb: {fileID: 659310738}
+  Caltrops: {fileID: 1555636375}
   activeConsumable: 0
   camera: {fileID: 51132198}
 --- !u!4 &2062824796
@@ -22326,6 +22396,7 @@ SceneRoots:
   - {fileID: 1572218364}
   - {fileID: 817974085}
   - {fileID: 659310739}
+  - {fileID: 1555636376}
   - {fileID: 67691035}
   - {fileID: 1759645611}
   - {fileID: 4905862956023593341}
