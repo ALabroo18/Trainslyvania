@@ -822,65 +822,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7138048814166222525, guid: ed3c9c9dcdc8dfc429ed3d498400077b, type: 3}
   m_PrefabInstance: {fileID: 56219754}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &67691033
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 67691035}
-  - component: {fileID: 67691034}
-  m_Layer: 0
-  m_Name: HolyWater
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &67691034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67691033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4670f64804713b24884aaf501ecc3388, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HolyWater
-  splashDamage: 150
-  splashRadius: 5
-  dotDamagePerTick: 25
-  dotTickRate: 0.5
-  dotDuration: 5
-  blessDuration: 10
-  blessFireRateMultiplier: 2
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  turretLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  holyWaterZonePrefab: {fileID: 0}
-  shaderEffect: {fileID: 0}
---- !u!4 &67691035
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67691033}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 530.14526, y: 0, z: 980.6848}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &69177054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9194,60 +9135,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2551985166194947673, guid: 17dea63a4cc164444a5c423f549e317b, type: 3}
   m_PrefabInstance: {fileID: 652245438}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &659310737
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 659310739}
-  - component: {fileID: 659310738}
-  m_Layer: 0
-  m_Name: Firebomb
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &659310738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 659310737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0fd3cc1d74db0443aed926c168b176a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FireBomb
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 64
-  immediateDamage: 50
-  damageOverTime: 50
-  dotDuration: 3
-  dotTickRate: 1
-  radiusNum: 3
-  FireBombZonePrefab: {fileID: 0}
-  explosion: {fileID: 0}
---- !u!4 &659310739
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 659310737}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 530.14526, y: 0, z: 980.6848}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &659480449
 GameObject:
   m_ObjectHideFlags: 0
@@ -16941,6 +16828,74 @@ Transform:
   - {fileID: 874364099}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1170289717
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1951666263020304548, guid: 57b7846cd428dc745ba1c8d0a30db0cc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1862.6117
+      objectReference: {fileID: 0}
+    - target: {fileID: 1951666263020304548, guid: 57b7846cd428dc745ba1c8d0a30db0cc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 857.65186
+      objectReference: {fileID: 0}
+    - target: {fileID: 1951666263020304548, guid: 57b7846cd428dc745ba1c8d0a30db0cc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1951666263020304548, guid: 57b7846cd428dc745ba1c8d0a30db0cc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1951666263020304548, guid: 57b7846cd428dc745ba1c8d0a30db0cc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1951666263020304548, guid: 57b7846cd428dc745ba1c8d0a30db0cc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1951666263020304548, guid: 57b7846cd428dc745ba1c8d0a30db0cc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1951666263020304548, guid: 57b7846cd428dc745ba1c8d0a30db0cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1951666263020304548, guid: 57b7846cd428dc745ba1c8d0a30db0cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1951666263020304548, guid: 57b7846cd428dc745ba1c8d0a30db0cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817936383973076673, guid: 57b7846cd428dc745ba1c8d0a30db0cc, type: 3}
+      propertyPath: m_Name
+      value: Firebomb
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 57b7846cd428dc745ba1c8d0a30db0cc, type: 3}
+--- !u!114 &1170289718 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5334257152272564793, guid: 57b7846cd428dc745ba1c8d0a30db0cc, type: 3}
+  m_PrefabInstance: {fileID: 1170289717}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0fd3cc1d74db0443aed926c168b176a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireBomb
 --- !u!1001 &1171871140
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19755,6 +19710,74 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1397995821}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1398814621
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7939578398100639652, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_Name
+      value: HolyWater
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1862.6117
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 857.65186
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976831493587110019, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+--- !u!114 &1398814622 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7976498494449323779, guid: 5f9eb9244db04e04683b11901ff12f34, type: 3}
+  m_PrefabInstance: {fileID: 1398814621}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4670f64804713b24884aaf501ecc3388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HolyWater
 --- !u!1001 &1403049814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27341,11 +27364,11 @@ MonoBehaviour:
     m_Bits: 8
   playerCharacter: {fileID: 7032533916340315850, guid: 585a36e8c4c897441845d32b7708455e, type: 3}
   PressedImage: {fileID: 8765626488536303788, guid: d1dc83c19999d5d4b9a54efba64323f6, type: 3}
-  holyWater: {fileID: 67691034}
+  holyWater: {fileID: 1398814622}
   turretLayer:
     serializedVersion: 2
     m_Bits: 256
-  FireBomb: {fileID: 659310738}
+  FireBomb: {fileID: 1170289718}
   Caltrops: {fileID: 11287420}
   activeConsumable: 0
   camera: {fileID: 51132198}
@@ -30361,8 +30384,8 @@ SceneRoots:
   - {fileID: 2028185527}
   - {fileID: 1572218364}
   - {fileID: 817974085}
-  - {fileID: 659310739}
   - {fileID: 11287421}
-  - {fileID: 67691035}
   - {fileID: 428907394}
   - {fileID: 2137190209}
+  - {fileID: 1398814621}
+  - {fileID: 1170289717}

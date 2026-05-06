@@ -106,10 +106,6 @@ public class HolyWaterZone : MonoBehaviour
             }
 
             elapsed += tickRate;
-            float alpha = Mathf.Lerp(0.9f, 0f, elapsed / duration);
-            Color fadedColor = new Color(0.4f, 0.8f, 1f, alpha);
-            circleRenderer.startColor = fadedColor;
-            circleRenderer.endColor = fadedColor;
 
             yield return new WaitForSeconds(tickRate);
         }
@@ -146,8 +142,9 @@ public class HolyWaterZone : MonoBehaviour
                 copy[i] = r.sharedMaterials[i];
             }
             
+            Material tintMaterial = new Material(_material);
             //add the new material to the end of the copy array
-            copy[storedColors.Length] = _material; 
+            copy[storedColors.Length] = tintMaterial;
             
             //set the material renderer to the new copy array
             newColors[r] = copy;
